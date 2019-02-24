@@ -43,10 +43,13 @@ class Grid extends React.Component {
 		} else {
 			return (
 				<div className="grid">
-					{items.map(item => (
+					//вынести map
+					//передать объет
+					//посмотреть предыдущие варианты с {} в обертке
+					{items.map((item, i) => (
 						<Template
-							data={{
-								key: "1",
+							key= {i} 
+							data={{								
 								photoUrl:
 									"https://avatars3.githubusercontent.com/u/30462928?s=460&v=4",
 								name: "Alexander",
@@ -55,7 +58,6 @@ class Grid extends React.Component {
 								address: "Detroit"
 							}}
 						/>
-						
 					))}					
 				</div>
 				/*
