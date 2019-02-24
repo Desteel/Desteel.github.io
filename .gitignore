@@ -1,0 +1,14 @@
+# Ignore everything
+/*
+
+# But not these files...
+!README.md
+!AddressBook
+
+!package.json
+!.gitignore
+!webpack_config
+!babel.config.js
+!postcss.config.js
+!tsconfig.json
+!webpack.config.js
