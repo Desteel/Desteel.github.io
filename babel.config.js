@@ -1,4 +1,4 @@
-module.exports = function(api) {
+module.exports = function (api) {
     api.cache(true);
     const presets = [
         [
@@ -21,6 +21,7 @@ module.exports = function(api) {
                 useESModules: false
             }
         ],
+        ["@babel/plugin-proposal-decorators"]
         //["react-hot-loader/babel"]
     ];
     return {
