@@ -1,5 +1,5 @@
-// import { observable } from 'mobx';
-// import { observer } from 'mobx-react';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
 
 import BtnClear from "./BtnClear";
 import BtnSearch from "./BtnSearch";
@@ -7,13 +7,13 @@ import Input from "./Input";
 
 import "./Search.scss";
 
-// const appState = observable({
-//     value: ""
-// })
+const appState = observable({
+    value: ""
+})
 
-// console.log(appState)
+console.log(appState)
 
-class Search extends React.Component {
+@observer class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
