@@ -1,16 +1,25 @@
+import "./Card.scss";
+
+let photoIcon = require("../../images/photo.png");
+
 class Template extends React.Component {
     render() {
-        let _data = this.props.data;
+        const data = this.props.item;
+
+        let setPhoto = data.photoUrl ? data.photoUrl : photoIcon;
 
         return (
             <div className="card">
-                <div>
-                    <img src={_data.photoUrl} />
+                <div className="card__imagebox">
+                    <img src={setPhoto} />
                 </div>
-                <div>{_data.name}</div>
-                <div>{_data.surname}</div>
-                <div>{_data.phone}</div>
-                <div>{_data.address}</div>
+                <div className="card__main">
+                    <div className="card__name">
+                        {`${data.name} ${data.surname}`}
+                    </div>
+                    <div className="card__phone">{data.phone}</div>
+                    <div className="card__address">{data.address}</div>
+                </div>
             </div>
         );
     }

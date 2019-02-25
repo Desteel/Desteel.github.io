@@ -1,12 +1,47 @@
 {
-	"items": [
-		{
-			"key": "1",
-			"photoUrl": "https://avatars3.githubusercontent.com/u/30462928?s=460&v=4",
-			"name": "Alexander",
-			"surname": "Kerensky",
-			"phone": "84626358367",
-			"address": "Detroit"
-		}
-	]
+    "items": [
+        {
+            "photoUrl": "https://avatars3.githubusercontent.com/u/30462928?s=460&v=4",
+            "name": "Alexander",
+            "surname": "Kerensky",
+            "phone": "84626358367",
+            "address": "Detroit"
+        },
+        {
+            "name": "Victor",
+            "surname": "Kerensky",
+            "phone": "84626358367",
+            "address": "Moscow"
+        },
+        {
+            "name": "Alexander",
+            "surname": "Kerensky",
+            "phone": "84626358367",
+            "address": "Detroit"
+        },
+        {
+            "name": "Alexander",
+            "surname": "Kerensky",
+            "phone": "84626358367",
+            "address": "Detroit"
+        },
+        {
+            "name": "Alexander",
+            "surname": "Kerensky",
+            "phone": "84626358367",
+            "address": "Detroit"
+        },
+        {
+            "name": "Alexander",
+            "surname": "Kerensky",
+            "phone": "84626358367",
+            "address": "Detroit"
+        },
+        {
+            "name": "Alexander",
+            "surname": "Kerensky",
+            "phone": "84626358367",
+            "address": "Detroit"
+        }
+    ]
 }

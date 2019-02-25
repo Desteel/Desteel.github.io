@@ -1,0 +1,12 @@
+.grid {
+    display: flex;
+    flex-flow: wrap;
+    margin: 0 -15px;
+    padding: 40px 0;
+
+    > * {
+        width: calc(100% / 3 - 30px);
+        margin: 0 15px;
+        margin-bottom: 30px;
+    }
+}
