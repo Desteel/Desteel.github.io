@@ -1,3 +1,5 @@
+import Options from "../options/Options";
+
 import "./Card.scss";
 
 let photoIcon = require("../../images/photo.png");
@@ -20,6 +22,7 @@ class Template extends React.Component {
                     <div className="card__phone">{data.phone}</div>
                     <div className="card__address">{data.address}</div>
                 </div>
+                <Options /> 
             </div>
         );
     }
