@@ -21,7 +21,12 @@ module.exports = function (api) {
                 useESModules: false
             }
         ],
-        ["@babel/plugin-proposal-decorators"]
+        [
+            "@babel/plugin-proposal-decorators",
+            {
+                "legacy": true
+            }
+        ]
         //["react-hot-loader/babel"]
     ];
     return {
