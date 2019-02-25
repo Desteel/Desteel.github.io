@@ -1,17 +1,17 @@
 .body {
 	font-family: 'Roboto', sans-serif;
-	color: rgba(black, 0.54);	
+	color: rgba(black, 0.54);
 }
 
 .page {
 	min-height: 100vh;
-	
+
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 }
 
 .main {
-    flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 
 .container {

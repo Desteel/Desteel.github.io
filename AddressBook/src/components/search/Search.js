@@ -1,8 +1,17 @@
+// import { observable } from 'mobx';
+// import { observer } from 'mobx-react';
+
 import BtnClear from "./BtnClear";
 import BtnSearch from "./BtnSearch";
 import Input from "./Input";
 
 import "./Search.scss";
+
+// const appState = observable({
+//     value: ""
+// })
+
+// console.log(appState)
 
 class Search extends React.Component {
     constructor(props) {
@@ -13,7 +22,7 @@ class Search extends React.Component {
         };
         this.showBtn = this.showBtn.bind(this);
         this.clearInput = this.clearInput.bind(this);
-    }
+    }    
 
     showBtn(value) {
         this.setState({ value }, () => {
