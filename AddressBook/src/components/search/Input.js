@@ -8,7 +8,7 @@ class Input extends React.Component {
         this.props.showBtn(e.target.value);
     }
 
-    render() {
+    render() {  
         return (
             <input
                 onChange={this.returnValue}

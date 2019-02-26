@@ -8,10 +8,11 @@ class BtnClear extends React.Component {
         this.props.clearInput();
     }
 
-    render() {             
-        const styles = {};
+    render() {            
+        const isActive = this.props.isActive,
+              styles = {};                
 
-        if (!this.props.isActive) {
+        if (!isActive) {
             styles.opacity = 0;
             styles.visibility = 'hidden';
         }        

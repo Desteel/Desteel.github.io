@@ -5,14 +5,14 @@ import Footer from "./components/main/footer/Footer"
 import "./styles/Styles.scss";
 import "./components/button/Button.scss";
 
-class App extends React.Component {
+class App extends React.Component {    
     render() {
         return (
             <React.Fragment>
-                <Header />                           
+                <Header />                       
                 <Main />                           
                 <Footer />
-            </React.Fragment>          
+            </React.Fragment>
         );
     }
 }

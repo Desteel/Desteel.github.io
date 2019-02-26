@@ -8,10 +8,22 @@ import Input from "./Input";
 import "./Search.scss";
 
 const appState = observable({
+    isActive: false,
     value: ""
 })
 
-console.log(appState)
+appState.showBtn = function (val) {
+    this.value = val;
+
+    let currentValLength = this.value.length;
+    currentValLength > 0
+        ? this.isActive = true
+        : this.isActive = false 
+}
+appState.clearInput = function () {
+    this.isActive = false;
+    this.value = "";
+}
 
 @observer class Search extends React.Component {
     constructor(props) {
@@ -24,29 +36,25 @@ console.log(appState)
         this.clearInput = this.clearInput.bind(this);
     }    
 
-    showBtn(value) {
-        this.setState({ value }, () => {
-            let currentValLength = this.state.value.length;
-
-            currentValLength > 0
-                ? this.setState({ isActive: true })
-                : this.setState({ isActive: false });
-        });
+    showBtn(val) {        
+        appState.showBtn(val);
     }
 
     clearInput() {
-        this.setState({ value: "" });
-        this.setState({ isActive: false });
+        appState.clearInput();
     }
 
     render() {
         return (
             <form className="search" method="get">
                 <BtnSearch />
-                <Input showBtn={this.showBtn} value={this.state.value} />
+                <Input 
+                    value={appState.value} 
+                    showBtn={this.showBtn} 
+                />
                 <BtnClear
+                    isActive={appState.isActive}
                     clearInput={this.clearInput}
-                    isActive={this.state.isActive}
                 />
             </form>
         );
