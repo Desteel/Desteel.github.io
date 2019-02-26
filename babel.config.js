@@ -26,8 +26,14 @@ module.exports = function (api) {
             {
                 "legacy": true
             }
+        ],
+        [
+            "@babel/plugin-proposal-class-properties",
+            {
+                "loose": true
+            }
         ]
-        //["react-hot-loader/babel"]
+        //,["react-hot-loader/babel"]
     ];
     return {
         presets,
