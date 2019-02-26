@@ -1,18 +1,21 @@
-class Input extends React.Component {
+import { observer } from 'mobx-react';
+import searchStore from "../stores/Search";
+
+@observer class Input extends React.Component {
     constructor(props) {
         super(props);
         this.returnValue = this.returnValue.bind(this);
     }
 
     returnValue(e) {
-        this.props.showBtn(e.target.value);
+        searchStore.value = e.target.value;
     }
 
-    render() {  
+    render() {         
         return (
             <input
                 onChange={this.returnValue}
-                value={this.props.value}
+                value={searchStore.value}
                 type="text"
                 placeholder="Search"
                 className="search__input"
