@@ -7,7 +7,12 @@ module.exports = function(paths) {
                     include: paths,
                     use: [
                         "style-loader",
-                        "css-loader",
+                        {
+                            loader: "css-loader",
+                            // options: {
+                            //     modules: true,
+                            // }
+                        },
                         "postcss-loader",
                         "sass-loader"
                     ]
