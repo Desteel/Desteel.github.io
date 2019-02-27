@@ -1,8 +1,10 @@
-import { observer } from 'mobx-react';
-import searchStore from "../stores/Search";
-@observer class BtnClear extends React.Component {    
+import { observer, inject } from 'mobx-react';
+
+@inject("searchStore")
+@observer class BtnClear extends React.Component {        
     render() {  
-        const styles = {};
+        const searchStore = this.props.searchStore,
+            styles = {};
 
         if (!searchStore.isActive) {
             styles.opacity = 0;
