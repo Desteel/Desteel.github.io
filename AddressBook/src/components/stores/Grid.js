@@ -21,21 +21,6 @@ class GridStore {
                 }
             );
     };
-
-    // @computed get isLoaded() {
-    //     console.log(this.isLoaded);
-    // }
-
-    // @computed get isActive() {
-    //     return this.value.length > 0
-    //         ? true
-    //         : false
-    // }
-
-    // @action('clear input')
-    // clearInput = () => {
-    //     this.value = "";
-    // }
 }
 
 const gridStore = new GridStore();

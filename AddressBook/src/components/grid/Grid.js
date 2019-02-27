@@ -24,8 +24,6 @@ class Grid extends React.Component {
     render() { 
         const { error, isLoaded, items } = this.props.gridStore;
 
-        // console.log(this.props.gridStore);
-
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
