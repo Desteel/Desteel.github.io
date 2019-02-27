@@ -1,9 +1,12 @@
-import Template from "../card/Card";
+import { observer, inject } from 'mobx-react';
 
+import Template from "../card/Card";
 import "./Grid.scss";
 
 let jsonUrl = require("../../data/items.json");
 
+@inject("gridStore")
+@observer
 class Grid extends React.Component {
     constructor(props) {
         super(props);
@@ -15,26 +18,13 @@ class Grid extends React.Component {
     }
 
     componentDidMount() {
-        fetch(jsonUrl)
-            .then(res => res.json())
-            .then(
-                result => {
-                    this.setState({
-                        isLoaded: true,
-                        items: result.items
-                    });
-                },
-                error => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            );
+        this.props.gridStore.fetch();
     }
 
-    render() {
-        const { error, isLoaded, items } = this.state;
+    render() { 
+        const { error, isLoaded, items } = this.props.gridStore;
+
+        // console.log(this.props.gridStore);
 
         if (error) {
             return <div>Error: {error.message}</div>;
