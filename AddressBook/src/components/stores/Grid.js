@@ -1,7 +1,30 @@
-import { observable, computed, action } from 'mobx';
+import { observable, computed, action } from "mobx";
 
 class GridStore {
-    // @observable value = "";
+    @observable error = null;
+    @observable isLoaded = false;
+    @observable items = [];
+
+    @action("fetch")
+    fetch = () => {
+        fetch("./items.json")
+            .then(res => res.json())
+            .then(
+                result => {
+                    this.isLoaded = true;
+                    this.items = result.items;
+                    console.log(this.items);
+                },
+                error => {
+                    this.error = error;
+                    console.error("Request error", error);
+                }
+            );
+    };
+
+    // @computed get isLoaded() {
+    //     console.log(this.isLoaded);
+    // }
 
     // @computed get isActive() {
     //     return this.value.length > 0
@@ -10,7 +33,7 @@ class GridStore {
     // }
 
     // @action('clear input')
-    // clearInput = () => {        
+    // clearInput = () => {
     //     this.value = "";
     // }
 }
