@@ -1,4 +1,4 @@
-import { observer, inject } from 'mobx-react';
+import { observer, inject } from "mobx-react";
 
 import Template from "../card/Card";
 import "./Grid.scss";
@@ -8,20 +8,11 @@ let jsonUrl = require("../../data/items.json");
 @inject("gridStore")
 @observer
 class Grid extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            error: null,
-            isLoaded: false,
-            items: []
-        };
-    }
-
     componentDidMount() {
         this.props.gridStore.fetch();
     }
 
-    render() { 
+    render() {
         const { error, isLoaded, items } = this.props.gridStore;
 
         if (error) {
