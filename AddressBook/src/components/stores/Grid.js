@@ -7,13 +7,14 @@ class GridStore {
 
     @action("fetch")
     fetch = () => {
-        fetch("./items.json")
+        let jsonUrl = require("../../data/items.json");
+
+        fetch(jsonUrl)
             .then(res => res.json())
             .then(
                 result => {
                     this.isLoaded = true;
                     this.items = result.items;
-                    console.log(this.items);
                 },
                 error => {
                     this.error = error;
