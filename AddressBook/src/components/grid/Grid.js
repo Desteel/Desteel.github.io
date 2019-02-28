@@ -3,9 +3,7 @@ import { observer, inject } from "mobx-react";
 import Template from "../card/Card";
 import "./Grid.scss";
 
-let jsonUrl = require("../../data/items.json");
-
-@inject("gridStore")
+@inject("gridStore", "editStore")
 @observer
 class Grid extends React.Component {
     componentDidMount() {

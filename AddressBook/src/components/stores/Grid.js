@@ -13,7 +13,6 @@ class GridStore {
                 result => {
                     this.isLoaded = true;
                     this.items = result.items;
-                    console.log(this.items);
                 },
                 error => {
                     this.error = error;
