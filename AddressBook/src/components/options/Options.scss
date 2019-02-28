@@ -1,31 +1,5 @@
 .options {
-    margin-right: -10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
     &__btn {
-        flex: none;
         background-color: transparent;
-        padding: 5px;
-        border: 1px solid #dadce0;
-        border-right: none;
-        color: inherit;
-
-        svg {
-            fill: currentColor;
-        }
-
-        &:first-child {
-            border-top-left-radius: 5px;
-        }
-
-        &:last-child {
-            border-bottom-left-radius: 5px;
-        }
-
-        &:not(:last-child) {
-            border-bottom: none;
-        }
     }
 }
