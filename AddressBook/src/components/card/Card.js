@@ -1,14 +1,16 @@
+import { observer, inject } from "mobx-react";
 import Options from "../options/Options";
 
 import "./Card.scss";
 
 let photoIcon = require("../../images/photo.png");
 
+@inject("editStore")
+@observer
 class Template extends React.Component {
     render() {
-        const data = this.props.item;
-
-        let setPhoto = data.photoUrl ? data.photoUrl : photoIcon;
+        const data = this.props.item,
+            setPhoto = data.photoUrl ? data.photoUrl : photoIcon;
 
         return (
             <div className="card">
@@ -22,7 +24,7 @@ class Template extends React.Component {
                     <div className="card__phone">{data.phone}</div>
                     <div className="card__address">{data.address}</div>
                 </div>
-                <Options /> 
+                <Options />
             </div>
         );
     }
