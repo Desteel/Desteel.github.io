@@ -13,20 +13,19 @@ class Template extends React.Component {
             editable = this.props.editStore.editable,
             setPhoto = data.photoUrl ? data.photoUrl : photoIcon;
 
-        console.log(editable);
+        // test
+        this.props.editStore.test(this.props.item.index);
 
-        if (editable) {
+        if (this.props.editStore.editable) {
             return (
                 <form className="card">
                     <div className="card__imagebox">
                         <img src={setPhoto} />
                     </div>
                     <div className="card__main">
-                        <div className="card__name">
-                            {`${data.name} ${data.surname}`}
-                        </div>
-                        <div className="card__phone">{data.phone}</div>
-                        <div className="card__address">{data.address}</div>
+                        <input value={`${data.name} ${data.surname}`} className="card__name"/>
+                        <input value={data.phone} className="card__phone"/>
+                        <input value={data.address} className="card__address"/>
                     </div>
                     <Options />
                 </form>

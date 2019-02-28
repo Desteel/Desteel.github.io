@@ -5,6 +5,10 @@ class EditStore {
 
     @action("toggle editable")
     toggleEditable = () => this.editable = !this.editable
+
+    @action("test")
+    test = (index) => console.log(index);
+    
 }
 
 const editStore = new EditStore();
