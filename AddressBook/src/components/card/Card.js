@@ -8,15 +8,29 @@ let photoIcon = require("../../images/photo.png");
 @inject("editStore")
 @observer
 class Template extends React.Component {
+	constructor() {
+        super()		
+		
+        this.state = {
+            editable: false
+        }		
+		
+		this.toggleEditable = this.toggleEditable.bind(this)
+    }
+	
+	toggleEditable () {
+		this.setState({
+			editable: true
+		})
+	}
+	
     render() {
+		console.log(this.state.editable)
+		
         const data = this.props.item,
-            editable = this.props.editStore.editable,
             setPhoto = data.photoUrl ? data.photoUrl : photoIcon;
 
-        // test
-        this.props.editStore.test(this.props.item.index);
-
-        if (this.props.editStore.editable) {
+        if (this.state.editable) {
             return (
                 <form className="card">
                     <div className="card__imagebox">
@@ -27,7 +41,7 @@ class Template extends React.Component {
                         <input value={data.phone} className="card__phone"/>
                         <input value={data.address} className="card__address"/>
                     </div>
-                    <Options />
+                    <Options toggleEditable={this.toggleEditable} />
                 </form>
             );
         }
@@ -43,7 +57,7 @@ class Template extends React.Component {
                     <div className="card__phone">{data.phone}</div>
                     <div className="card__address">{data.address}</div>
                 </div>
-                <Options />
+                <Options toggleEditable={this.toggleEditable} />
             </div>
         );
         
