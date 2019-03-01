@@ -1,4 +1,3 @@
-import { observer, inject } from "mobx-react";
 import Options from "../options/Options";
 
 import "./Card.scss";
@@ -6,25 +5,23 @@ import "./Card.scss";
 let photoIcon = require("../../images/photo.png");
 
 class Template extends React.Component {
-	constructor() {
-        super()		
-		
+    constructor() {
+        super();
         this.state = {
             editable: false
-        }		
-		
-		this.toggleEditable = this.toggleEditable.bind(this)
+        };
+        this.toggleEditable = this.toggleEditable.bind(this);
     }
-	
-	toggleEditable () {
-		this.setState({
-			editable: !this.state.editable
-		})
-	}
-	
-    render() {		
+
+    toggleEditable() {
+        this.setState({
+            editable: !this.state.editable
+        });
+    }
+
+    render() {
         const data = this.props.item,
-            setPhoto = data.photoUrl ? data.photoUrl : photoIcon;       
+            setPhoto = data.photoUrl ? data.photoUrl : photoIcon;        
 
         if (this.state.editable) {
             return (
@@ -33,11 +30,20 @@ class Template extends React.Component {
                         <img src={setPhoto} />
                     </div>
                     <div className="card__main">
-                        <input defaultValue={`${data.name} ${data.surname}`} className="card__name"/>
-                        <input defaultValue={data.phone} className="card__phone"/>
-                        <input defaultValue={data.address} className="card__address"/>
+                        <input
+                            defaultValue={`${data.name} ${data.surname}`}
+                            className="input card__name"
+                        />
+                        <input
+                            defaultValue={data.phone}
+                            className="input card__phone"
+                        />
+                        <input
+                            defaultValue={data.address}
+                            className="input card__address"
+                        />
                     </div>
-                    <Options toggleEditable={this.toggleEditable} />
+                    <Options toggleEditable={this.toggleEditable} id={this.props.id} />
                 </form>
             );
         }
@@ -53,10 +59,9 @@ class Template extends React.Component {
                     <div className="card__phone">{data.phone}</div>
                     <div className="card__address">{data.address}</div>
                 </div>
-                <Options toggleEditable={this.toggleEditable} />
+                <Options toggleEditable={this.toggleEditable} id={this.props.id} />
             </div>
         );
-        
     }
 }
 

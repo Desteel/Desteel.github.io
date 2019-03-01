@@ -10,7 +10,7 @@ class Grid extends React.Component {
         this.props.contentStore.fetch();
     }
 
-    render() {
+    render() {        
         const { error, isLoaded, items } = this.props.contentStore;
 
         if (error) {
@@ -19,7 +19,7 @@ class Grid extends React.Component {
             return <div>Loading...</div>;
         } else {
             const cards = items.map((item, i) => (
-                <Template key={i} item={item} />
+                <Template key={i} id={i} item={item} />
             ));
             return <div className="grid">{cards}</div>;
         }

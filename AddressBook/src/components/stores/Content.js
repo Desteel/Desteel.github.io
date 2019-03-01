@@ -4,6 +4,7 @@ class ContentStore {
     @observable error = null;
     @observable isLoaded = false;
     @observable items = [];
+    @observable card;
 
     @action("fetch")
     fetch = () => {
@@ -21,6 +22,12 @@ class ContentStore {
                     console.error("Request error", error);
                 }
             );
+    };
+
+    @action("delete")
+    delete = id => {
+        const arrayAfterDel = this.items.filter((item, i) => i !== id);
+        this.items = arrayAfterDel;
     };
 }
 
