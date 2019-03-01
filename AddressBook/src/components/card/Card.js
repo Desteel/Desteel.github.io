@@ -1,7 +1,5 @@
 import Options from "../options/Options";
-
 import "./Card.scss";
-
 let photoIcon = require("../../images/photo.png");
 
 class Template extends React.Component {
@@ -20,48 +18,51 @@ class Template extends React.Component {
     }
 
     render() {
-        const data = this.props.item,
-            setPhoto = data.photoUrl ? data.photoUrl : photoIcon;        
-
-        if (this.state.editable) {
-            return (
-                <form className="card">
-                    <div className="card__imagebox">
-                        <img src={setPhoto} />
-                    </div>
-                    <div className="card__main">
-                        <input
-                            defaultValue={`${data.name} ${data.surname}`}
-                            className="input card__name"
-                        />
-                        <input
-                            defaultValue={data.phone}
-                            className="input card__phone"
-                        />
-                        <input
-                            defaultValue={data.address}
-                            className="input card__address"
-                        />
-                    </div>
-                    <Options toggleEditable={this.toggleEditable} id={this.props.id} />
-                </form>
-            );
-        }
-        return (
-            <div className="card">
+		const { photoUrl, name, surname, phone, address } = this.props.item,
+            setPhoto = photoUrl ? photoUrl : photoIcon;
+			
+		const Form = () => (
+			<form className="card">
+				<div className="card__imagebox">
+					<img src={setPhoto} />
+				</div>
+				<div className="card__main">
+					<input
+						defaultValue={`${name} ${surname}`}
+						className="input card__name"
+					/>
+					<input
+						defaultValue={phone}
+						className="input card__phone"
+					/>
+					<input
+						defaultValue={address}
+						className="input card__address"
+					/>
+				</div>
+				<Options editable={this.state.editable} toggleEditable={this.toggleEditable} id={this.props.id} />
+			</form>
+		);
+		const Div = () => (
+			<div className="card">
                 <div className="card__imagebox">
                     <img src={setPhoto} />
                 </div>
                 <div className="card__main">
                     <div className="card__name">
-                        {`${data.name} ${data.surname}`}
+                        {`${name} ${surname}`}
                     </div>
-                    <div className="card__phone">{data.phone}</div>
-                    <div className="card__address">{data.address}</div>
+                    <div className="card__phone">{phone}</div>
+                    <div className="card__address">{address}</div>
                 </div>
-                <Options toggleEditable={this.toggleEditable} id={this.props.id} />
+                <Options editable={this.state.editable} toggleEditable={this.toggleEditable} id={this.props.id} />
             </div>
-        );
+		);
+		const Card = () => {
+			const Template = this.state.editable ? Form : Div;
+			return <Template></Template>
+		}
+		return <Card />
     }
 }
 
