@@ -4,7 +4,6 @@ class ContentStore {
     @observable error = null;
     @observable isLoaded = false;
     @observable items = [];
-    @observable card;
 
     @action("fetch")
     fetch = () => {
