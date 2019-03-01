@@ -3,6 +3,7 @@ import "./Options.scss";
 
 import Cross from '../../icons/cross.svg'
 import Pen from '../../icons/pen.svg'
+import Check from '../../icons/tick.svg'
 
 @inject("contentStore")
 @observer
@@ -11,7 +12,11 @@ class Options extends React.Component {
         return (
             <div className="options">
                 <button onClick={this.props.toggleEditable} type="button" className="options__btn">
-                    <Pen />
+					{
+						this.props.editable
+							? <Check />
+							: <Pen />
+					}                    
                 </button>
                 <button onClick={() => this.props.contentStore.delete(this.props.id)} type="button" className="options__btn">
                     <Cross />
