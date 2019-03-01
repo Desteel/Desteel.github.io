@@ -1,7 +1,6 @@
 import { Provider } from "mobx-react";
 import searchStore from "./components/stores/Search";
-import gridStore from "./components/stores/Grid";
-import editStore from "./components/stores/Edit";
+import contentStore from "./components/stores/Content";
 
 import Header from "./components/main/header/Header";
 import Main from "./components/main/Main";
@@ -10,7 +9,7 @@ import DevTools from "mobx-react-devtools";
 import "./styles/Styles.scss";
 import "./components/button/Button.scss";
 
-const stores = { searchStore, gridStore, editStore };
+const stores = { searchStore, contentStore };
 
 class App extends React.Component {
     render() {

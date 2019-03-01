@@ -1,18 +1,6 @@
-import { observer, inject } from "mobx-react";
 import "./Options.scss";
 
-@inject("editStore")
-@observer
 class Options extends React.Component {
-    constructor(props) {
-        super(props);
-        //this.toggleEditable = this.toggleEditable.bind(this);
-    }
-
-    /*toggleEditable() {
-        this.props.editStore.toggleEditable();
-    }*/	
-
     render() {
         return (
             <div className="options">

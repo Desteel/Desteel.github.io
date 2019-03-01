@@ -5,8 +5,6 @@ import "./Card.scss";
 
 let photoIcon = require("../../images/photo.png");
 
-@inject("editStore")
-@observer
 class Template extends React.Component {
 	constructor() {
         super()		
@@ -20,15 +18,13 @@ class Template extends React.Component {
 	
 	toggleEditable () {
 		this.setState({
-			editable: true
+			editable: !this.state.editable
 		})
 	}
 	
-    render() {
-		console.log(this.state.editable)
-		
+    render() {		
         const data = this.props.item,
-            setPhoto = data.photoUrl ? data.photoUrl : photoIcon;
+            setPhoto = data.photoUrl ? data.photoUrl : photoIcon;       
 
         if (this.state.editable) {
             return (
@@ -37,9 +33,9 @@ class Template extends React.Component {
                         <img src={setPhoto} />
                     </div>
                     <div className="card__main">
-                        <input value={`${data.name} ${data.surname}`} className="card__name"/>
-                        <input value={data.phone} className="card__phone"/>
-                        <input value={data.address} className="card__address"/>
+                        <input defaultValue={`${data.name} ${data.surname}`} className="card__name"/>
+                        <input defaultValue={data.phone} className="card__phone"/>
+                        <input defaultValue={data.address} className="card__address"/>
                     </div>
                     <Options toggleEditable={this.toggleEditable} />
                 </form>

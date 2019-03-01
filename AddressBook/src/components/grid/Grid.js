@@ -3,16 +3,15 @@ import { observer, inject } from "mobx-react";
 import Template from "../card/Card";
 import "./Grid.scss";
 
-@inject("gridStore", "editStore")
+@inject("contentStore")
 @observer
 class Grid extends React.Component {
     componentDidMount() {
-        this.props.gridStore.fetch();
+        this.props.contentStore.fetch();
     }
 
     render() {
-        const { error, isLoaded, items } = this.props.gridStore,
-            editable = this.props.editStore.editable;
+        const { error, isLoaded, items } = this.props.contentStore;
 
         if (error) {
             return <div>Error: {error.message}</div>;

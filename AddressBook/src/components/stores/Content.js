@@ -1,6 +1,6 @@
 import { observable, computed, action } from "mobx";
 
-class GridStore {
+class ContentStore {
     @observable error = null;
     @observable isLoaded = false;
     @observable items = [];
@@ -24,7 +24,7 @@ class GridStore {
     };
 }
 
-const gridStore = new GridStore();
+const contentStore = new ContentStore();
 
-export default gridStore;
-export { GridStore };
+export default contentStore;
+export { ContentStore };
