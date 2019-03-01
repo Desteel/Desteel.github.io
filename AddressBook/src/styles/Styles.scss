@@ -4,9 +4,12 @@
 @import '_normalize.scss';
 @import '_mixins.scss';
 
+@import '_variable.scss';
+
 @import '_fonts.scss';
 @import '_base.scss';
 @import '_modifier.scss';
+@import '_elem.scss';
 
 @import '_media.scss';
 @import '_ie.scss';
