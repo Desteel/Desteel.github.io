@@ -26,7 +26,7 @@ class ContentStore {
 
     @action("delete")
     delete = id => {
-        const arrayAfterDel = this.items.filter((item, i) => i !== id);
+        const arrayAfterDel = this.items.filter(item => item.id !== id);
         this.items = arrayAfterDel;
     };
 }
