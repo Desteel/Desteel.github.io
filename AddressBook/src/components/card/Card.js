@@ -21,6 +21,9 @@ class Template extends React.Component {
 		const { photoUrl, name, surname, phone, address } = this.props.item,
             setPhoto = photoUrl ? photoUrl : photoIcon;
 			
+		const OptionsTemplate = () => (
+			<Options editable={this.state.editable} toggleEditable={this.toggleEditable} id={this.props.id} />
+		);
 		const Form = () => (
 			<form className="card">
 				<div className="card__imagebox">
@@ -40,7 +43,7 @@ class Template extends React.Component {
 						className="input card__address"
 					/>
 				</div>
-				<Options editable={this.state.editable} toggleEditable={this.toggleEditable} id={this.props.id} />
+				<OptionsTemplate />
 			</form>
 		);
 		const Div = () => (
@@ -55,7 +58,7 @@ class Template extends React.Component {
                     <div className="card__phone">{phone}</div>
                     <div className="card__address">{address}</div>
                 </div>
-                <Options editable={this.state.editable} toggleEditable={this.toggleEditable} id={this.props.id} />
+				<OptionsTemplate />
             </div>
 		);
 		const Card = () => {
