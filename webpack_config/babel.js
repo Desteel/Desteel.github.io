@@ -11,7 +11,21 @@ module.exports = function () {
                             rootMode: "upward"
                         }
                     }
-                }
+                },
+				{
+					test: /.svg$/,
+					use: [{
+							loader: 'babel-loader',
+							options: {
+								rootMode: "upward"
+							}
+						}, {
+							loader: '@svgr/webpack',
+							options: { 
+								babel: false
+							},
+						}]
+				}
             ]
         }
     };    
