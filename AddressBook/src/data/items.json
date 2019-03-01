@@ -1,7 +1,6 @@
 {
     "items": [
         {
-            "index": 1,
             "photoUrl": "https://avatars3.githubusercontent.com/u/30462928?s=460&v=4",
             "name": "Alexander",
             "surname": "Kerensky",
@@ -9,42 +8,36 @@
             "address": "Detroit"
         },
         {
-            "index": 2,
             "name": "Victor",
             "surname": "Kerensky",
             "phone": "84626358367",
             "address": "Moscow"
         },
         {
-            "index": 3,
             "name": "Oleg",
             "surname": "Prophetic",
             "phone": "84626358367",
             "address": "New-York"
         },
         {
-            "index": 4,
             "name": "Alexander",
             "surname": "Good",
             "phone": "84626358367",
             "address": "Detroit"
         },
         {
-            "index": 5,
             "name": "Dmitriy",
             "surname": "Kerensky",
             "phone": "84626358367",
             "address": "LosAngeles"
         },
         {
-            "index": 6,
             "name": "Alexander",
             "surname": "Kerensky",
             "phone": "84626378367",
             "address": "Saint Peterburg"
         },
         {
-            "index": 7,
             "name": "Vitaliy",
             "surname": "Nicev",
             "phone": "84626358367",
