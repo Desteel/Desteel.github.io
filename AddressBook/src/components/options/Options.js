@@ -8,6 +8,8 @@ import Check from '../../icons/tick.svg'
 @inject("contentStore")
 @observer
 class Options extends React.Component {
+	delete = () => this.props.contentStore.delete(this.props.id)
+	
     render() {
         return (
             <div className="options">
@@ -18,7 +20,7 @@ class Options extends React.Component {
 							: <Pen />
 					}                    
                 </button>
-                <button onClick={() => this.props.contentStore.delete(this.props.id)} type="button" className="options__btn">
+                <button onClick={this.delete} type="button" className="options__btn">
                     <Cross />
                 </button>
             </div>
