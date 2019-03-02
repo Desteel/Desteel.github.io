@@ -61,11 +61,15 @@ class Template extends React.Component {
 				<OptionsTemplate />
             </div>
 		);
-		const Card = () => {
-			const Template = this.state.editable ? Form : Div;
-			return <Template></Template>
-		}
-		return <Card />
+		return (
+			<React.Fragment>
+				{
+					this.state.editable
+						? <Form />
+						: <Div />
+				}
+			</React.Fragment>
+		)
     }
 }
 
