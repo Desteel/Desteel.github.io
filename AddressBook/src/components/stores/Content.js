@@ -28,6 +28,15 @@ class ContentStore {
         const arrayAfterDel = this.items.filter(item => item.id !== id);
         this.items = arrayAfterDel;
     };
+	
+	@action("edit")
+	edit = id => {
+		const arrayAfterEdit = this.items.map(item => {
+			if (item.id == id) {
+				console.log(item);
+			}
+		});
+	}
 }
 
 const contentStore = new ContentStore();

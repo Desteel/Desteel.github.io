@@ -8,7 +8,8 @@ import Check from '../../icons/tick.svg'
 @inject("contentStore")
 @observer
 class Options extends React.Component {
-	delete = () => this.props.contentStore.delete(this.props.id)
+	delete = () => this.props.contentStore.delete(this.props.id);
+	edit = () => this.props.contentStore.edit(this.props.id);
 	
     render() {
         return (
