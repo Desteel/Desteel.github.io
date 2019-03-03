@@ -3,12 +3,7 @@ import { observer, inject } from "mobx-react";
 @inject("searchStore")
 @observer
 class Input extends React.Component {
-    constructor(props) {
-        super(props);
-        this.returnValue = this.returnValue.bind(this);
-    }
-
-    returnValue(e) {
+    returnValue = (e) => {
         this.props.searchStore.value = e.target.value;
     }
 
