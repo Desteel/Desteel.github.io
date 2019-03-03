@@ -10,11 +10,17 @@ import Check from '../../icons/tick.svg'
 class Options extends React.Component {
 	delete = () => this.props.contentStore.delete(this.props.id);
 	edit = () => this.props.contentStore.edit(this.props.id);
+	editableInit = () => {
+		this.props.toggleEditable();		
+		if (this.props.editable) {
+			this.edit();
+		}
+	}
 	
-    render() {
+    render() {		
         return (
             <div className="options">
-                <button onClick={this.props.toggleEditable} type="button" className="options__btn">
+                <button onClick={this.editableInit} type="button" className="options__btn">
 					{
 						this.props.editable
 							? <Check />
