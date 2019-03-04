@@ -1,4 +1,5 @@
 import { observable, computed, action } from "mobx";
+import { log } from "util";
 
 class ContentStore {
     @observable error = null;
@@ -23,20 +24,24 @@ class ContentStore {
             );
     };
 
-    @action("delete")
-    delete = id => {
+    @action("delete card")
+    deleteCard = id => {
         const arrayAfterDel = this.items.filter(item => item.id !== id);
         this.items = arrayAfterDel;
     };
-	
-	@action("edit")
-	edit = id => {
-		const arrayAfterEdit = this.items.map(item => {
-			if (item.id == id) {
-				console.log(item);
-			}
-		});
-	}
+
+    @action("edit")
+    saveCard = (id, obj) => {
+        const arrayAfterEdit = this.items.map(item => {
+            if (item.id == id) {
+                for (let key in item) {
+                    if (item[key] !== obj[key]) {
+                        item[key] = obj[key]
+                    }
+                }
+            }
+        });
+    };
 }
 
 const contentStore = new ContentStore();
