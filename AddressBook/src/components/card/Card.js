@@ -1,6 +1,5 @@
 import Options from "../options/Options";
-import InputElem from "./InputElem";
-import EditTemplate from "./EditTemplate";
+import ElemInput from "./ElemInput";
 import "./Card.scss";
 let photoIcon = require("../../images/photo.png");
 
@@ -9,94 +8,76 @@ class Template extends React.Component {
         super();
         this.state = {
             editable: false,
-			editTemplate: {
-				id: "",
-				photoUrl: "",
-				name: "",
-				surnam: "",
-				phone: "",
-				address: ""
-			}
+            template: {}
         };
     }
 
     toggleEditable = () => {
         this.setState({
             editable: !this.state.editable
+        });       
+    };
+
+    fillTemplate = () => {
+        const fillTemplate = {};
+        for (let key in this.props.item) {
+            fillTemplate[key] = this.props.item[key];
+        }
+        this.setState({
+            template: fillTemplate
         });
-    }
-	
-	edit = (type, e) => {
-		let _editTemplate = this.state.editTemplate;
-		_editTemplate[type] = e.target.value;
-		console.log(_editTemplate);
-		this.setState({
-			editTemplate: _editTemplate
-		});
-		
-		console.log(_editTemplate)
-	}
+    };
+
+    templateEdit = (e, type) => {
+        this.state.template[type] = e.target.value
+        console.log(this.state.template);
+    };
 
     render() {
-		const { photoUrl, name, surname, phone, address } = this.props.item,
-            setPhoto = photoUrl ? photoUrl : photoIcon;
-			
-		const OptionsTemplate = () => (
-			<Options editable={this.state.editable} toggleEditable={this.toggleEditable} id={this.props.id} />
-		);
-		const Form = () => (
-			<form className="card">
-				<div className="card__imagebox">
-					<img src={setPhoto} />
-				</div>
-				<div className="card__main">
-					<input
-						value={name}
-						className="input card__name"
-						onChange={(e) => this.edit("name", e)}
-					/><input
-						value={surname}
-						className="input card__name"
-						onChange={(e) => this.edit("surname", e)}
-					/>
-					<input
-						value={phone}
-						className="input card__phone"
-						onChange={(e) => this.edit("phone", e)}
-					/>
-					<input
-						value={address}
-						className="input card__address"
-						onChange={(e) => this.edit("address", e)}
-					/>
-				</div>
-				<OptionsTemplate />
-			</form>
-		);
-		const Div = () => (
-			<div className="card">
+        const { photoUrl, name, surname, phone, address } = this.props.item,
+            setPhoto = photoUrl ? photoUrl : photoIcon;        
+
+        const OptionsTemplate = () => (
+            <Options
+                fillTemplate={this.fillTemplate}
+                template={this.state.template}
+                editable={this.state.editable}
+                toggleEditable={this.toggleEditable}
+                id={this.props.id}
+            />
+        );
+        const Form = () => (
+            <form className="card">
                 <div className="card__imagebox">
                     <img src={setPhoto} />
                 </div>
                 <div className="card__main">
-                    <div className="card__name">
-                        {`${name} ${surname}`}
-                    </div>
+                    <ElemInput templateEdit={this.templateEdit} value={name} cath={"name"} />
+                    <ElemInput templateEdit={this.templateEdit} value={surname} cath={"surname"} />
+                    <ElemInput templateEdit={this.templateEdit} value={phone} cath={"phone"} />
+                    <ElemInput templateEdit={this.templateEdit} value={address} cath={"address"} />
+                </div>
+                <OptionsTemplate />
+            </form>
+        );
+        const Div = () => (
+            <div className="card">
+                <div className="card__imagebox">
+                    <img src={setPhoto} />
+                </div>
+                <div className="card__main">
+                    <div className="card__name">{`${name} ${surname}`}</div>
                     <div className="card__phone">{phone}</div>
                     <div className="card__address">{address}</div>
                 </div>
-				<OptionsTemplate />
+                <OptionsTemplate />
             </div>
-		);
-		return (
-			<React.Fragment>
-				{
-					this.state.editable
-						? <Form />
-						: <Div />
-				}
-			</React.Fragment>
-		)
+        );
+        return (
+            <React.Fragment>
+                {this.state.editable ? <Form /> : <Div />}
+            </React.Fragment>
+        );
     }
 }
 
