@@ -33,11 +33,13 @@ class ContentStore {
 	edit = id => {
 		const arrayAfterEdit = this.items.map(item => {
 			if (item.id == id) {
-				console.log(item);
+				//let editCard = new CardTemplate(item.id);
+				//console.log(item);
 			}
 		});
 	}
 }
+
 
 const contentStore = new ContentStore();
 

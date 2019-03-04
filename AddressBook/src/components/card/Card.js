@@ -1,4 +1,6 @@
 import Options from "../options/Options";
+import InputElem from "./InputElem";
+import EditTemplate from "./EditTemplate";
 import "./Card.scss";
 let photoIcon = require("../../images/photo.png");
 
@@ -6,16 +8,34 @@ class Template extends React.Component {
     constructor() {
         super();
         this.state = {
-            editable: false
+            editable: false,
+			editTemplate: {
+				id: "",
+				photoUrl: "",
+				name: "",
+				surnam: "",
+				phone: "",
+				address: ""
+			}
         };
-        this.toggleEditable = this.toggleEditable.bind(this);
     }
 
-    toggleEditable() {
+    toggleEditable = () => {
         this.setState({
             editable: !this.state.editable
         });
     }
+	
+	edit = (type, e) => {
+		let _editTemplate = this.state.editTemplate;
+		_editTemplate[type] = e.target.value;
+		console.log(_editTemplate);
+		this.setState({
+			editTemplate: _editTemplate
+		});
+		
+		console.log(_editTemplate)
+	}
 
     render() {
 		const { photoUrl, name, surname, phone, address } = this.props.item,
@@ -31,16 +51,23 @@ class Template extends React.Component {
 				</div>
 				<div className="card__main">
 					<input
-						defaultValue={`${name} ${surname}`}
+						value={name}
 						className="input card__name"
+						onChange={(e) => this.edit("name", e)}
+					/><input
+						value={surname}
+						className="input card__name"
+						onChange={(e) => this.edit("surname", e)}
 					/>
 					<input
-						defaultValue={phone}
+						value={phone}
 						className="input card__phone"
+						onChange={(e) => this.edit("phone", e)}
 					/>
 					<input
-						defaultValue={address}
+						value={address}
 						className="input card__address"
+						onChange={(e) => this.edit("address", e)}
 					/>
 				</div>
 				<OptionsTemplate />
