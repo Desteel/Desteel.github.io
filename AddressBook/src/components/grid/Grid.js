@@ -19,7 +19,7 @@ class Grid extends React.Component {
             return <div>Loading...</div>;
         } else {
             const cards = items.map((item, i) => (
-                <Template key={i} id={i} item={item} />
+                <Template key={item.id} id={item.id} item={item} />
             ));
             return <div className="grid">{cards}</div>;
         }

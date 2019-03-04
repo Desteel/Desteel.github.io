@@ -4,7 +4,6 @@ class ContentStore {
     @observable error = null;
     @observable isLoaded = false;
     @observable items = [];
-    @observable card;
 
     @action("fetch")
     fetch = () => {
@@ -26,9 +25,18 @@ class ContentStore {
 
     @action("delete")
     delete = id => {
-        const arrayAfterDel = this.items.filter((item, i) => i !== id);
+        const arrayAfterDel = this.items.filter(item => item.id !== id);
         this.items = arrayAfterDel;
     };
+	
+	@action("edit")
+	edit = id => {
+		const arrayAfterEdit = this.items.map(item => {
+			if (item.id == id) {
+				console.log(item);
+			}
+		});
+	}
 }
 
 const contentStore = new ContentStore();

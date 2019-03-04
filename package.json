@@ -64,6 +64,7 @@
         "@babel/polyfill": "^7.2.5",
         "@babel/runtime": "^7.3.1",
         "@babel/runtime-corejs2": "^7.3.1",
+        "@svgr/webpack": "^4.1.0",
         "autoprefixer": "^9.4.7",
         "axios": "^0.18.0",
         "caniuse-api": "^3.0.0",
