@@ -8,7 +8,14 @@ class Template extends React.Component {
     constructor() {
         super();
         this.state = {
-            editable: false
+            editable: false,
+            template: {
+                photoUrl: "",
+                name: "",
+                surname: "",
+                phone: "",
+                address: ""
+            }
         };
         this.toggleEditable = this.toggleEditable.bind(this);
     }
@@ -21,7 +28,7 @@ class Template extends React.Component {
 
     render() {
         const data = this.props.item,
-            setPhoto = data.photoUrl ? data.photoUrl : photoIcon;        
+            setPhoto = data.photoUrl ? data.photoUrl : photoIcon;
 
         if (this.state.editable) {
             return (
@@ -43,7 +50,10 @@ class Template extends React.Component {
                             className="input card__address"
                         />
                     </div>
-                    <Options toggleEditable={this.toggleEditable} id={this.props.id} />
+                    <Options
+                        toggleEditable={this.toggleEditable}
+                        id={this.props.id}
+                    />
                 </form>
             );
         }
@@ -59,7 +69,10 @@ class Template extends React.Component {
                     <div className="card__phone">{data.phone}</div>
                     <div className="card__address">{data.address}</div>
                 </div>
-                <Options toggleEditable={this.toggleEditable} id={this.props.id} />
+                <Options
+                    toggleEditable={this.toggleEditable}
+                    id={this.props.id}
+                />
             </div>
         );
     }
