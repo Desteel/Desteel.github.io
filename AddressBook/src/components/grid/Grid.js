@@ -21,7 +21,9 @@ class Grid extends React.Component {
             const cards = items.map((item, i) => (
                 <Template key={item.id} id={item.id} item={item} />
             ));
-            return <div className="grid">{cards}</div>;
+            return (
+				<React.Fragment>{cards}</React.Fragment>
+			)
         }
     }
 }

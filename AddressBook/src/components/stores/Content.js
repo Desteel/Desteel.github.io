@@ -1,5 +1,4 @@
 import { observable, computed, action } from "mobx";
-import { log } from "util";
 
 class ContentStore {
     @observable error = null;
@@ -8,7 +7,7 @@ class ContentStore {
 
     @action("fetch")
     fetch = () => {
-        let jsonUrl = require("../../data/items.json");
+        let jsonUrl = require("../../data/items");
 
         fetch(jsonUrl)
             .then(res => res.json())
@@ -30,20 +29,27 @@ class ContentStore {
         this.items = arrayAfterDel;
     };
 
+    @action("delete item")
+    deleteItem = (item) => {
+        return fetch("../../data/items" + item.id, {
+            method: 'delete'
+        })
+    }
+    //axios.delete(`/todo/${item.id}`);
+
     @action("edit")
     saveCard = (id, obj) => {
         const arrayAfterEdit = this.items.map(item => {
             if (item.id == id) {
                 for (let key in item) {
                     if (item[key] !== obj[key]) {
-                        item[key] = obj[key]
+                        item[key] = obj[key];
                     }
                 }
             }
         });
     };
 }
-
 
 const contentStore = new ContentStore();
 

@@ -5,7 +5,9 @@ class Main extends React.Component {
         return (
             <div className="main">
 				<div className="container">
-                    <Grid />
+					<div className="grid">
+						<Grid />
+					</div>                    
                 </div>
 			</div>
         );

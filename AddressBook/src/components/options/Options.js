@@ -3,7 +3,6 @@ import Cross from "../../icons/cross.svg";
 import Pen from "../../icons/pen.svg";
 import Check from "../../icons/tick.svg";
 import "./Options.scss";
-import { log } from "util";
 
 @inject("contentStore")
 @observer
