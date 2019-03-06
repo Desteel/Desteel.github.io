@@ -7,14 +7,12 @@ class ContentStore {
 
     @action("fetch")
     fetch = () => {
-        let jsonUrl = require("../../data/items");
-
-        fetch(jsonUrl)
+        fetch("http://localhost:3000/items")
             .then(res => res.json())
             .then(
                 result => {
                     this.isLoaded = true;
-                    this.items = result.items;
+                    this.items = result;
                 },
                 error => {
                     this.error = error;
@@ -28,14 +26,6 @@ class ContentStore {
         const arrayAfterDel = this.items.filter(item => item.id !== id);
         this.items = arrayAfterDel;
     };
-
-    @action("delete item")
-    deleteItem = (item) => {
-        return fetch("../../data/items" + item.id, {
-            method: 'delete'
-        })
-    }
-    //axios.delete(`/todo/${item.id}`);
 
     @action("edit")
     saveCard = (id, obj) => {
