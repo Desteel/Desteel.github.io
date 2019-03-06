@@ -1,4 +1,5 @@
 import { observable, computed, action } from "mobx";
+import { log } from "util";
 
 class ContentStore {
     @observable error = null;
@@ -29,15 +30,21 @@ class ContentStore {
 
     @action("edit")
     saveCard = (id, obj) => {
-        const arrayAfterEdit = this.items.map(item => {
-            if (item.id == id) {
-                for (let key in item) {
-                    if (item[key] !== obj[key]) {
-                        item[key] = obj[key];
-                    }
-                }
-            }
-        });
+        const arrayAfterEdit = this.items.map(item => 
+            item.id == id
+                ? obj
+                : item
+        
+            // if (item.id === id) {                
+            //     for (let key in item) {
+            //         if (item[key] !== obj[key]) {
+            //             item[key] = obj[key];
+            //         }
+            //     }
+            // }
+        );
+        this.items = arrayAfterEdit;        
+        console.log(arrayAfterEdit);
     };
 }
 
