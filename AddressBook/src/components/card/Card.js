@@ -1,10 +1,11 @@
 import { observable, action } from "mobx";
-import { observer } from "mobx-react";
+import { observer, inject } from "mobx-react";
 import Options from "../options/Options";
 import ElemInput from "./ElemInput";
 import "./Card.scss";
 let photoIcon = require("../../images/photo.png");
 
+@inject("cardStore")
 @observer
 class Template extends React.Component {    
     @observable editable = false;
@@ -31,6 +32,8 @@ class Template extends React.Component {
     };
 
     render() {
+        const { editable, template, toggleEditable, fillTemplate, templateEdit } = this.props.cardStore;
+
         const { photoUrl, name, surname, phone, address } = this.props.item,
             setPhoto = photoUrl ? photoUrl : photoIcon;        
 
