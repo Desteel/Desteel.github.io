@@ -1,5 +1,4 @@
-import { observable, computed, action } from "mobx";
-import { log } from "util";
+import { observable, action } from "mobx";
 
 class ContentStore {
     @observable error = null;
