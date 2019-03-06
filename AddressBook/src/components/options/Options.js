@@ -13,8 +13,8 @@ class Options extends React.Component {
         this.props.fillTemplate();
     };
     editClose = () => {
-		this.props.contentStore.saveCard(this.props.id, this.props.template);
         this.props.toggleEditable();
+		this.props.contentStore.saveCard(this.props.id, this.props.template);        
     };
 
     render() {		
@@ -28,6 +28,8 @@ class Options extends React.Component {
                 <Check />
             </button>
         );
+        console.log(this.props.editable);
+        
         return (
             <div className="options">
                 {this.props.editable ? <BtnSave /> : <BtnEdit />}

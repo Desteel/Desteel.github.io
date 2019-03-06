@@ -1,36 +1,33 @@
+import { observable, action } from "mobx";
+import { observer } from "mobx-react";
 import Options from "../options/Options";
 import ElemInput from "./ElemInput";
 import "./Card.scss";
 let photoIcon = require("../../images/photo.png");
 
-class Template extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            editable: false,
-            template: {}
-        };
-    }
+@observer
+class Template extends React.Component {    
+    @observable editable = false;
+    @observable template = {};
 
+    @action("toggle editable")
     toggleEditable = () => {
-        this.setState({
-            editable: !this.state.editable
-        });       
+        this.editable = !this.editable
+        console.log(this.editable);
     };
 
+    @action("fill template")
     fillTemplate = () => {
         const fillTemplate = {};
         for (let key in this.props.item) {
             fillTemplate[key] = this.props.item[key];
         }
-        this.setState({
-            template: fillTemplate
-        });
+        this.template = fillTemplate;
     };
 
+    @action("template edit")
     templateEdit = (e, type) => {
-        this.state.template[type] = e.target.value
-        console.log(this.state.template);
+        this.template[type] = e.target.value
     };
 
     render() {
@@ -40,8 +37,8 @@ class Template extends React.Component {
         const OptionsTemplate = () => (
             <Options
                 fillTemplate={this.fillTemplate}
-                template={this.state.template}
-                editable={this.state.editable}
+                template={this.template}
+                editable={this.editable}
                 toggleEditable={this.toggleEditable}
                 id={this.props.id}
             />
@@ -75,7 +72,7 @@ class Template extends React.Component {
         );
         return (
             <React.Fragment>
-                {this.state.editable ? <Form /> : <Div />}
+                {this.editable ? <Form /> : <Div />}
             </React.Fragment>
         );
     }
