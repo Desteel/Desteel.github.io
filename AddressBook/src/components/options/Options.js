@@ -5,7 +5,7 @@ import Pen from "../../icons/pen.svg";
 import Check from "../../icons/tick.svg";
 import "./Options.scss";
 
-@inject("contentStore", "cardStore")
+@inject("contentStore")
 @observer
 class Options extends React.Component {
     @action('delete')
@@ -13,31 +13,31 @@ class Options extends React.Component {
 
     @action('edit open')
     editOpen = () => {
-        // this.props.toggleEditable();
+        this.props.toggleEditable();
         this.props.fillTemplate();
     };
 
     @action('edit close')
     editClose = () => {
-        // this.props.toggleEditable();
+        this.props.toggleEditable();
 		this.props.contentStore.saveCard(this.props.id, this.props.template);        
     };
 
     render() {		
         const BtnEdit = () => (
-            <button onClick={this.props.cardStore.toggleEditable} type="button" className="options__btn" >
+            <button onClick={this.editOpen} type="button" className="options__btn" >
                 <Pen />
             </button>
         );
         const BtnSave = () => (
-            <button onClick={this.props.cardStore.toggleEditable} type="button" className="options__btn" >
+            <button onClick={this.editClose} type="button" className="options__btn" >
                 <Check />
             </button>
         );
         
         return (
             <div className="options">
-                {this.props.cardStore.editable ? <BtnSave /> : <BtnEdit />}
+                {this.props.editable ? <BtnSave /> : <BtnEdit />}
                 <button onClick={this.delete} type="button" className="options__btn" >
                     <Cross />
                 </button>
