@@ -1,11 +1,15 @@
+import { Provider } from "mobx-react";
 import { observable, action } from "mobx";
-import { observer, inject } from "mobx-react";
+import { observer } from "mobx-react";
 import Options from "../options/Options";
 import ElemInput from "./ElemInput";
+import cardStore from "../stores/CardStore";
 import "./Card.scss";
 let photoIcon = require("../../images/photo.png");
 
-@inject("cardStore")
+const { editable, toggleEditable } = cardStore;
+const stores = { cardStore };
+
 @observer
 class Template extends React.Component {    
     @observable editable = false;
@@ -14,7 +18,6 @@ class Template extends React.Component {
     @action("toggle editable")
     toggleEditable = () => {
         this.editable = !this.editable
-        console.log(this.editable);
     };
 
     @action("fill template")
@@ -32,8 +35,6 @@ class Template extends React.Component {
     };
 
     render() {
-        const { editable, template, toggleEditable, fillTemplate, templateEdit } = this.props.cardStore;
-
         const { photoUrl, name, surname, phone, address } = this.props.item,
             setPhoto = photoUrl ? photoUrl : photoIcon;        
 
@@ -74,9 +75,11 @@ class Template extends React.Component {
             </div>
         );
         return (
-            <React.Fragment>
-                {this.editable ? <Form /> : <Div />}
-            </React.Fragment>
+            <Provider {...stores}>
+                <React.Fragment>
+                    {this.editable ? <Form /> : <Div />}
+                </React.Fragment>
+            </Provider>
         );
     }
 }

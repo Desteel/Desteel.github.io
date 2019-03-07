@@ -1,5 +1,4 @@
 import { observer, inject } from "mobx-react";
-
 import Template from "../card/Card";
 import "./Grid.scss";
 
@@ -10,7 +9,7 @@ class Grid extends React.Component {
         this.props.contentStore.fetch();
     }
 
-    render() {        
+    render() {
         const { error, isLoaded, items } = this.props.contentStore;
 
         if (error) {
@@ -22,8 +21,8 @@ class Grid extends React.Component {
                 <Template key={item.id} id={item.id} item={item} />
             ));
             return (
-				<React.Fragment>{cards}</React.Fragment>
-			)
+                <React.Fragment>{cards}</React.Fragment>
+            );
         }
     }
 }

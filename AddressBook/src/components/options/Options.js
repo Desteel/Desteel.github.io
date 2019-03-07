@@ -34,7 +34,6 @@ class Options extends React.Component {
                 <Check />
             </button>
         );
-        console.log(this.props.editable);
         
         return (
             <div className="options">
