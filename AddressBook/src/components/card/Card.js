@@ -12,13 +12,13 @@ const stores = { cardStore };
 
 @observer
 class Template extends React.Component {    
-    @observable editable = false;
+    // @observable editable = false;
     @observable template = {};
 
-    @action("toggle editable")
-    toggleEditable = () => {
-        this.editable = !this.editable
-    };
+    // @action("toggle editable")
+    // toggleEditable = () => {
+    //     this.editable = !this.editable
+    // };
 
     @action("fill template")
     fillTemplate = () => {
@@ -42,8 +42,8 @@ class Template extends React.Component {
             <Options
                 fillTemplate={this.fillTemplate}
                 template={this.template}
-                editable={this.editable}
-                toggleEditable={this.toggleEditable}
+                editable={editable}
+                toggleEditable={toggleEditable}
                 id={this.props.id}
             />
         );
@@ -77,7 +77,7 @@ class Template extends React.Component {
         return (
             <Provider {...stores}>
                 <React.Fragment>
-                    {this.editable ? <Form /> : <Div />}
+                    {editable ? <Form /> : <Div />}
                 </React.Fragment>
             </Provider>
         );

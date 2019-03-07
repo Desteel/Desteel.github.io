@@ -28,7 +28,7 @@ class ContentStore {
     };
 
     @action("edit")
-    saveCard = (id, obj) => {
+    saveCard = (id, obj, oldObj) => { 
         const arrayAfterEdit = this.items.map(item => 
             item.id == id
                 ? obj
