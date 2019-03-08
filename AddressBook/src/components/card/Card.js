@@ -1,16 +1,17 @@
-import { Provider } from "mobx-react";
 import { observable, action } from "mobx";
-import { observer } from "mobx-react";
+import { observer, inject } from "mobx-react";
 import Options from "../options/Options";
 import ElemInput from "./ElemInput";
 import "./Card.scss";
 let photoIcon = require("../../images/photo.png");
 
+@inject("cardStore")
 @observer
-class Template extends React.Component {    
+class Template extends React.Component {   
+    @observable item = this.props.item;
     @observable editable = false;
     @observable template = {};
-
+    
     @action("toggle editable")
     toggleEditable = () => {
         this.editable = !this.editable
@@ -19,8 +20,8 @@ class Template extends React.Component {
     @action("fill template")
     fillTemplate = () => {
         const fillTemplate = {};
-        for (let key in this.props.item) {
-            fillTemplate[key] = this.props.item[key];
+        for (let key in this.item) {
+            fillTemplate[key] = this.item[key];
         }
         this.template = fillTemplate;
     };
@@ -30,14 +31,19 @@ class Template extends React.Component {
         this.template[type] = e.target.value
     };
 
+    @action("template save")
+    templateSave = () => {
+        this.item = this.template
+    };
+
     render() {
-        const { photoUrl, name, surname, phone, address } = this.props.item,
+        const { photoUrl, name, surname, phone, address } = this.item,
             setPhoto = photoUrl ? photoUrl : photoIcon;        
 
         const OptionsTemplate = () => (
             <Options
                 fillTemplate={this.fillTemplate}
-                template={this.template}
+                templateSave={this.templateSave}
                 editable={this.editable}
                 toggleEditable={this.toggleEditable}
                 id={this.props.id}
