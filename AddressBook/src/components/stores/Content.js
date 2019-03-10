@@ -29,14 +29,6 @@ class ContentStore {
 
     // @action("save card")
     // saveCard = (id, newItem) => {
-    //     const validate = this.items.every(item => {
-    //         if (item.id === id) {
-    //             for (let key in item) {
-    //                 item[key] === newItem[key];
-    //             }
-    //         }
-    //     });
-
     //     const arrayAfterEdit = this.items.map(
     //         item => (item.id == id ? newItem : item)
 

@@ -5,62 +5,70 @@ import ElemInput from "./ElemInput";
 import "./Card.scss";
 let photoIcon = require("../../images/photo.png");
 
-@inject("cardStore")
 @observer
-class Template extends React.Component {   
+class Template extends React.Component {
     @observable item = this.props.item;
     @observable editable = false;
     @observable template = {};
-    
+
     @action("toggle editable")
     toggleEditable = () => {
-        this.editable = !this.editable
+        this.editable = !this.editable;
     };
 
     @action("fill template")
     fillTemplate = () => {
-        const fillTemplate = {};
-        for (let key in this.item) {
-            fillTemplate[key] = this.item[key];
-        }
-        this.template = fillTemplate;
+        this.template = { ...this.item };
     };
 
     @action("template edit")
     templateEdit = (e, type) => {
-        this.template[type] = e.target.value
+        this.template[type] = e.target.value;
     };
 
     @action("template save")
     templateSave = () => {
-        this.item = this.template
+        this.item = { ...this.template };
     };
 
     render() {
         const { photoUrl, name, surname, phone, address } = this.item,
-            setPhoto = photoUrl ? photoUrl : photoIcon;        
+            setPhoto = photoUrl ? photoUrl : photoIcon;
 
-        const OptionsTemplate = () => (
-            <Options
-                fillTemplate={this.fillTemplate}
-                templateSave={this.templateSave}
-                editable={this.editable}
-                toggleEditable={this.toggleEditable}
-                id={this.props.id}
-            />
-        );
         const Form = () => (
             <form className="card">
                 <div className="card__imagebox">
                     <img src={setPhoto} />
                 </div>
                 <div className="card__main">
-                    <ElemInput templateEdit={this.templateEdit} value={name} cath={"name"} />
-                    <ElemInput templateEdit={this.templateEdit} value={surname} cath={"surname"} />
-                    <ElemInput templateEdit={this.templateEdit} value={phone} cath={"phone"} />
-                    <ElemInput templateEdit={this.templateEdit} value={address} cath={"address"} />
+                    <ElemInput
+                        templateEdit={this.templateEdit}
+                        value={name}
+                        cath={"name"}
+                    />
+                    <ElemInput
+                        templateEdit={this.templateEdit}
+                        value={surname}
+                        cath={"surname"}
+                    />
+                    <ElemInput
+                        templateEdit={this.templateEdit}
+                        value={phone}
+                        cath={"phone"}
+                    />
+                    <ElemInput
+                        templateEdit={this.templateEdit}
+                        value={address}
+                        cath={"address"}
+                    />
                 </div>
-                <OptionsTemplate />
+                <Options
+                    fillTemplate={this.fillTemplate}
+                    templateSave={this.templateSave}
+                    editable={this.editable}
+                    toggleEditable={this.toggleEditable}
+                    id={this.props.id}
+                />
             </form>
         );
         const Div = () => (
@@ -73,7 +81,13 @@ class Template extends React.Component {
                     <div className="card__phone">{phone}</div>
                     <div className="card__address">{address}</div>
                 </div>
-                <OptionsTemplate />
+                <Options
+                    fillTemplate={this.fillTemplate}
+                    templateSave={this.templateSave}
+                    editable={this.editable}
+                    toggleEditable={this.toggleEditable}
+                    id={this.props.id}
+                />
             </div>
         );
         return (
