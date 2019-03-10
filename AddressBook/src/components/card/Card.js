@@ -7,7 +7,6 @@ let photoIcon = require("../../images/photo.png");
 
 @observer
 class Template extends React.Component {
-    @observable item = this.props.item;
     @observable editable = false;
     @observable template = {};
 
@@ -18,7 +17,7 @@ class Template extends React.Component {
 
     @action("fill template")
     fillTemplate = () => {
-        this.template = { ...this.item };
+        this.template = { ...this.props.item };
     };
 
     @action("template edit")
@@ -26,13 +25,8 @@ class Template extends React.Component {
         this.template[type] = e.target.value;
     };
 
-    @action("template save")
-    templateSave = () => {
-        this.item = { ...this.template };
-    };
-
     render() {
-        const { photoUrl, name, surname, phone, address } = this.item,
+        const { photoUrl, name, surname, phone, address } = this.props.item,
             setPhoto = photoUrl ? photoUrl : photoIcon;
 
         const Form = () => (
@@ -64,7 +58,7 @@ class Template extends React.Component {
                 </div>
                 <Options
                     fillTemplate={this.fillTemplate}
-                    templateSave={this.templateSave}
+                    template={this.template}
                     editable={this.editable}
                     toggleEditable={this.toggleEditable}
                     id={this.props.id}
@@ -83,13 +77,14 @@ class Template extends React.Component {
                 </div>
                 <Options
                     fillTemplate={this.fillTemplate}
-                    templateSave={this.templateSave}
+                    template={this.template}
                     editable={this.editable}
                     toggleEditable={this.toggleEditable}
                     id={this.props.id}
                 />
             </div>
         );
+
         return (
             <React.Fragment>
                 {this.editable ? <Form /> : <Div />}

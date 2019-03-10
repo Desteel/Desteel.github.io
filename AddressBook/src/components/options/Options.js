@@ -20,8 +20,7 @@ class Options extends React.Component {
     @action('edit close')
     editClose = () => {
         this.props.toggleEditable();
-        // this.props.contentStore.saveCard(this.props.id, this.props.template);   
-        this.props.templateSave();     
+        this.props.contentStore.saveCard(this.props.id, this.props.template);
     };
 
     render() {		

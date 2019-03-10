@@ -27,21 +27,16 @@ class ContentStore {
         this.items = arrayAfterDel;
     };
 
-    // @action("save card")
-    // saveCard = (id, newItem) => {
-    //     const arrayAfterEdit = this.items.map(
-    //         item => (item.id == id ? newItem : item)
-
-    //         // if (item.id === id) {
-    //         //     for (let key in item) {
-    //         //         if (item[key] !== obj[key]) {
-    //         //             item[key] = obj[key];
-    //         //         }
-    //         //     }
-    //         // }
-    //     );
-    //     this.items = arrayAfterEdit;
-    // };
+    @action("save card")
+    saveCard = (id, newItem) => {   
+        const arrayAfterEdit = this.items.map(item => 
+            item.id == id
+                ? newItem
+                : item
+        );        
+        
+        this.items = arrayAfterEdit;
+    };
 }
 
 const contentStore = new ContentStore();
