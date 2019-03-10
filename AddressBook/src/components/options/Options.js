@@ -34,13 +34,21 @@ class Options extends React.Component {
                 <Check />
             </button>
         );
+        const BtnCancellation = () => (
+            <button onClick={this.props.toggleEditable} type="button" className="options__btn" >
+                exit
+            </button>
+        );
+        const BtnDelete = () => (
+            <button onClick={this.delete} type="button" className="options__btn" >
+                <Cross />
+            </button>
+        );
         
         return (
             <div className="options">
                 {this.props.editable ? <BtnSave /> : <BtnEdit />}
-                <button onClick={this.delete} type="button" className="options__btn" >
-                    <Cross />
-                </button>
+                {this.props.editable ? <BtnCancellation /> : <BtnDelete />}                
             </div>
         );
     }
