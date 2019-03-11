@@ -1,5 +1,6 @@
 import { observer, inject } from "mobx-react";
 import { action } from "mobx";
+import * as buttons from "./buttons";
 import Cross from "../../icons/cross.svg";
 import Pen from "../../icons/pen.svg";
 import Check from "../../icons/tick.svg";
@@ -24,6 +25,7 @@ class Options extends React.Component {
     };
 
     render() {		
+        const { Cancellation, Delete, Save, Edit } = buttons;
         const BtnEdit = () => (
             <button onClick={this.editOpen} type="button" className="options__btn" >
                 <Pen />
@@ -48,7 +50,7 @@ class Options extends React.Component {
         return (
             <div className="options">
                 {this.props.editable ? <BtnSave /> : <BtnEdit />}
-                {this.props.editable ? <BtnCancellation /> : <BtnDelete />}                
+                {this.props.editable ? <Cancellation action={this.props.toggleEditable} /> : <BtnDelete />}                
             </div>
         );
     }

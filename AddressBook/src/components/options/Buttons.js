@@ -1,4 +1,6 @@
 export function Cancellation(props) {
+    console.log(props);
+    
     return (
         <button onClick={props.toggleEditable} type="button" className="options__btn">
             exit
@@ -14,7 +16,7 @@ export function Delete(props) {
     );
 }
 
-export function BtnSave(props) {
+export function Save(props) {
     return (
         <button onClick={this.editClose} type="button" className="options__btn">
             <Check />
@@ -22,7 +24,7 @@ export function BtnSave(props) {
     );
 }
 
-export function BtnEdit(props) {
+export function Edit(props) {
     return (
         <button onClick={this.editOpen} type="button" className="options__btn">
             <Pen />
