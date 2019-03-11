@@ -9,6 +9,7 @@ class ElemInput extends React.Component {
                 onChange={this.returnValue}
                 defaultValue={this.props.value}
                 className="input"
+                type="text"
             />
         );
     }
