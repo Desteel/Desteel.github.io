@@ -1,5 +1,6 @@
 import { observer, inject } from "mobx-react";
 import { action } from "mobx";
+import Button from "./Button";
 import Cross from "../../icons/cross.svg";
 import Pen from "../../icons/pen.svg";
 import Check from "../../icons/tick.svg";
@@ -17,38 +18,34 @@ class Options extends React.Component {
         this.props.fillTemplate();
     };
 
-    @action('edit close')
-    editClose = () => {
+    @action('edit save')
+    editSave = () => {
         this.props.toggleEditable();
         this.props.contentStore.saveCard(this.props.id, this.props.template);
     };
 
-    render() {		
-        const BtnEdit = () => (
-            <button onClick={this.editOpen} type="button" className="options__btn" >
-                <Pen />
-            </button>
-        );
-        const BtnSave = () => (
-            <button onClick={this.editClose} type="button" className="options__btn" >
-                <Check />
-            </button>
-        );
-        const BtnCancellation = () => (
-            <button onClick={this.props.toggleEditable} type="button" className="options__btn" >
-                exit
-            </button>
-        );
-        const BtnDelete = () => (
-            <button onClick={this.delete} type="button" className="options__btn" >
-                <Cross />
-            </button>
-        );
-        
-        return (
+    ToggleOptions = () => {
+        if (this.props.editable) {
+            return (
+                <React.Fragment>
+                    <Button action={this.editSave}>{<Check />}</Button>
+                    <Button action={this.props.toggleEditable}>{"exit"}</Button>
+                </React.Fragment>
+            )          
+        } else {
+            return (
+                <React.Fragment>
+                    <Button action={this.editOpen}>{<Pen />}</Button>
+                    <Button action={this.delete}>{<Cross />}</Button>
+                </React.Fragment>
+            )   
+        }
+    }
+
+    render() {        
+        return (            
             <div className="options">
-                {this.props.editable ? <BtnSave /> : <BtnEdit />}
-                {this.props.editable ? <BtnCancellation /> : <BtnDelete />}                
+                {<this.ToggleOptions/>}                
             </div>
         );
     }
