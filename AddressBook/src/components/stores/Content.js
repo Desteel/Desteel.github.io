@@ -23,19 +23,22 @@ class ContentStore {
 
     @action("delete card")
     deleteCard = id => {
-        const arrayAfterDel = this.items.filter(item => item.id !== id);
-        this.items = arrayAfterDel;
+        this.items = this.items.filter(item => item.id !== id);
+        fetch(`http://localhost:3000/items/${id}`, {
+            method: 'DELETE'
+        });
     };
 
     @action("save card")
-    saveCard = (id, newItem) => {   
-        const arrayAfterEdit = this.items.map(item => 
-            item.id == id
-                ? newItem
-                : item
-        );        
-        
-        this.items = arrayAfterEdit;
+    saveCard = (id, newItem) => {        
+        this.items = this.items.map(item => item.id === id ? newItem : item);
+        fetch(`http://localhost:3000/items/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(newItem),
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            }
+        });
     };
 }
 
