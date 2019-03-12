@@ -6,7 +6,7 @@ import "./Grid.scss";
 @observer
 class Grid extends React.Component {
     componentDidMount() {
-        this.props.contentStore.fetch();
+        this.props.contentStore.axios();
     }
 
     render() {
