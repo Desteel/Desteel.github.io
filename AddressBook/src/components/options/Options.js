@@ -28,15 +28,15 @@ class Options extends React.Component {
         if (this.props.editable) {
             return (
                 <React.Fragment>
-                    <Button action={this.editSave} test={"112212"}>{<Check />}</Button>
-                    <Button action={this.props.toggleEditable} test={"112212"}>{"exit"}</Button>
+                    <Button action={this.editSave}>{<Check />}</Button>
+                    <Button action={this.props.toggleEditable}>{"exit"}</Button>
                 </React.Fragment>
             )          
         } else {
             return (
                 <React.Fragment>
-                    <Button action={this.editOpen} test={"112212"}>{<Pen />}</Button>
-                    <Button action={this.delete} test={"112212"}>{<Cross />}</Button>
+                    <Button action={this.editOpen}>{<Pen />}</Button>
+                    <Button action={this.delete}>{<Cross />}</Button>
                 </React.Fragment>
             )   
         }
