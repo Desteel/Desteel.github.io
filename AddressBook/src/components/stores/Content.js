@@ -6,8 +6,8 @@ class ContentStore {
     @observable isLoaded = false;
     @observable items = [];
 
-    @action("axios")
-    axios = () => {
+    @action("fetch data")
+    fetchData = () => {
         axios.get("http://localhost:3000/items")
             .then(result => {
                 this.isLoaded = true;
