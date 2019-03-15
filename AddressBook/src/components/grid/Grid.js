@@ -1,6 +1,5 @@
 import { observer, inject } from "mobx-react";
 import Template from "../card/Card";
-import "./Grid.scss";
 
 @inject("contentStore")
 @observer

@@ -6,7 +6,6 @@ import Main from "./components/main/Main";
 import Footer from "./components/main/footer/Footer";
 import DevTools from "mobx-react-devtools";
 import "./styles/Styles.scss";
-import "./components/button/Button.scss";
 
 const stores = { searchStore, contentStore };
 

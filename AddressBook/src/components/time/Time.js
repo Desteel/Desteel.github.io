@@ -1,8 +1,6 @@
-import "./Time.scss";
-
 class Time extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
 				date: new Date()
 			};
@@ -24,10 +22,8 @@ class Time extends React.Component {
 	
 	render() {		
 		return (
-			<div className="time">
-				<div className="time__count">
-					{this.state.date.toLocaleTimeString()}
-				</div>
+			<div>
+				{this.state.date.toLocaleTimeString()}
 			</div>
 		)
 	}    

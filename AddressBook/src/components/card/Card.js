@@ -2,7 +2,6 @@ import { observable, action } from "mobx";
 import { observer } from "mobx-react";
 import { Form, Div } from "./CardStates";
 import Options from "../options/Options";
-import "./Card.scss";
 
 @observer
 class Template extends React.Component {
