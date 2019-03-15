@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { observer, inject } from "mobx-react";
+import Input from "./Input";
 import Button from "../button/Button";
 import IconSearch from "../../icons/search.svg";
 import IconCross from "../../icons/cross.svg";
-import Input from "./Input";
 
 const StyledSearch = styled.form.attrs({
     method: "get"
