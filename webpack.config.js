@@ -67,7 +67,6 @@ const _common = merge([
 				jQuery: 'jquery',
 				React: 'react',
 				ReactDOM: 'react-dom',
-				styled: 'styled-components',
 				cn: 'classnames'
 			}),
 		],
