@@ -1,17 +1,25 @@
-import Search from "../../search/Search"
-import Time from "../../time/Time"
+import styled from "styled-components";
+import Search from "../../search/Search";
+import Time from "../../time/Time";
 
-import "./Header.scss";
+const StyledHeader = styled.header`
+    padding: 8px;
+    border-bottom: 1px solid #dadce0;
 
-function Header() {
-    return (
-        <header className="header">
-			<div className="container">
-				<Search />
-				<Time />
-			</div>            
-        </header>
-    )
-}
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+`;
 
-export default Header
+const Header = () => (
+    <StyledHeader>
+        <div className="container">
+            <Search />
+            <Time />
+        </div>
+    </StyledHeader>
+);
+
+export default Header;

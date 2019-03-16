@@ -3,10 +3,10 @@ import styled from "styled-components";
 const StyledButton = styled.button.attrs({
     type: "button"
 })`
-    flex: none;    
+    flex: none;
 
     svg {
-        fill: currentColor;   
+        fill: currentColor;
     }
 `;
 

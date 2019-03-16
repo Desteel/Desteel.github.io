@@ -1,13 +1,14 @@
-import "./Footer.scss";
+import styled from "styled-components";
 
-function Footer() {
-    return (
-        <footer className="footer">
-            <div className="container">
-				
-			</div>  
-        </footer>
-    )
-}
+const StyledFooter = styled.footer`
+    padding: 8px;
+    border-top: 1px solid #dadce0;
+`;
 
-export default Footer
+const Footer = () => (
+    <StyledFooter>
+        <div className="container" />
+    </StyledFooter>
+);
+
+export default Footer;

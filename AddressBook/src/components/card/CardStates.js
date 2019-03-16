@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ElemInput from "./ElemInput";
+import Input from "../elements/Input";
 let photoIcon = require("../../images/photo.png");
 
 const StyledCardInner = styled.div`
