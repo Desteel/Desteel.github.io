@@ -1,16 +1,18 @@
 import { observable, action } from "mobx";
 
 class ModalStore {
-    @observable open = false;
+    @observable isOpen = false;
+    @observable content = null;
 
     @action("close")
     close = () => {
-       this.open = false
+        this.isOpen = false;
     };
 
-    @action("open")
-    open = () => {
-       this.open = true    
+    @action("init")
+    init = (content) => {
+        this.isOpen = true;
+        this.content = content;
     };
 }
 

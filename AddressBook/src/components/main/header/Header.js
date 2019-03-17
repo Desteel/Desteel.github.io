@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { action } from "mobx";
 import { observer, inject } from "mobx-react";
 import Search from "../../search/Search";
 import Button from "../../button/Button";
@@ -22,16 +23,26 @@ const BtnAddCard = styled(Button)`
     border-radius: 8px;
 `;
 
+const content = (
+    <div className="test">"This is the test content for BtnAddCard"</div>
+);
 
 @inject("modalStore")
 @observer
 class Header extends React.Component {
+    @action("init modal")
+    initModal = () => {
+        this.props.modalStore.init(content);
+    };
+
     render() {
         return (
             <StyledHeader>
                 <div className="container">
                     <Search />
-                    <BtnAddCard action={this.props.modalStore.open}>{"Add card"}</BtnAddCard>
+                    <BtnAddCard action={this.initModal}>
+                        {"Add card"}
+                    </BtnAddCard>
                     <Time />
                 </div>
             </StyledHeader>

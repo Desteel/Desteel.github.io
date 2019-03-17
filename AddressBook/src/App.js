@@ -12,7 +12,6 @@ import Normalize from "./styles/Normalize";
 
 import DevTools from "mobx-react-devtools";
 
-
 const stores = { searchStore, contentStore, modalStore };
 
 const GlobalStyle = createGlobalStyle`
@@ -36,13 +35,12 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-
 @observer
 class App extends React.Component {
     render() {
         return (
             <Provider {...stores}>
-                <React.Fragment>                    
+                <React.Fragment>
                     <Normalize />
                     <GlobalStyle />
                     <DevTools />
