@@ -1,14 +1,19 @@
 import { createGlobalStyle } from "styled-components";
 import { Provider } from "mobx-react";
-import searchStore from "./components/stores/Search";
-import contentStore from "./components/stores/Content";
+import { observer } from "mobx-react";
+import searchStore from "./components/stores/SearchStore";
+import contentStore from "./components/stores/ContentStore";
+import modalStore from "./components/stores/ModalStore";
 import Header from "./components/main/header/Header";
 import Main from "./components/main/Main";
 import Footer from "./components/main/footer/Footer";
-import DevTools from "mobx-react-devtools";
+import Modal from "./components/modal/Modal";
 import Normalize from "./styles/Normalize";
 
-const stores = { searchStore, contentStore };
+import DevTools from "mobx-react-devtools";
+
+
+const stores = { searchStore, contentStore, modalStore };
 
 const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=cyrillic');
@@ -31,6 +36,8 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
+
+@observer
 class App extends React.Component {
     render() {
         return (
@@ -42,6 +49,7 @@ class App extends React.Component {
                     <Header />
                     <Main />
                     <Footer />
+                    <Modal />
                 </React.Fragment>
             </Provider>
         );
