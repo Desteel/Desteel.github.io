@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { observer, inject } from "mobx-react";
 import Search from "../../search/Search";
+import Button from "../../button/Button";
 import Time from "../../time/Time";
 
 const StyledHeader = styled.header`
@@ -13,13 +15,28 @@ const StyledHeader = styled.header`
     }
 `;
 
-const Header = () => (
-    <StyledHeader>
-        <div className="container">
-            <Search />
-            <Time />
-        </div>
-    </StyledHeader>
-);
+const BtnAddCard = styled(Button)`
+    padding: 8px;
+    border: 1px solid #dadce0;
+    background-color: transparent;
+    border-radius: 8px;
+`;
+
+
+@inject("modalStore")
+@observer
+class Header extends React.Component {
+    render() {
+        return (
+            <StyledHeader>
+                <div className="container">
+                    <Search />
+                    <BtnAddCard action={this.props.modalStore.open}>{"Add card"}</BtnAddCard>
+                    <Time />
+                </div>
+            </StyledHeader>
+        );
+    }
+}
 
 export default Header;
