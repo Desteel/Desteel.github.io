@@ -11,7 +11,7 @@ const StyledButton = styled.button.attrs({
     }
 `;
 
-const Button = ({ action, children, className }) => (
+const Button = ({ action, children, className, ...rest }) => (
     <StyledButton onClick={action} className={className}>
         {children}
     </StyledButton>
