@@ -31,7 +31,7 @@ class Header extends React.Component {
             <StyledHeader>
                 <div className="container">
                     <Search />
-                    <BtnAddCard content={content} />
+                    <BtnAddCard content={content} text={"Add card"} />
                     <Time />
                 </div>
             </StyledHeader>

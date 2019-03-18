@@ -12,9 +12,7 @@ class HocModal extends React.Component {
 
     render() {        
         return (
-            <React.Fragment>
-                <Button action={this.initModal} className={this.props.className}>{"Add card"}</Button>
-            </React.Fragment>
+            <Button action={this.initModal} className={this.props.className}>{this.props.text}</Button>
         );
     }
 }
