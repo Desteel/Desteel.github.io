@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { action } from "mobx";
-import { observer, inject } from "mobx-react";
 import Search from "../../search/Search";
 import HocModal from "../../modal/HocModal";
 import Time from "../../time/Time";
@@ -27,14 +25,7 @@ const content = (
     <div className="test">"This is the test content for BtnAddCard"</div>
 );
 
-@inject("modalStore")
-@observer
 class Header extends React.Component {
-    @action("init modal")
-    initModal = () => {
-        this.props.modalStore.init(content);
-    };
-
     render() {
         return (
             <StyledHeader>
