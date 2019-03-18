@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { action } from "mobx";
 import { observer, inject } from "mobx-react";
 import Search from "../../search/Search";
-import Button from "../../button/Button";
+import HocModal from "../../modal/HocModal";
 import Time from "../../time/Time";
 
 const StyledHeader = styled.header`
@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
     }
 `;
 
-const BtnAddCard = styled(Button)`
+const BtnAddCard = styled(HocModal)`
     padding: 8px;
     border: 1px solid #dadce0;
     background-color: transparent;
@@ -40,9 +40,7 @@ class Header extends React.Component {
             <StyledHeader>
                 <div className="container">
                     <Search />
-                    <BtnAddCard action={this.initModal}>
-                        {"Add card"}
-                    </BtnAddCard>
+                    <BtnAddCard content={content} />
                     <Time />
                 </div>
             </StyledHeader>
