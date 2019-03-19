@@ -21,7 +21,15 @@ const Body = styled.div`
     margin: 20px auto;
     background-color: #fff;
     max-width: 900px;
+    padding: 25px;
+    border-radius: 8px;
 `;
+const Close = styled(Button)`
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+`
 
 @inject("modalStore")
 @observer
@@ -34,7 +42,7 @@ class Modal extends React.Component {
                 <Overlay onClick={close}>
                     <Body>
                         <div>{content}</div>
-                        <Button action={close}>{<IconCross />}</Button>
+                        <Close action={close}>{<IconCross />}</Close>
                     </Body>
                 </Overlay>
             );

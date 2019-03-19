@@ -16,9 +16,9 @@ const StyledHeader = styled.header`
 
 const BtnAddCard = styled(HocModal)`
     padding: 8px;
-    border: 1px solid #dadce0;
+    border: ${props => props.theme.border} ${props => props.theme.main};
+    border-radius: ${props => props.theme.borderRadius};
     background-color: transparent;
-    border-radius: 8px;
 `;
 
 const content = (

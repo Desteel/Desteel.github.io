@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Provider } from "mobx-react";
 import { observer } from "mobx-react";
 import searchStore from "./components/stores/SearchStore";
@@ -13,6 +13,12 @@ import Normalize from "./styles/Normalize";
 import DevTools from "mobx-react-devtools";
 
 const stores = { searchStore, contentStore, modalStore };
+
+const theme = {
+    main: "#dadce0",
+    border: "1px solid",
+    borderRadius: "8px"
+};
 
 const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=cyrillic');
@@ -40,15 +46,17 @@ class App extends React.Component {
     render() {
         return (
             <Provider {...stores}>
-                <React.Fragment>
-                    <Normalize />
-                    <GlobalStyle />
-                    <DevTools />
-                    <Header />
-                    <Main />
-                    <Footer />
-                    <Modal />
-                </React.Fragment>
+                <ThemeProvider theme={theme}>
+                    <React.Fragment>
+                        <Normalize />
+                        <GlobalStyle />
+                        <DevTools />
+                        <Header />
+                        <Main />
+                        <Footer />
+                        <Modal />
+                    </React.Fragment>
+                </ThemeProvider>
             </Provider>
         );
     }

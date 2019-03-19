@@ -14,7 +14,7 @@ const StyledSearch = styled.form.attrs({
 
     background-color: rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 8px;
+    border-radius: ${props => props.theme.borderRadius};
 `;
 const SearchButton = styled(Button)`
     outline: 0;

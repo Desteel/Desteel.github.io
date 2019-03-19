@@ -15,7 +15,7 @@ const StyledOptions = styled.div`
 const StyledOptionsBtn = styled(Button)`
     background-color: transparent;
     padding: 5px;
-    border: 1px solid #dadce0;
+    border: ${props => props.theme.border} ${props => props.theme.main};
     border-right: none;
     color: inherit;    
 

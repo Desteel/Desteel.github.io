@@ -5,8 +5,8 @@ let photoIcon = require("../../images/photo.png");
 
 const StyledCardInner = styled.div`
     display: flex;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
+    border: ${props => props.theme.border} ${props => props.theme.main};
+    border-radius: ${props => props.theme.borderRadius};
     padding: 10px;
 `;
 const StyledImagebox = styled.div`
