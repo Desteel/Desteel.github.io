@@ -1,4 +1,4 @@
-import { Overlay, Body, Close } from "./StyledModal";
+import { ModalWrap, Overlay, Body, Close } from "./StyledModal";
 import { observer, inject } from "mobx-react";
 import IconCross from "../../icons/cross.svg";
 
@@ -10,12 +10,13 @@ class Modal extends React.Component {
 
         if (isOpen) {
             return (
-                <Overlay onClick={close}>
+                <ModalWrap>
+                    <Overlay onClick={close} />
                     <Body>
                         <div>{content}</div>
                         <Close action={close}>{<IconCross />}</Close>
                     </Body>
-                </Overlay>
+                </ModalWrap>
             );
         } else {
             return null;
