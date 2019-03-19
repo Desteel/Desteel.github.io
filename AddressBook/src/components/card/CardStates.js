@@ -1,32 +1,6 @@
-import styled from "styled-components";
+import {StyledCardInner, StyledImagebox, StyledMain} from "./Styled.js";
 import ElemInput from "./ElemInput";
-import Input from "../elements/Input";
 let photoIcon = require("../../images/photo.png");
-
-const StyledCardInner = styled.div`
-    display: flex;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
-    padding: 10px;
-`;
-const StyledImagebox = styled.div`
-    flex: none;
-    width: 90px;
-    height: 90px;
-    margin-right: 15px;
-
-    img {
-        border-radius: 8px;
-        max-height: 100%;
-    }
-`;
-const StyledMain = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-    margin-right: 10px;
-`;
 
 export function Form({ children, ...rest }) {
     const { photoUrl, name, surname, phone, address } = rest.props;

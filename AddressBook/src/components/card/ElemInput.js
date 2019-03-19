@@ -1,19 +1,11 @@
-import styled from "styled-components";
-
-const StyledInput = styled.input.attrs({
-    type: "text"
-})`
-    border: 1px solid #dadce0;
-    border-radius: 4px;
-    padding: 4px;
-`;
+import { StyledInput } from "./Styled.js";
 
 class ElemInput extends React.Component {
-    returnValue = (e) => {
+    returnValue = e => {
         this.props.templateEdit(e, this.props.cath);
     };
 
-    render() {        
+    render() {
         return (
             <StyledInput
                 onChange={this.returnValue}
