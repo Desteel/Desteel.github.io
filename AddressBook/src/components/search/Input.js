@@ -1,16 +1,5 @@
-import styled from "styled-components";
+import { StyledInput } from "./StyledSearch";
 import { observer, inject } from "mobx-react";
-
-const StyledInput = styled.input.attrs({
-    type: "text",
-    placeholder: "Search"
-})`
-    outline: 0;
-    border: none;
-    flex: 1;
-    padding: 1rem;
-    background-color: transparent;
-`;
 
 @inject("searchStore")
 @observer

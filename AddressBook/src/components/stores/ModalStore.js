@@ -4,12 +4,12 @@ class ModalStore {
     @observable isOpen = false;
     @observable content = null;
 
-    @action("close")
+    @action("close modal")
     close = () => {
         this.isOpen = false;
     };
 
-    @action("init")
+    @action("init modal")
     init = (content) => {
         this.isOpen = true;
         this.content = content;

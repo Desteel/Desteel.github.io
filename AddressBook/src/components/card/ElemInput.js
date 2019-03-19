@@ -1,4 +1,4 @@
-import { StyledInput } from "./Styled.js";
+import { StyledInput } from "./StyledCard";
 
 class ElemInput extends React.Component {
     returnValue = e => {

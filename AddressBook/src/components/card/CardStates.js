@@ -1,5 +1,5 @@
-import {StyledCardInner, StyledImagebox, StyledMain} from "./Styled.js";
 import ElemInput from "./ElemInput";
+import { StyledCardInner, StyledImagebox, StyledMain } from "./StyledCard";
 let photoIcon = require("../../images/photo.png");
 
 export function Form({ children, ...rest }) {
