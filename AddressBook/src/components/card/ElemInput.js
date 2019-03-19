@@ -1,19 +1,11 @@
-import styled from "styled-components";
-
-const StyledInput = styled.input.attrs({
-    type: "text"
-})`
-    border: ${props => props.theme.border} ${props => props.theme.main};
-    border-radius: 4px;
-    padding: 4px;
-`;
+import { StyledInput } from "./StyledCard";
 
 class ElemInput extends React.Component {
-    returnValue = (e) => {
+    returnValue = e => {
         this.props.templateEdit(e, this.props.cath);
     };
 
-    render() {        
+    render() {
         return (
             <StyledInput
                 onChange={this.returnValue}

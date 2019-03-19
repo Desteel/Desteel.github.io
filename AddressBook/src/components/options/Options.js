@@ -1,36 +1,9 @@
-import styled from "styled-components";
+import { StyledOptions, StyledOptionsBtn } from "./StyledOptions";
 import { observer, inject } from "mobx-react";
 import { action } from "mobx";
-import Button from "../button/Button";
 import IconCross from "../../icons/cross.svg";
 import IconPen from "../../icons/pen.svg";
 import IconCheck from "../../icons/tick.svg";
-
-const StyledOptions = styled.div`
-    margin-right: -10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-`;
-const StyledOptionsBtn = styled(Button)`
-    background-color: transparent;
-    padding: 5px;
-    border: ${props => props.theme.border} ${props => props.theme.main};
-    border-right: none;
-    color: inherit;    
-
-    &:first-child {
-        border-top-left-radius: 5px;
-    }
-
-    &:last-child {
-        border-bottom-left-radius: 5px;
-    }
-
-    &:not(:last-child) {
-        border-bottom: none;
-    }
-`;
 
 @inject("contentStore")
 @observer
@@ -54,15 +27,23 @@ class Options extends React.Component {
         if (this.props.editable) {
             return (
                 <React.Fragment>
-                    <StyledOptionsBtn action={this.editSave}>{<IconCheck />}</StyledOptionsBtn>
-                    <StyledOptionsBtn action={this.props.toggleEditable}>{"exit"}</StyledOptionsBtn>
+                    <StyledOptionsBtn action={this.editSave}>
+                        {<IconCheck />}
+                    </StyledOptionsBtn>
+                    <StyledOptionsBtn action={this.props.toggleEditable}>
+                        {"exit"}
+                    </StyledOptionsBtn>
                 </React.Fragment>
             );
         } else {
             return (
                 <React.Fragment>
-                    <StyledOptionsBtn action={this.editOpen}>{<IconPen />}</StyledOptionsBtn>
-                    <StyledOptionsBtn action={this.delete}>{<IconCross />}</StyledOptionsBtn>
+                    <StyledOptionsBtn action={this.editOpen}>
+                        {<IconPen />}
+                    </StyledOptionsBtn>
+                    <StyledOptionsBtn action={this.delete}>
+                        {<IconCross />}
+                    </StyledOptionsBtn>
                 </React.Fragment>
             );
         }

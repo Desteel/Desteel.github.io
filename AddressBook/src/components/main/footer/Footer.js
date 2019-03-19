@@ -1,9 +1,4 @@
-import styled from "styled-components";
-
-const StyledFooter = styled.footer`
-    padding: 8px;
-    border-top: 1px solid #dadce0;
-`;
+import { StyledFooter } from "../StyledMain";
 
 const Footer = () => (
     <StyledFooter>
