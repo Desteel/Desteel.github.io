@@ -1,6 +1,5 @@
 import { OptionsBox, Btn } from "./StyledOptions";
 import { observer, inject } from "mobx-react";
-import { action } from "mobx";
 import IconCross from "../../icons/cross.svg";
 import IconPen from "../../icons/pen.svg";
 import IconCheck from "../../icons/tick.svg";
