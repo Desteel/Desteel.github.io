@@ -1,9 +1,9 @@
 import { observer, inject } from "mobx-react";
-import Template from "../card/Card";
+import Card from "./Card";
 
 @inject("contentStore")
 @observer
-class Grid extends React.Component {
+class HocCard extends React.Component {
     componentDidMount() {
         this.props.contentStore.fetchData();
     }
@@ -17,13 +17,11 @@ class Grid extends React.Component {
             return <div>Loading...</div>;
         } else {
             const cards = items.map((item, i) => (
-                <Template key={item.id} id={item.id} item={item} />
+                <Card key={item.id} id={item.id} item={item} />
             ));
-            return (
-                <React.Fragment>{cards}</React.Fragment>
-            );
+            return <React.Fragment>{cards}</React.Fragment>;
         }
     }
 }
 
-export default Grid;
+export default HocCard;

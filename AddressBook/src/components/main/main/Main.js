@@ -1,5 +1,5 @@
-import { StyledGrid } from "./StyledMain";
-import Grid from "../grid/Grid";
+import StyledGrid from "./StyledMain";
+import HocCard from "../../card/HocCard";
 
 class Main extends React.Component {
     render() {
@@ -7,7 +7,7 @@ class Main extends React.Component {
             <div className="main">
                 <div className="container">
                     <StyledGrid rowItemCount={3}>
-                        <Grid />
+                        <HocCard />
                     </StyledGrid>
                 </div>
             </div>

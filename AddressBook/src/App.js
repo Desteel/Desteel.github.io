@@ -8,7 +8,7 @@ import contentStore from "./components/stores/ContentStore";
 import modalStore from "./components/stores/ModalStore";
 
 import Header from "./components/main/header/Header";
-import Main from "./components/main/Main";
+import Main from "./components/main/main/Main";
 import Footer from "./components/main/footer/Footer";
 import Modal from "./components/modal/Modal";
 import Normalize from "./styles/Normalize";
