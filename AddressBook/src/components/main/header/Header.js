@@ -1,4 +1,4 @@
-import { StyledHeader, BtnAddCard } from "../StyledMain";
+import { StyledHeader, BtnAddCard } from "./StyledHeader";
 import Search from "../../search/Search";
 import Time from "../../time/Time";
 

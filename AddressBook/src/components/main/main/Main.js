@@ -1,5 +1,5 @@
-import { StyledGrid } from "./StyledMain";
-import Grid from "../grid/Grid";
+import StyledGrid from "./StyledMain";
+import Grid from "../../grid/Grid";
 
 class Main extends React.Component {
     render() {
