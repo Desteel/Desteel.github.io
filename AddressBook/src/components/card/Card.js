@@ -1,10 +1,11 @@
 import { observable, action } from "mobx";
 import { observer } from "mobx-react";
-import { Form, Div } from "./CardStates";
+import Form from "./CardForm";
+import Div from "./CardDiv";
 import Options from "../options/Options";
 
 @observer
-class Template extends React.Component {
+class Card extends React.Component {
     @observable editable = false;
     @observable template = {
         id: "",
@@ -26,7 +27,7 @@ class Template extends React.Component {
     };
 
     @action("template edit")
-    templateEdit = (e) => {
+    templateEdit = e => {
         const target = e.target,
             value = target.value,
             name = target.name;
@@ -34,21 +35,19 @@ class Template extends React.Component {
         this.template[name] = value;
     };
 
-    ToggleStates = ({ children }) => {
-        if (this.editable) {
-            return (
-                <Form action={this.templateEdit} props={this.props.item}>
-                    {children}
-                </Form>
-            );
-        } else {
-            return <Div props={this.props.item}>{children}</Div>;
-        }
+    Card = ({ children }) => {
+        return this.editable ? (
+            <Form action={this.templateEdit} props={this.props.item}>
+                {children}
+            </Form>
+        ) : (
+            <Div props={this.props.item}>{children}</Div>
+        );
     };
 
     render() {
         return (
-            <this.ToggleStates>
+            <this.Card>
                 {
                     <Options
                         fillTemplate={this.fillTemplate}
@@ -58,9 +57,9 @@ class Template extends React.Component {
                         id={this.props.id}
                     />
                 }
-            </this.ToggleStates>
+            </this.Card>
         );
     }
 }
 
-export default Template;
+export default Card;
