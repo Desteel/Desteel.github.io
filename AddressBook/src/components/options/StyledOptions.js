@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Button from "../button/Button";
 
-export const StyledOptions = styled.div`
+export const OptionsBox = styled.div`
     margin-right: -10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 `;
 
-export const StyledOptionsBtn = styled(Button)`
+export const Btn = styled(Button)`
     background-color: transparent;
     padding: 5px;
     border: ${props => props.theme.border} ${props => props.theme.main};

@@ -1,9 +1,10 @@
 import { observable, action } from "mobx";
-import { observer } from "mobx-react";
+import { observer, inject } from "mobx-react";
 import Form from "./CardForm";
 import Div from "./CardDiv";
 import Options from "../options/Options";
 
+@inject("contentStore")
 @observer
 class Card extends React.Component {
     @observable editable = false;
@@ -16,15 +17,16 @@ class Card extends React.Component {
         address: ""
     };
 
-    @action("toggle editable")
-    toggleEditable = () => {
-        this.editable = !this.editable;
-    };
-
-    @action("fill template")
-    fillTemplate = () => {
+    @action("edit start")
+    editStart = () => {
+        this.editable = true;
         this.template = { ...this.props.item };
     };
+
+    @action("edit close")
+    editClose = () => {
+        this.editable = false;
+    };    
 
     @action("template edit")
     templateEdit = e => {
@@ -35,26 +37,34 @@ class Card extends React.Component {
         this.template[name] = value;
     };
 
-    Card = ({ children }) => {
-        return this.editable ? (
+    @action("save card")
+    saveCard = () => {
+        this.editable = false;
+        this.props.contentStore.saveCard(this.props.id, this.template);
+    };
+
+    @action("delete card")
+    deleteCard = () => this.props.contentStore.deleteCard(this.props.id);    
+
+    Card = ({ children }) =>
+        this.editable ? (
             <Form action={this.templateEdit} props={this.props.item}>
                 {children}
             </Form>
         ) : (
             <Div props={this.props.item}>{children}</Div>
         );
-    };
 
     render() {
         return (
             <this.Card>
                 {
                     <Options
-                        fillTemplate={this.fillTemplate}
-                        template={this.template}
                         editable={this.editable}
-                        toggleEditable={this.toggleEditable}
-                        id={this.props.id}
+                        editStart={this.editStart}
+                        editClose={this.editClose}
+                        saveCard={this.saveCard}
+                        deleteCard={this.deleteCard}
                     />
                 }
             </this.Card>
