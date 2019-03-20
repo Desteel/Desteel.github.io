@@ -26,7 +26,7 @@ class Card extends React.Component {
     @action("edit close")
     editClose = () => {
         this.editable = false;
-    };    
+    };
 
     @action("template edit")
     templateEdit = e => {
@@ -44,9 +44,9 @@ class Card extends React.Component {
     };
 
     @action("delete card")
-    deleteCard = () => this.props.contentStore.deleteCard(this.props.id);    
+    deleteCard = () => this.props.contentStore.deleteCard(this.props.id);
 
-    Card = ({ children }) =>
+    toggleMode = ({ children }) =>
         this.editable ? (
             <Form action={this.templateEdit} props={this.props.item}>
                 {children}
@@ -57,7 +57,7 @@ class Card extends React.Component {
 
     render() {
         return (
-            <this.Card>
+            <this.toggleMode>
                 {
                     <Options
                         editable={this.editable}
@@ -67,7 +67,7 @@ class Card extends React.Component {
                         deleteCard={this.deleteCard}
                     />
                 }
-            </this.Card>
+            </this.toggleMode>
         );
     }
 }
