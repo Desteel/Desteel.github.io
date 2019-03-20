@@ -1,11 +1,8 @@
 import { OptionsBox, Btn } from "./StyledOptions";
-import { observer, inject } from "mobx-react";
 import IconCross from "../../icons/cross.svg";
 import IconPen from "../../icons/pen.svg";
 import IconCheck from "../../icons/tick.svg";
 
-@inject("contentStore")
-@observer
 class Options extends React.Component {
     ToggleOptions = () =>
         this.props.editable ? (
