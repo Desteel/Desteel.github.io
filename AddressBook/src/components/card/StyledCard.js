@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const StyledCardInner = styled.div`
+export const Card = styled.div`
     display: flex;
     border: ${props => props.theme.border} ${props => props.theme.main};
     border-radius: ${props => props.theme.borderRadius};
     padding: 10px;
 `;
 
-export const StyledImagebox = styled.div`
+export const Imagebox = styled.div`
     flex: none;
     width: 90px;
     height: 90px;
@@ -19,7 +19,7 @@ export const StyledImagebox = styled.div`
     }
 `;
 
-export const StyledMain = styled.div`
+export const Info = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,7 +27,7 @@ export const StyledMain = styled.div`
     margin-right: 10px;
 `;
 
-export const StyledInput = styled.input.attrs({
+export const Input = styled.input.attrs({
     type: "text"
 })`
     border: ${props => props.theme.border} ${props => props.theme.main};

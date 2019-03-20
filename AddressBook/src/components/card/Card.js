@@ -6,7 +6,14 @@ import Options from "../options/Options";
 @observer
 class Template extends React.Component {
     @observable editable = false;
-    @observable template = {};
+    @observable template = {
+        id: "",
+        photoUrl: "",
+        name: "",
+        surname: "",
+        phone: "",
+        address: ""
+    };
 
     @action("toggle editable")
     toggleEditable = () => {
@@ -19,32 +26,38 @@ class Template extends React.Component {
     };
 
     @action("template edit")
-    templateEdit = (e, type) => {
-        this.template[type] = e.target.value;
+    templateEdit = (e) => {
+        const target = e.target,
+            value = target.value,
+            name = target.name;
+
+        this.template[name] = value;
     };
 
     ToggleStates = ({ children }) => {
         if (this.editable) {
             return (
-                <Form action={this.templateEdit} props={this.props.item}>{children}</Form>
-            )
+                <Form action={this.templateEdit} props={this.props.item}>
+                    {children}
+                </Form>
+            );
         } else {
-            return (
-                <Div props={this.props.item}>{children}</Div>
-            )
+            return <Div props={this.props.item}>{children}</Div>;
         }
-    }
+    };
 
     render() {
         return (
             <this.ToggleStates>
-                {<Options
-                    fillTemplate={this.fillTemplate}
-                    template={this.template}
-                    editable={this.editable}
-                    toggleEditable={this.toggleEditable}
-                    id={this.props.id}
-                />}
+                {
+                    <Options
+                        fillTemplate={this.fillTemplate}
+                        template={this.template}
+                        editable={this.editable}
+                        toggleEditable={this.toggleEditable}
+                        id={this.props.id}
+                    />
+                }
             </this.ToggleStates>
         );
     }

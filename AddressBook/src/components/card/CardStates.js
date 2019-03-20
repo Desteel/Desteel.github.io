@@ -1,39 +1,38 @@
-import ElemInput from "./ElemInput";
-import { StyledCardInner, StyledImagebox, StyledMain } from "./StyledCard";
+import { Card, Imagebox, Info, Input } from "./StyledCard";
 let photoIcon = require("../../images/photo.png");
 
 export function Form({ children, ...rest }) {
     const { photoUrl, name, surname, phone, address } = rest.props;
 
     return (
-        <StyledCardInner as="form">
-            <StyledImagebox>
+        <Card as="form">
+            <Imagebox>
                 <img src={photoUrl ? photoUrl : photoIcon} />
-            </StyledImagebox>
-            <StyledMain>
-                <ElemInput
-                    templateEdit={rest.action}
-                    value={name}
-                    cath={"name"}
+            </Imagebox>
+            <Info>
+                <Input
+                    onChange={rest.action}
+                    defaultValue={name}
+                    name="name"
                 />
-                <ElemInput
-                    templateEdit={rest.action}
-                    value={surname}
-                    cath={"surname"}
+                <Input
+                    onChange={rest.action}
+                    defaultValue={surname}
+                    name="surname"
                 />
-                <ElemInput
-                    templateEdit={rest.action}
-                    value={phone}
-                    cath={"phone"}
+                <Input
+                    onChange={rest.action}
+                    defaultValue={phone}
+                    name="phone"
                 />
-                <ElemInput
-                    templateEdit={rest.action}
-                    value={address}
-                    cath={"address"}
+                <Input
+                    onChange={rest.action}
+                    defaultValue={address}
+                    name="address"
                 />
-            </StyledMain>
+            </Info>
             {children}
-        </StyledCardInner>
+        </Card>
     );
 }
 
@@ -41,16 +40,16 @@ export function Div({ children, ...rest }) {
     const { photoUrl, name, surname, phone, address } = rest.props;
 
     return (
-        <StyledCardInner>
-            <StyledImagebox>
+        <Card>
+            <Imagebox>
                 <img src={photoUrl ? photoUrl : photoIcon} />
-            </StyledImagebox>
-            <StyledMain>
+            </Imagebox>
+            <Info>
                 <div>{`${name} ${surname}`}</div>
                 <div>{phone}</div>
                 <div>{address}</div>
-            </StyledMain>
+            </Info>
             {children}
-        </StyledCardInner>
+        </Card>
     );
 }
