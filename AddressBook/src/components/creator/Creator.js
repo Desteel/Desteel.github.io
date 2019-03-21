@@ -1,6 +1,7 @@
+import { SaveButton } from "./StyledCreator";
 import { observable, action } from "mobx";
 import { observer, inject } from "mobx-react";
-import Button from "../button/Button";
+import IconCheck from "../../icons/tick.svg";
 
 @inject("contentStore", "modalStore")
 @observer
@@ -28,7 +29,7 @@ class Creator extends React.Component {
     @action("add card")
     addCard = () => {
         this.props.contentStore.addCard(this.template);
-        // this.props.modalStore.isOpen = false;
+        this.props.modalStore.isOpen = false;
     };
 
     componentDidMount() {
@@ -60,7 +61,7 @@ class Creator extends React.Component {
                         placeholder="address"
                     />
                 </div>
-                <Button action={this.addCard}>{"Save"}</Button>
+                <SaveButton action={this.addCard}>{<IconCheck/>}</SaveButton>
             </form>
         );
     }
