@@ -1,4 +1,4 @@
-import { SaveButton } from "./StyledCreator";
+import { StyledSaveButton, StyledInputbox, StyledInput } from "./StyledCreator";
 import { observable, action } from "mobx";
 import { observer, inject } from "mobx-react";
 import IconCheck from "../../icons/tick.svg";
@@ -39,29 +39,29 @@ class Creator extends React.Component {
     render() {
         return (
             <form>
-                <div>
-                    <input
+                <StyledInputbox>
+                    <StyledInput
                         onChange={this.templateEdit}
                         name="name"
                         placeholder="name"
                     />
-                    <input
+                    <StyledInput
                         onChange={this.templateEdit}
                         name="surname"
                         placeholder="surname"
                     />
-                    <input
+                    <StyledInput
                         onChange={this.templateEdit}
                         name="phone"
                         placeholder="phone"
                     />
-                    <input
+                    <StyledInput
                         onChange={this.templateEdit}
                         name="address"
                         placeholder="address"
                     />
-                </div>
-                <SaveButton action={this.addCard}>{<IconCheck/>}</SaveButton>
+                </StyledInputbox>
+                <StyledSaveButton action={this.addCard}>{<IconCheck/>}</StyledSaveButton>
             </form>
         );
     }
