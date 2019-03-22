@@ -7,7 +7,7 @@ class Main extends React.Component {
             <div className="main">
                 <div className="container">
                     <StyledGrid rowItemCount={3}>
-                        <HocCard />
+                        <CardCollection />
                     </StyledGrid>
                 </div>
             </div>
