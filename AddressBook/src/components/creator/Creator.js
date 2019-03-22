@@ -6,7 +6,8 @@ import IconCheck from "../../icons/tick.svg";
 @inject("contentStore", "modalStore")
 @observer
 class Creator extends React.Component {
-    @observable template = {
+    @observable
+    template = {
         id: "",
         photoUrl: "",
         name: "",
@@ -21,9 +22,26 @@ class Creator extends React.Component {
     templateEdit = e => {
         const target = e.target,
             value = target.value,
-            name = target.name;
+            name = target.name,
+            id = e.target.dataset.id;
 
-        this.template[name] = value;
+        let isArray = Array.isArray(this.template[name]);
+
+        if (isArray) {
+            if (this.template[name].length < id) {
+                this.template[name][this.template[name].length] = value;
+            } else {
+                this.template[name][id] = value;
+            }
+        } else {
+            this.template[name] = value;
+        }
+
+        console.log(this.template.phone);
+
+        // isArray
+        //     ? (this.template[name][id] = value)
+        //     : (this.template[name] = value);
     };
 
     @action("add card")
@@ -54,6 +72,25 @@ class Creator extends React.Component {
                         onChange={this.templateEdit}
                         name="phone"
                         placeholder="phone"
+                        data-id="0"
+                    />
+                    <StyledInput
+                        onChange={this.templateEdit}
+                        name="phone"
+                        placeholder="phone"
+                        data-id="1"
+                    />
+                    <StyledInput
+                        onChange={this.templateEdit}
+                        name="phone"
+                        placeholder="phone"
+                        data-id="2"
+                    />
+                    <StyledInput
+                        onChange={this.templateEdit}
+                        name="phone"
+                        placeholder="phone"
+                        data-id="3"
                     />
                     <StyledInput
                         onChange={this.templateEdit}
@@ -61,7 +98,9 @@ class Creator extends React.Component {
                         placeholder="address"
                     />
                 </StyledInputbox>
-                <StyledSaveButton action={this.addCard}>{<IconCheck/>}</StyledSaveButton>
+                <StyledSaveButton action={this.addCard}>
+                    {<IconCheck />}
+                </StyledSaveButton>
             </form>
         );
     }
