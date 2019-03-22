@@ -13,7 +13,6 @@ function Div({ children, ...rest }) {
             </Imagebox>
             <Info>
                 <div>{`${name} ${surname}`}</div>
-                {/* <div>{phone}</div> */}
                 <Phones />
                 <div>{address}</div>
             </Info>
