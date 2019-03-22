@@ -11,7 +11,7 @@ class Creator extends React.Component {
         photoUrl: "",
         name: "",
         surname: "",
-        phone: "",
+        phone: [],
         address: ""
     };
 

@@ -13,7 +13,7 @@ class Card extends React.Component {
         photoUrl: "",
         name: "",
         surname: "",
-        phone: "",
+        phone: [],
         address: ""
     };
 
@@ -32,9 +32,14 @@ class Card extends React.Component {
     templateEdit = e => {
         const target = e.target,
             value = target.value,
-            name = target.name;
+            name = target.name,
+            id = e.target.dataset.id;
 
-        this.template[name] = value;
+        let isArray = Array.isArray(this.template[name]);
+
+        isArray
+            ? (this.template[name][id] = value)
+            : (this.template[name] = value);
     };
 
     @action("save card")
