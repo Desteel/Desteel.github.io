@@ -3,7 +3,7 @@ import Card from "./Card";
 
 @inject("contentStore")
 @observer
-class HocCard extends React.Component {
+class CardCollection extends React.Component {
     componentDidMount() {
         this.props.contentStore.fetchData();
     }
@@ -24,4 +24,4 @@ class HocCard extends React.Component {
     }
 }
 
-export default HocCard;
+export default CardCollection;
