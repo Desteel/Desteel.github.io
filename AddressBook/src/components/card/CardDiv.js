@@ -4,6 +4,8 @@ let photoIcon = require("../../images/photo.png");
 function Div({ children, ...rest }) {
     const { photoUrl, name, surname, phone, address } = rest.props;
 
+    const Phones = () => phone.map((item, i) => <div key={i}>{item}</div>);
+
     return (
         <Card>
             <Imagebox>
@@ -11,7 +13,7 @@ function Div({ children, ...rest }) {
             </Imagebox>
             <Info>
                 <div>{`${name} ${surname}`}</div>
-                <div>{phone}</div>
+                <Phones />
                 <div>{address}</div>
             </Info>
             {children}

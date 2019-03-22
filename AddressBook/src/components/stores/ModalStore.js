@@ -3,6 +3,7 @@ import { observable, action } from "mobx";
 class ModalStore {
     @observable isOpen = false;
     @observable content = null;
+    @observable contentBox = [];
 
     @action("close modal")
     close = () => {
@@ -10,7 +11,7 @@ class ModalStore {
     };
 
     @action("init modal")
-    init = (content) => {
+    init = content => {
         this.isOpen = true;
         this.content = content;
     };

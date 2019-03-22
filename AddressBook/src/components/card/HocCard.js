@@ -16,7 +16,7 @@ class HocCard extends React.Component {
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
-            const cards = items.map((item, i) => (
+            const cards = items.map(item => (
                 <Card key={item.id} id={item.id} item={item} />
             ));
             return <React.Fragment>{cards}</React.Fragment>;

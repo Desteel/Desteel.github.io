@@ -4,6 +4,8 @@ let photoIcon = require("../../images/photo.png");
 function Form({ children, ...rest }) {
     const { photoUrl, name, surname, phone, address } = rest.props;
 
+    const Phones = () => phone.map((item, i) => <Input onChange={rest.action} key={i} data-id={i} defaultValue={item} name="phone" />);
+
     return (
         <Card as="form">
             <Imagebox>
@@ -16,11 +18,7 @@ function Form({ children, ...rest }) {
                     defaultValue={surname}
                     name="surname"
                 />
-                <Input
-                    onChange={rest.action}
-                    defaultValue={phone}
-                    name="phone"
-                />
+                <Phones/>
                 <Input
                     onChange={rest.action}
                     defaultValue={address}
