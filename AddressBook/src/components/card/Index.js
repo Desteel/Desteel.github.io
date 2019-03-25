@@ -17,32 +17,15 @@ class Card extends React.Component {
         address: ""
     };
 
-    @action("edit start")
+    @action("edit card start")
     editStart = () => {
         this.editable = true;
         this.template = { ...this.props.item };
     };
 
-    @action("edit close")
+    @action("edit card close")
     editClose = () => {
         this.editable = false;
-    };
-
-    @action("template edit")
-    templateEdit = e => {
-        const target = e.target,
-            value = target.value,
-            name = target.name,
-            id = e.target.dataset.id;
-
-        let isArray = Array.isArray(this.template[name]);
-
-        isArray
-            ? (this.template[name][id] = value)
-            : (this.template[name] = value);
-
-
-        console.log(this.template);        
     };
 
     @action("save card")
@@ -55,7 +38,7 @@ class Card extends React.Component {
     deleteCard = () => this.props.contentStore.deleteCard(this.props.id);
 
     editRender = () => (
-        <ItemForm action={this.templateEdit} item={this.props.item}>
+        <ItemForm template={this.template} item={this.props.item}>
             <Options
                 editable={this.editable}
                 editStart={this.editStart}
