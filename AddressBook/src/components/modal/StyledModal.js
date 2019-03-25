@@ -23,7 +23,7 @@ export const Body = styled.div`
     z-index: 1001;
     margin: 20px auto;
     background-color: #fff;
-    max-width: 900px;
+    max-width: 600px;
     padding: 25px;
     border-radius: ${props => props.theme.borderRadius};
 `;
