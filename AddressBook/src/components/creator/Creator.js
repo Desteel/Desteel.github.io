@@ -22,24 +22,33 @@ class Creator extends React.Component {
         phoneValues: [],
         address: ""
     };
-    @observable phoneInputs = [""];
+    @observable phoneValues = [""];
 
     @action("add phones input")
     addInput = () => {
-        this.phoneInputs.push("");
+        this.phoneValues.push("");
     };
-    @action("remove phones input")
-    removeInput = i => {
-        console.log(i);
-    };
+    @action("remove phones input") removeInput = i => {};
 
     @action("add new phones") setNumber = e => {};
+
+    @action("fill card phones")
+    fillPhones = key => e => {
+        const { value: newValue, name } = e.target;
+
+        this.phoneValues = this.phoneValues.map(
+            (value, i) => (i === key ? newValue : value)
+        );
+        this.template[name] = this.phoneValues.filter(value => !!value);
+        console.log(this.template);
+    };
 
     @action("add card string")
     fillString = e => {
         const { value, name } = e.target;
 
-        this.props.template[name] = value;
+        this.template[name] = value;
+        console.log(this.template);
     };
 
     @action("add card")
@@ -53,8 +62,8 @@ class Creator extends React.Component {
     }
 
     render() {
-        console.log(new Array(3).fill(""));
-        console.log(Array.from(new Array(3)).fill(""));
+        // console.log(new Array(3).fill(""));
+        // console.log(Array.from(new Array(3)).fill(""));
 
         return (
             <form>
@@ -69,10 +78,10 @@ class Creator extends React.Component {
                         name="surname"
                         placeholder="surname"
                     />
-                    {this.phoneInputs.map((value, i) => (
+                    {this.phoneValues.map((value, i) => (
                         <Row key={i}>
                             <Input
-                                onChange={this.setNumber(i)}
+                                onChange={this.fillPhones(i)}
                                 name="phoneValues"
                                 placeholder="phone"
                                 defaultValue={value}
