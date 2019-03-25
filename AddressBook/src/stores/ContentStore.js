@@ -27,7 +27,7 @@ class ContentStore {
         });
     };
 
-    @action("save card")
+    @action("save editable card")
     saveCard = (id, newItem) => {
         axios.put(`http://localhost:3000/items/${id}`, newItem).then(result => {
             this.items = this.items.map(item =>
