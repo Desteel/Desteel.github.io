@@ -1,44 +1,46 @@
-import { observable, action } from "mobx";
-const axios = require("axios");
+import { observable, action } from 'mobx';
+const axios = require('axios');
+
+const $url = 'http://localhost:3000/items/';
 
 class ContentStore {
     @observable error = null;
     @observable isLoaded = false;
     @observable items = [];
 
-    @action("fetch data")
+    @action('fetch data')
     fetchData = () => {
         axios
-            .get("http://localhost:3000/items")
+            .get($url)
             .then(result => {
                 this.isLoaded = true;
                 this.items = result.data;
             })
             .catch(error => {
                 this.error = error;
-                console.error("error", error);
+                console.error('error', error);
             });
     };
 
-    @action("delete card")
+    @action('delete card')
     deleteCard = id => {
-        axios.delete(`http://localhost:3000/items/${id}`).then(result => {
+        axios.delete(`${$url}${id}`).then(result => {
             this.items = this.items.filter(item => item.id !== id);
         });
     };
 
-    @action("save card")
+    @action('save editable card')
     saveCard = (id, newItem) => {
-        axios.put(`http://localhost:3000/items/${id}`, newItem).then(result => {
+        axios.put(`${$url}${id}`, newItem).then(result => {
             this.items = this.items.map(item =>
                 item.id === id ? newItem : item
             );
         });
     };
 
-    @action("add card")
+    @action('add card')
     addCard = newItem => {
-        axios.post("http://localhost:3000/items/", newItem).then(result => {
+        axios.post($url, newItem).then(result => {
             this.items = [...this.items, newItem];
         });
     };

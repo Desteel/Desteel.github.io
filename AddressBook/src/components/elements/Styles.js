@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button.attrs({
-    type: "button"
-})`
+export const StyledButton = styled.button`
     flex: none;
     color: inherit;
 

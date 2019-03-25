@@ -1,11 +1,10 @@
-import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { Provider } from "mobx-react";
 import { observer } from "mobx-react";
 // stores
-import searchStore from "./components/stores/SearchStore";
-import contentStore from "./components/stores/ContentStore";
-import modalStore from "./components/stores/ModalStore";
+import searchStore from "./stores/SearchStore";
+import contentStore from "./stores/ContentStore";
+import modalStore from "./stores/ModalStore";
 
 import Header from "./components/main/header/Header";
 import Main from "./components/main/main/Main";

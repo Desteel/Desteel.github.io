@@ -1,10 +1,8 @@
-import { Card, Imagebox, Info } from "./StyledCard";
+import { Card, Imagebox, Info } from "./Styles";
 let photoIcon = require("../../images/photo.png");
 
-function Div({ children, ...rest }) {
-    const { photoUrl, name, surname, phone, address } = rest.props;
-
-    const Phones = () => phone.map((item, i) => <div key={i}>{item}</div>);
+function ItemDiv({ children, ...rest }) {
+    const { photoUrl, name, surname, phoneValues, address } = rest.item;
 
     return (
         <Card>
@@ -13,7 +11,9 @@ function Div({ children, ...rest }) {
             </Imagebox>
             <Info>
                 <div>{`${name} ${surname}`}</div>
-                <Phones />
+                {phoneValues.map((value, i) => (
+                    <div key={i}>{value}</div>
+                ))}
                 <div>{address}</div>
             </Info>
             {children}
@@ -21,4 +21,4 @@ function Div({ children, ...rest }) {
     );
 }
 
-export default Div;
+export default ItemDiv;

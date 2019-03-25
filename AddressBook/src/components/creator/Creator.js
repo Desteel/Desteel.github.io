@@ -1,106 +1,93 @@
-import { StyledSaveButton, StyledInputbox, StyledInput } from "./StyledCreator";
-import { observable, action } from "mobx";
-import { observer, inject } from "mobx-react";
-import IconCheck from "../../icons/tick.svg";
+import {
+    Btn as Button,
+    OptionBtn as Option,
+    Inputbox,
+    Input,
+    Row
+} from './StyledCreator';
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
+import IconCheck from '../../icons/tick.svg';
+import { createGuid } from '../../utils';
 
-@inject("contentStore", "modalStore")
+@inject('contentStore', 'modalStore')
 @observer
 class Creator extends React.Component {
-    @observable
-    template = {
-        id: "",
-        photoUrl: "",
-        name: "",
-        surname: "",
-        phone: [],
-        address: ""
+    @observable template = {
+        id: '',
+        photoUrl: '',
+        name: '',
+        surname: '',
+        phoneValues: [],
+        address: ''
+    };
+    @observable phoneInputs = [];
+
+    @action('add phones input')
+    addInput = () => {};
+
+    @action('add new phones')
+    setNumber = e => {};
+
+    @action('add card string')
+    fillString = e => {
+        const { value, name } = e.target;
+
+        this.props.template[name] = value;
     };
 
-    uniqueHash = () => (Date.now() * Math.random()).toString(34);
-
-    @action("template edit")
-    templateEdit = e => {
-        const target = e.target,
-            value = target.value,
-            name = target.name,
-            id = e.target.dataset.id;
-
-        let isArray = Array.isArray(this.template[name]);
-
-        // if (isArray) {
-        //     if (this.template[name].length < id) {
-        //         this.template[name][this.template[name].length] = value;
-        //     } else {
-        //         this.template[name][id] = value;
-        //     }
-        // } else {
-        //     this.template[name] = value;
-        // }
-
-        // console.log(this.template.phone);
-
-        isArray
-            ? (this.template[name][id] = value)
-            : (this.template[name] = value);
-    };
-
-    @action("add card")
+    @action('add card')
     addCard = () => {
         this.props.contentStore.addCard(this.template);
         this.props.modalStore.isOpen = false;
     };
 
     componentDidMount() {
-        this.template.id = this.uniqueHash();
+        this.template.id = createGuid();
     }
 
     render() {
+        console.log(new Array(3).fill(''));
+        console.log(Array.from(new Array(3)).fill(''));
+
         return (
             <form>
-                <StyledInputbox>
-                    <StyledInput
-                        onChange={this.templateEdit}
+                <Inputbox>
+                    <Input
+                        onChange={this.fillString}
                         name="name"
                         placeholder="name"
                     />
-                    <StyledInput
-                        onChange={this.templateEdit}
+                    <Input
+                        onChange={this.fillString}
                         name="surname"
                         placeholder="surname"
                     />
-                    <StyledInput
-                        onChange={this.templateEdit}
-                        name="phone"
-                        placeholder="phone"
-                        data-id="0"
-                    />
-                    <StyledInput
-                        onChange={this.templateEdit}
-                        name="phone"
-                        placeholder="phone"
-                        data-id="1"
-                    />
-                    <StyledInput
-                        onChange={this.templateEdit}
-                        name="phone"
-                        placeholder="phone"
-                        data-id="2"
-                    />
-                    <StyledInput
-                        onChange={this.templateEdit}
-                        name="phone"
-                        placeholder="phone"
-                        data-id="3"
-                    />
-                    <StyledInput
-                        onChange={this.templateEdit}
+                    <Row>
+                        <Input
+                            onChange={this.fillString}
+                            name="phoneValues"
+                            placeholder="phone"
+                        />
+                        <Option action={this.addInput}>add phone</Option>
+                    </Row>
+                    {this.phoneInputs.map((value, i) => (
+                        <Input
+                            onChange={this.setNumber(i)}
+                            name="phoneValues"
+                            placeholder="phone"
+                            defaultValue={value}
+                        />
+                    ))}
+                    <Input
+                        onChange={this.fillString}
                         name="address"
                         placeholder="address"
                     />
-                </StyledInputbox>
-                <StyledSaveButton action={this.addCard}>
-                    {<IconCheck />}
-                </StyledSaveButton>
+                </Inputbox>
+                <Button action={this.addCard}>
+                    <IconCheck />
+                </Button>
             </form>
         );
     }

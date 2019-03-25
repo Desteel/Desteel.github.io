@@ -4,21 +4,22 @@ import IconPen from "../../icons/pen.svg";
 import IconCheck from "../../icons/tick.svg";
 
 class Options extends React.Component {
-    ToggleOptions = () =>
-        this.props.editable ? (
-            <React.Fragment>
-                <Btn action={this.props.saveCard}>{<IconCheck />}</Btn>
-                <Btn action={this.props.editClose}>{"exit"}</Btn>
-            </React.Fragment>
-        ) : (
-            <React.Fragment>
-                <Btn action={this.props.editStart}>{<IconPen />}</Btn>
-                <Btn action={this.props.deleteCard}>{<IconCross />}</Btn>
-            </React.Fragment>
-        );
+    editRender = () => (
+        <OptionsBox>
+            <Btn action={this.props.saveCard}>{<IconCheck />}</Btn>
+            <Btn action={this.props.editClose}>{"exit"}</Btn>
+        </OptionsBox>
+    );
+
+    viewRender = () => (
+        <OptionsBox>
+            <Btn action={this.props.editStart}>{<IconPen />}</Btn>
+            <Btn action={this.props.deleteCard}>{<IconCross />}</Btn>
+        </OptionsBox>
+    );
 
     render() {
-        return <OptionsBox>{<this.ToggleOptions />}</OptionsBox>;
+        return this.props.editable ? this.editRender() : this.viewRender();
     }
 }
 

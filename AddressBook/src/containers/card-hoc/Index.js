@@ -1,5 +1,5 @@
 import { observer, inject } from "mobx-react";
-import Card from "./Card";
+import Card from "../../components/card/";
 
 @inject("contentStore")
 @observer
@@ -16,10 +16,9 @@ class CardCollection extends React.Component {
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
-            const cards = items.map(item => (
+            return <>{items.map(item => (
                 <Card key={item.id} id={item.id} item={item} />
-            ));
-            return <React.Fragment>{cards}</React.Fragment>;
+            ))}</>;
         }
     }
 }
