@@ -79,7 +79,7 @@ class Creator extends React.Component {
                             />
                             {i === 0 ? (
                                 <Option action={this.addInput}>
-                                    add phone{" "}
+                                    add phone
                                 </Option>
                             ) : (
                                 <Option action={this.removeInput(i)}>
