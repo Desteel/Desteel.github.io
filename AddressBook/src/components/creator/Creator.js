@@ -26,11 +26,19 @@ class Creator extends React.Component {
 
     @action("add phones input")
     addInput = () => {
-        this.phoneValues.push("");
+        this.phoneValues = [...this.phoneValues, ""];
     };
-    @action("remove phones input") removeInput = i => {};
 
-    @action("add new phones") setNumber = e => {};
+    @action("remove phones input")
+    removeInput = key => e => {
+        const { name } = e.target;
+
+        this.phoneValues = this.phoneValues.filter((v, i) => i !== key);
+        this.template = {
+            ...this.template,
+            [name]: this.phoneValues.filter(value => !!value)
+        };
+    };
 
     @action("fill card phones")
     fillPhones = key => e => {
@@ -39,16 +47,20 @@ class Creator extends React.Component {
         this.phoneValues = this.phoneValues.map(
             (value, i) => (i === key ? newValue : value)
         );
-        this.template[name] = this.phoneValues.filter(value => !!value);
-        console.log(this.template);
+        this.template = {
+            ...this.template,
+            [name]: this.phoneValues.filter(value => !!value)
+        };
     };
 
-    @action("add card string")
+    @action("fill card string")
     fillString = e => {
         const { value, name } = e.target;
 
-        this.template[name] = value;
-        console.log(this.template);
+        this.template = {
+            ...this.template,
+            [name]: value
+        };
     };
 
     @action("add card")
@@ -58,13 +70,13 @@ class Creator extends React.Component {
     };
 
     componentDidMount() {
-        this.template.id = createGuid();
+        this.template = {
+            ...this.template,
+            id: createGuid()
+        };
     }
 
     render() {
-        // console.log(new Array(3).fill(""));
-        // console.log(Array.from(new Array(3)).fill(""));
-
         return (
             <form>
                 <Inputbox>
@@ -91,7 +103,10 @@ class Creator extends React.Component {
                                     add phone
                                 </Option>
                             ) : (
-                                <Option action={this.removeInput(i)}>
+                                <Option
+                                    action={this.removeInput(i)}
+                                    name={"phoneValues"}
+                                >
                                     remove phone
                                 </Option>
                             )}
