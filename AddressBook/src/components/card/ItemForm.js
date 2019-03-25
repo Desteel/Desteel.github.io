@@ -11,8 +11,8 @@ class ItemForm extends React.Component {
     fillPhones = key => e => {
         const { value: newValue, name } = e.target;
 
-        this.phoneValues = this.phoneValues.map((value, i) => i === key ? newValue : value );
-        this.props.template[name] = this.phoneValues;
+        this.phoneValues = this.phoneValues.map((value, i) => i === key ? newValue : value );        
+        this.props.template[name] = this.phoneValues.filter(value => !!value);
     };
 
     @action('fill card string')
@@ -47,7 +47,6 @@ class ItemForm extends React.Component {
                         <Input
                             onChange={this.fillPhones(i)}
                             key={i}
-                            data-id={i}
                             defaultValue={value}
                             name="phoneValues"
                             placeholder="phone"
