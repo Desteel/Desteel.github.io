@@ -27,21 +27,21 @@ class Creator extends React.Component {
 
         let isArray = Array.isArray(this.template[name]);
 
-        if (isArray) {
-            if (this.template[name].length < id) {
-                this.template[name][this.template[name].length] = value;
-            } else {
-                this.template[name][id] = value;
-            }
-        } else {
-            this.template[name] = value;
-        }
+        // if (isArray) {
+        //     if (this.template[name].length < id) {
+        //         this.template[name][this.template[name].length] = value;
+        //     } else {
+        //         this.template[name][id] = value;
+        //     }
+        // } else {
+        //     this.template[name] = value;
+        // }
 
-        console.log(this.template.phone);
+        // console.log(this.template.phone);
 
-        // isArray
-        //     ? (this.template[name][id] = value)
-        //     : (this.template[name] = value);
+        isArray
+            ? (this.template[name][id] = value)
+            : (this.template[name] = value);
     };
 
     @action("add card")
