@@ -1,14 +1,12 @@
 import styled from "styled-components";
-import Button from "../button/Button";
+import Button from "../elements/";
 
 export const StyledInputbox = styled.div`
     display: flex;
     flex-direction: column;
 `;
 
-export const StyledInput = styled.input.attrs({
-    type: "text"
-})`
+export const StyledInput = styled.input`
     border: ${props => props.theme.border} ${props => props.theme.main};
     border-radius: 4px;
     padding: 4px;

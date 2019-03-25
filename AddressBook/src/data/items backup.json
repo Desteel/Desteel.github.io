@@ -1,54 +1,75 @@
 {
     "items": [
-        {
-			"id": 0,
-            "photoUrl": "https://avatars3.githubusercontent.com/u/30462928?s=460&v=4",
-            "name": "Alexander",
-            "surname": "Kerensky",
-            "phone": "84626358367",
-            "address": "Detroit"
-        },
-        {
-			"id": 1,
-            "name": "Victor",
-            "surname": "Kerensky",
-            "phone": "84626358367",
-            "address": "Moscow"
-        },
-        {
-			"id": 2,
-            "name": "Oleg",
-            "surname": "Prophetic",
-            "phone": "84626358367",
-            "address": "New-York"
-        },
-        {		
-			"id": 3,
-            "name": "Alexander",
-            "surname": "Good",
-            "phone": "84626358367",
-            "address": "Detroit"
-        },
-        {
-			"id": 4,
-            "name": "Dmitriy",
-            "surname": "Kerensky",
-            "phone": "84626358367",
-            "address": "LosAngeles"
-        },
-        {
-			"id": 5,
-            "name": "Alexander",
-            "surname": "Kerensky",
-            "phone": "84626378367",
-            "address": "Saint Peterburg"
-        },
-        {
-			"id": 6,
-            "name": "Vitaliy",
-            "surname": "Nicev",
-            "phone": "84626358367",
-            "address": "Detroit"
-        }
+      {
+        "id": 0,
+        "photoUrl": "https://avatars3.githubusercontent.com/u/30462928?s=460&v=4",
+        "name": "Alexander",
+        "surname": "Kerensky",
+        "phoneValues": [
+          "84626358367",
+          "84626358367"
+        ],
+        "address": "Detroit"
+      },
+      {
+        "id": 1,
+        "name": "Victor",
+        "surname": "Kerensky",
+        "phoneValues": [
+          "84626358367",
+          "84626358367"
+        ],
+        "address": "Moscow"
+      },
+      {
+        "id": 2,
+        "name": "Oleg",
+        "surname": "Prophetic",
+        "phoneValues": [
+          "84626358367",
+          "84626358367"
+        ],
+        "address": "New-York"
+      },
+      {
+        "id": 3,
+        "name": "Alexander676",
+        "surname": "Good",
+        "phoneValues": [
+          "84626358367",
+          "84626358367"
+        ],
+        "address": "Detroit"
+      },
+      {
+        "id": 4,
+        "name": "Dmitriy",
+        "surname": "Kerensky",
+        "phoneValues": [
+          "84626358367",
+          "84626358367"
+        ],
+        "address": "LosAngeles"
+      },
+      {
+        "id": 5,
+        "name": "Alexander",
+        "surname": "Kerensky",
+        "phoneValues": [
+          "84626358367",
+          "84626358367"
+        ],
+        "address": "Saint Peterburg"
+      },
+      {
+        "id": 6,
+        "name": "Vitaliy",
+        "surname": "Nicev",
+        "phoneValues": [
+          "84626358367",
+          "84626358367"
+        ],
+        "address": "Detroit"
+      }
     ]
-}
+  }

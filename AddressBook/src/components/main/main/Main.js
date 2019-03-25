@@ -1,5 +1,5 @@
 import StyledGrid from "./StyledMain";
-import CardCollection from "../../card/CardCollection";
+import CardCollection from "../../../containers/card-hoc/Index";
 
 class Main extends React.Component {
     render() {

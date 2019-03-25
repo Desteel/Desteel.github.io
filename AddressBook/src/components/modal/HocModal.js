@@ -1,6 +1,6 @@
 import { action } from "mobx";
 import { observer, inject } from "mobx-react";
-import Button from "../button/Button";
+import Button from "../elements/";
 
 @inject("modalStore")
 @observer

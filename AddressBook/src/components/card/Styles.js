@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Card = styled.div`
     display: flex;
-    border: ${props => props.theme.border} ${props => props.theme.main};
-    border-radius: ${props => props.theme.borderRadius};
+    border: ${({theme}) => `${theme.border} ${theme.main}`};
+    border-radius: ${({theme}) => `${theme.border} ${theme.main}`};
     padding: 10px;
 `;
 
@@ -27,10 +27,8 @@ export const Info = styled.div`
     margin-right: 10px;
 `;
 
-export const Input = styled.input.attrs({
-    type: "text"
-})`
-    border: ${props => props.theme.border} ${props => props.theme.main};
+export const Input = styled.input`
+    border: ${({theme}) => `${theme.border} ${theme.main}`};
     border-radius: 4px;
     padding: 4px;
 `;

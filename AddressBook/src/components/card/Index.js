@@ -1,7 +1,7 @@
 import { observable, action } from "mobx";
 import { observer, inject } from "mobx-react";
-import Form from "./CardForm";
-import Div from "./CardDiv";
+import ItemForm from "./ItemForm";
+import ItemDiv from "./ItemDiv";
 import Options from "../options/Options";
 
 @inject("contentStore")
@@ -13,7 +13,7 @@ class Card extends React.Component {
         photoUrl: "",
         name: "",
         surname: "",
-        phone: [],
+        phoneValues: [],
         address: ""
     };
 
@@ -40,6 +40,9 @@ class Card extends React.Component {
         isArray
             ? (this.template[name][id] = value)
             : (this.template[name] = value);
+
+
+        console.log(this.template);        
     };
 
     @action("save card")
@@ -51,29 +54,32 @@ class Card extends React.Component {
     @action("delete card")
     deleteCard = () => this.props.contentStore.deleteCard(this.props.id);
 
-    toggleMode = ({ children }) =>
-        this.editable ? (
-            <Form action={this.templateEdit} props={this.props.item}>
-                {children}
-            </Form>
-        ) : (
-            <Div props={this.props.item}>{children}</Div>
-        );
+    editRender = () => (
+        <ItemForm action={this.templateEdit} item={this.props.item}>
+            <Options
+                editable={this.editable}
+                editStart={this.editStart}
+                editClose={this.editClose}
+                saveCard={this.saveCard}
+                deleteCard={this.deleteCard}
+            />
+        </ItemForm>
+    );
+
+    viewRender = () => (
+        <ItemDiv item={this.props.item}>
+            <Options
+                editable={this.editable}
+                editStart={this.editStart}
+                editClose={this.editClose}
+                saveCard={this.saveCard}
+                deleteCard={this.deleteCard}
+            />
+        </ItemDiv>
+    );
 
     render() {
-        return (
-            <this.toggleMode>
-                {
-                    <Options
-                        editable={this.editable}
-                        editStart={this.editStart}
-                        editClose={this.editClose}
-                        saveCard={this.saveCard}
-                        deleteCard={this.deleteCard}
-                    />
-                }
-            </this.toggleMode>
-        );
+        return this.editable ? this.editRender() : this.viewRender();
     }
 }
 

@@ -12,7 +12,7 @@ class Creator extends React.Component {
         photoUrl: "",
         name: "",
         surname: "",
-        phone: [],
+        phoneValues: [],
         address: ""
     };
 
@@ -70,25 +70,25 @@ class Creator extends React.Component {
                     />
                     <StyledInput
                         onChange={this.templateEdit}
-                        name="phone"
+                        name="phoneValues"
                         placeholder="phone"
                         data-id="0"
                     />
                     <StyledInput
                         onChange={this.templateEdit}
-                        name="phone"
+                        name="phoneValues"
                         placeholder="phone"
                         data-id="1"
                     />
                     <StyledInput
                         onChange={this.templateEdit}
-                        name="phone"
+                        name="phoneValues"
                         placeholder="phone"
                         data-id="2"
                     />
                     <StyledInput
                         onChange={this.templateEdit}
-                        name="phone"
+                        name="phoneValues"
                         placeholder="phone"
                         data-id="3"
                     />
