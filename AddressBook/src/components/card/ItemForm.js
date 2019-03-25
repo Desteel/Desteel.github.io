@@ -1,15 +1,29 @@
-import { observer, inject } from "mobx-react";
-import { observable, action } from "mobx";
-import { Card, Imagebox, Info, Input } from "./Styles";
-let photoIcon = require("../../images/photo.png");
+import { observer } from 'mobx-react';
+import { observable, action } from 'mobx';
+import { Card, Imagebox, Info, Input } from './Styles';
+let photoIcon = require('../../images/photo.png');
 
 @observer
 class ItemForm extends React.Component {
-    @observable phoneNumbers = this.props.phones ? [...this.props.phone] : [];
+    @observable phoneValues = this.props.item.phoneValues ? [...this.props.item.phoneValues] : [];
 
-    render() {
-        const { photoUrl, name, surname, phoneValues, address } = this.props.item,
-            { action } = this.props;        
+    @action('fill card phones')
+    fillPhones = key => e => {
+        const { value: newValue, name } = e.target;
+
+        this.phoneValues = this.phoneValues.map((value, i) => i === key ? newValue : value );
+        this.props.template[name] = this.phoneValues;
+    };
+
+    @action('fill card string')
+    fillString = e => {
+        const { value, name } = e.target;
+
+        this.props.template[name] = value
+    };
+
+    render() {   
+        const { photoUrl, name, surname, phoneValues, address } = this.props.item;
 
         return (
             <Card as="form">
@@ -18,20 +32,20 @@ class ItemForm extends React.Component {
                 </Imagebox>
                 <Info>
                     <Input
-                        onChange={action}
+                        onChange={this.fillString}
                         defaultValue={name}
                         name="name"
                         placeholder="name"
                     />
                     <Input
-                        onChange={action}
+                        onChange={this.fillString}
                         defaultValue={surname}
                         name="surname"
                         placeholder="surname"
                     />
                     {phoneValues.map((value, i) => (
                         <Input
-                            onChange={action}
+                            onChange={this.fillPhones(i)}
                             key={i}
                             data-id={i}
                             defaultValue={value}
@@ -40,7 +54,7 @@ class ItemForm extends React.Component {
                         />
                     ))}
                     <Input
-                        onChange={action}
+                        onChange={this.fillString}
                         defaultValue={address}
                         name="address"
                         placeholder="address"
