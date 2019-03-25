@@ -1,5 +1,5 @@
-import { observable, action } from "mobx";
-const axios = require("axios");
+import { observable, action } from 'mobx';
+const axios = require('axios');
 
 const $url = 'http://localhost:3000/items/';
 
@@ -8,7 +8,7 @@ class ContentStore {
     @observable isLoaded = false;
     @observable items = [];
 
-    @action("fetch data")
+    @action('fetch data')
     fetchData = () => {
         axios
             .get($url)
@@ -18,18 +18,18 @@ class ContentStore {
             })
             .catch(error => {
                 this.error = error;
-                console.error("error", error);
+                console.error('error', error);
             });
     };
 
-    @action("delete card")
+    @action('delete card')
     deleteCard = id => {
         axios.delete(`${$url}${id}`).then(result => {
             this.items = this.items.filter(item => item.id !== id);
         });
     };
 
-    @action("save editable card")
+    @action('save editable card')
     saveCard = (id, newItem) => {
         axios.put(`${$url}${id}`, newItem).then(result => {
             this.items = this.items.map(item =>
@@ -38,7 +38,7 @@ class ContentStore {
         });
     };
 
-    @action("add card")
+    @action('add card')
     addCard = newItem => {
         axios.post($url, newItem).then(result => {
             this.items = [...this.items, newItem];
