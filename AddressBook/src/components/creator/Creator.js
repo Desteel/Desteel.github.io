@@ -4,39 +4,45 @@ import {
     Inputbox,
     Input,
     Row
-} from './StyledCreator';
-import { observable, action } from 'mobx';
-import { observer, inject } from 'mobx-react';
-import IconCheck from '../../icons/tick.svg';
-import { createGuid } from '../../utils';
+} from "./StyledCreator";
+import { observable, action } from "mobx";
+import { observer, inject } from "mobx-react";
+import IconCheck from "../../icons/tick.svg";
+import { createGuid } from "../../utils";
 
-@inject('contentStore', 'modalStore')
+@inject("contentStore", "modalStore")
 @observer
 class Creator extends React.Component {
-    @observable template = {
-        id: '',
-        photoUrl: '',
-        name: '',
-        surname: '',
+    @observable
+    template = {
+        id: "",
+        photoUrl: "",
+        name: "",
+        surname: "",
         phoneValues: [],
-        address: ''
+        address: ""
     };
-    @observable phoneInputs = [];
+    @observable phoneInputs = [""];
 
-    @action('add phones input')
-    addInput = () => {};
+    @action("add phones input")
+    addInput = () => {
+        this.phoneInputs.push("");
+    };
+    @action("remove phones input")
+    removeInput = i => {
+        console.log(i);
+    };
 
-    @action('add new phones')
-    setNumber = e => {};
+    @action("add new phones") setNumber = e => {};
 
-    @action('add card string')
+    @action("add card string")
     fillString = e => {
         const { value, name } = e.target;
 
         this.props.template[name] = value;
     };
 
-    @action('add card')
+    @action("add card")
     addCard = () => {
         this.props.contentStore.addCard(this.template);
         this.props.modalStore.isOpen = false;
@@ -47,8 +53,8 @@ class Creator extends React.Component {
     }
 
     render() {
-        console.log(new Array(3).fill(''));
-        console.log(Array.from(new Array(3)).fill(''));
+        console.log(new Array(3).fill(""));
+        console.log(Array.from(new Array(3)).fill(""));
 
         return (
             <form>
@@ -63,21 +69,24 @@ class Creator extends React.Component {
                         name="surname"
                         placeholder="surname"
                     />
-                    <Row>
-                        <Input
-                            onChange={this.fillString}
-                            name="phoneValues"
-                            placeholder="phone"
-                        />
-                        <Option action={this.addInput}>add phone</Option>
-                    </Row>
                     {this.phoneInputs.map((value, i) => (
-                        <Input
-                            onChange={this.setNumber(i)}
-                            name="phoneValues"
-                            placeholder="phone"
-                            defaultValue={value}
-                        />
+                        <Row key={i}>
+                            <Input
+                                onChange={this.setNumber(i)}
+                                name="phoneValues"
+                                placeholder="phone"
+                                defaultValue={value}
+                            />
+                            {i === 0 ? (
+                                <Option action={this.addInput}>
+                                    add phone{" "}
+                                </Option>
+                            ) : (
+                                <Option action={this.removeInput(i)}>
+                                    remove phone
+                                </Option>
+                            )}
+                        </Row>
                     ))}
                     <Input
                         onChange={this.fillString}
