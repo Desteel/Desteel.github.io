@@ -8,37 +8,35 @@ class CreatorStore {
         photoUrl: '',
         name: '',
         surname: '',
-        phoneValues: [],
+        phoneValues: [''],
         address: ''
     };
-    phoneValues = [''];
 
     @action('add phones input')
     addInput = () => {
-        this.phoneValues = [...this.phoneValues, ''];        
+        this.template = {
+            ...this.template,
+            phoneValues: [...this.template.phoneValues, '']
+        };
     };
 
     @action('remove phones input')
-    removeInput = key => e => {
-        const { name } = e.target;
-
-        this.phoneValues = this.phoneValues.filter((v, i) => i !== key);
+    removeInput = key => () => {
         this.template = {
             ...this.template,
-            [name]: this.phoneValues.filter(value => !!value)
+            phoneValues: this.template.phoneValues.filter((v, i) => i !== key)
         };
     };
 
     @action('fill card phones')
     fillPhones = key => e => {
-        const { value: newValue, name } = e.target;
+        const { value: newValue } = e.target;
 
-        this.phoneValues = this.phoneValues.map((value, i) =>
-            i === key ? newValue : value
-        );
         this.template = {
             ...this.template,
-            [name]: this.phoneValues.filter(value => !!value)
+            phoneValues: this.template.phoneValues.map((value, i) =>
+                i === key ? newValue : value
+            )
         };
     };
 
@@ -56,7 +54,8 @@ class CreatorStore {
     addCard = () => {
         this.template = {
             ...this.template,
-            id: createGuid()
+            id: createGuid(),
+            phoneValues: this.template.phoneValues.filter(value => !!value)
         };
         this.props.contentStore.addCard(this.template);
         this.props.modalStore.isOpen = false;
