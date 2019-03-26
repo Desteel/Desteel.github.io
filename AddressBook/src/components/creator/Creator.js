@@ -42,7 +42,7 @@ class Creator extends React.Component {
     @action('fill card phones')
     fillPhones = key => e => {
         const { value: newValue } = e.target;
-        
+
         this.template = {
             ...this.template,
             phoneValues: this.template.phoneValues.map((value, i) =>
@@ -73,6 +73,14 @@ class Creator extends React.Component {
     };
 
     render() {
+        const {
+            phoneValues,
+            fillString,
+            fillPhones,
+            addInput,
+            removeInput,
+            addCard
+        } = this.props.contentStore;
         return (
             <form>
                 <Inputbox>
