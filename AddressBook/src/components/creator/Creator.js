@@ -4,34 +4,34 @@ import {
     Inputbox,
     Input,
     Row
-} from './StyledCreator';
-import { observable, action } from 'mobx';
-import { observer, inject } from 'mobx-react';
-import IconCheck from '../../icons/tick.svg';
-import { createGuid } from '../../utils';
+} from "./StyledCreator";
+import { observable, action } from "mobx";
+import { observer, inject } from "mobx-react";
+import IconCheck from "../../icons/tick.svg";
+import { createGuid } from "../../utils";
 
-@inject('contentStore', 'modalStore')
+@inject("contentStore", "modalStore", "creatorStore")
 @observer
 class Creator extends React.Component {
     @observable
     template = {
-        id: '',
-        photoUrl: '',
-        name: '',
-        surname: '',
-        phoneValues: [''],
-        address: ''
+        id: "",
+        photoUrl: "",
+        name: "",
+        surname: "",
+        phoneValues: [""],
+        address: ""
     };
 
-    @action('add phones input')
+    @action("add phones input")
     addInput = () => {
         this.template = {
             ...this.template,
-            phoneValues: [...this.template.phoneValues, '']
+            phoneValues: [...this.template.phoneValues, ""]
         };
     };
 
-    @action('remove phones input')
+    @action("remove phones input")
     removeInput = key => () => {
         this.template = {
             ...this.template,
@@ -39,19 +39,19 @@ class Creator extends React.Component {
         };
     };
 
-    @action('fill card phones')
+    @action("fill card phones")
     fillPhones = key => e => {
         const { value: newValue } = e.target;
 
         this.template = {
             ...this.template,
-            phoneValues: this.template.phoneValues.map((value, i) =>
-                i === key ? newValue : value
+            phoneValues: this.template.phoneValues.map(
+                (value, i) => (i === key ? newValue : value)
             )
         };
     };
 
-    @action('fill card string')
+    @action("fill card string")
     fillString = e => {
         const { value, name } = e.target;
 
@@ -61,26 +61,33 @@ class Creator extends React.Component {
         };
     };
 
-    @action('add card')
+    @action("add card")
     addCard = () => {
         this.template = {
             ...this.template,
             id: createGuid(),
             phoneValues: this.template.phoneValues.filter(value => !!value)
         };
-        this.props.contentStore.addCard(this.template);
+        console.log(this.template);
+        // this.props.contentStore.addCard(this.template);
         this.props.modalStore.isOpen = false;
+    };
+
+    handleClick = () => {
+        this.addCard();
+        this.props.action(this.template);
     };
 
     render() {
         const {
-            phoneValues,
-            fillString,
-            fillPhones,
-            addInput,
-            removeInput,
-            addCard
-        } = this.props.contentStore;
+                fillString,
+                fillPhones,
+                addInput,
+                removeInput,
+                addCard
+            } = this.props.creatorStore,
+            { phoneValues } = this.props.creatorStore.template;
+
         return (
             <form>
                 <Inputbox>
@@ -109,7 +116,7 @@ class Creator extends React.Component {
                             ) : (
                                 <Option
                                     action={this.removeInput(i)}
-                                    name={'phoneValues'}
+                                    name={"phoneValues"}
                                 >
                                     remove phone
                                 </Option>
@@ -122,7 +129,7 @@ class Creator extends React.Component {
                         placeholder="address"
                     />
                 </Inputbox>
-                <Button action={this.addCard}>
+                <Button action={this.handleClick}>
                     <IconCheck />
                 </Button>
             </form>
