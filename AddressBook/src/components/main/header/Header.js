@@ -1,7 +1,8 @@
 import { StyledHeader, BtnAddCard } from "./StyledHeader";
 import Search from "../../search/Search";
 import Time from "../../time/Time";
-import Creator from "../../creator/Creator";
+// import Creator from "../../creator/Creator";
+import CreatorHoc from "../../../containers/creator-hoc";
 
 class Header extends React.Component {
     render() {
@@ -9,7 +10,7 @@ class Header extends React.Component {
             <StyledHeader>
                 <div className="container">
                     <Search />
-                    <BtnAddCard content={<Creator />} text={"Add card"} />
+                    <BtnAddCard content={<CreatorHoc />} text={"Add card"} />
                     <Time />
                 </div>
             </StyledHeader>
