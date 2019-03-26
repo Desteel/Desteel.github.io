@@ -11,7 +11,7 @@ class ItemForm extends React.Component {
     fillPhones = key => e => {
         const { value: newValue, name } = e.target;
 
-        this.phoneValues = this.phoneValues.map((value, i) => i === key ? newValue : value );                
+        this.phoneValues = this.phoneValues.map((value, i) => i === key ? newValue : value );
         this.props.template[name] = this.phoneValues.filter(value => !!value);
     };
 
