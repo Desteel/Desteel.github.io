@@ -19,38 +19,27 @@ class Creator extends React.Component {
         photoUrl: "",
         name: "",
         surname: "",
-        phoneValues: [],
+        phoneValues: [""],
         address: ""
     };
-    @observable phoneValues = [""];
 
     @action("add phones input")
     addInput = () => {
-        this.phoneValues = [...this.phoneValues, ""];
+        this.template.phoneValues = [...this.template.phoneValues, ""];
     };
 
     @action("remove phones input")
-    removeInput = key => e => {
-        const { name } = e.target;
-
-        this.phoneValues = this.phoneValues.filter((v, i) => i !== key);
-        this.template = {
-            ...this.template,
-            [name]: this.phoneValues.filter(value => !!value)
-        };
+    removeInput = key => () => {
+        this.template.phoneValues = this.template.phoneValues.filter((v, i) => i !== key);
     };
 
     @action("fill card phones")
     fillPhones = key => e => {
-        const { value: newValue, name } = e.target;
+        const { value: newValue } = e.target;
 
-        this.phoneValues = this.phoneValues.map(
+        this.template.phoneValues = this.template.phoneValues.map(
             (value, i) => (i === key ? newValue : value)
         );
-        this.template = {
-            ...this.template,
-            [name]: this.phoneValues.filter(value => !!value)
-        };
     };
 
     @action("fill card string")
@@ -65,16 +54,14 @@ class Creator extends React.Component {
 
     @action("add card")
     addCard = () => {
+        this.template = {
+            ...this.template,
+            id: createGuid(),
+            phoneValues: this.template.phoneValues.filter(value => !!value)
+        };
         this.props.contentStore.addCard(this.template);
         this.props.modalStore.isOpen = false;
     };
-
-    componentDidMount() {
-        this.template = {
-            ...this.template,
-            id: createGuid()
-        };
-    }
 
     render() {
         return (
@@ -90,7 +77,7 @@ class Creator extends React.Component {
                         name="surname"
                         placeholder="surname"
                     />
-                    {this.phoneValues.map((value, i) => (
+                    {this.template.phoneValues.map((value, i) => (
                         <Row key={i}>
                             <Input
                                 onChange={this.fillPhones(i)}
