@@ -82,6 +82,7 @@
         "mixitup": "^3.2.1",
         "mobx": "^5.9.0",
         "mobx-react": "^5.4.3",
+        "mobx-state-tree": "^3.12.2",
         "ms-signalr-client": "^2.2.7",
         "normalize.css": "^7.0.0",
         "owl.carousel": "^2.3.4",
