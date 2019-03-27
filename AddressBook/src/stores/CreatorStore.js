@@ -19,7 +19,7 @@ class CreatorStore {
             phoneValues: [...this.template.phoneValues, '']
         };
 
-        console.log(template);        
+        console.log(template);
     };
 
     @action('remove phones input')
@@ -61,7 +61,6 @@ class CreatorStore {
         };
 
         console.log(this.template);
-        
     };
 }
 
