@@ -13,11 +13,13 @@ class CreatorStore {
     };
 
     @action('add phones input')
-    addInput = () => {
+    addInput = template => () => {
         this.template = {
             ...this.template,
             phoneValues: [...this.template.phoneValues, '']
         };
+
+        console.log(template);        
     };
 
     @action('remove phones input')
@@ -50,15 +52,16 @@ class CreatorStore {
         };
     };
 
-    @action('add card')
-    addCard = () => {
+    @action('create card')
+    createCard = () => {
         this.template = {
             ...this.template,
             id: createGuid(),
             phoneValues: this.template.phoneValues.filter(value => !!value)
         };
-        this.props.contentStore.addCard(this.template);
-        this.props.modalStore.isOpen = false;
+
+        console.log(this.template);
+        
     };
 }
 

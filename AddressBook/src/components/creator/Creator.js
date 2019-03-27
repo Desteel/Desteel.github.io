@@ -4,17 +4,16 @@ import {
     Inputbox,
     Input,
     Row
-} from "./StyledCreator";
-import { observable, action } from "mobx";
-import { observer, inject } from "mobx-react";
-import IconCheck from "../../icons/tick.svg";
-import { createGuid } from "../../utils";
+} from './StyledCreator';
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
+import IconCheck from '../../icons/tick.svg';
+import { createGuid } from '../../utils';
 
-@inject("contentStore", "modalStore", "creatorStore")
+@inject('contentStore', 'modalStore', 'creatorStore')
 @observer
 class Creator extends React.Component {
-    @observable
-    template = {
+    @observable template = {
         id: "",
         photoUrl: "",
         name: "",
@@ -23,59 +22,57 @@ class Creator extends React.Component {
         address: ""
     };
 
-    @action("add phones input")
-    addInput = () => {
-        this.template = {
-            ...this.template,
-            phoneValues: [...this.template.phoneValues, ""]
-        };
-    };
+    // @action("add phones input")
+    // addInput = () => {
+    //     this.template = {
+    //         ...this.template,
+    //         phoneValues: [...this.template.phoneValues, ""]
+    //     };
+    // };
 
-    @action("remove phones input")
-    removeInput = key => () => {
-        this.template = {
-            ...this.template,
-            phoneValues: this.template.phoneValues.filter((v, i) => i !== key)
-        };
-    };
+    // @action("remove phones input")
+    // removeInput = key => () => {
+    //     this.template = {
+    //         ...this.template,
+    //         phoneValues: this.template.phoneValues.filter((v, i) => i !== key)
+    //     };
+    // };
 
-    @action("fill card phones")
-    fillPhones = key => e => {
-        const { value: newValue } = e.target;
+    // @action("fill card phones")
+    // fillPhones = key => e => {
+    //     const { value: newValue } = e.target;
 
-        this.template = {
-            ...this.template,
-            phoneValues: this.template.phoneValues.map(
-                (value, i) => (i === key ? newValue : value)
-            )
-        };
-    };
+    //     this.template = {
+    //         ...this.template,
+    //         phoneValues: this.template.phoneValues.map(
+    //             (value, i) => (i === key ? newValue : value)
+    //         )
+    //     };
+    // };
 
-    @action("fill card string")
-    fillString = e => {
-        const { value, name } = e.target;
+    // @action("fill card string")
+    // fillString = e => {
+    //     const { value, name } = e.target;
 
-        this.template = {
-            ...this.template,
-            [name]: value
-        };
-    };
+    //     this.template = {
+    //         ...this.template,
+    //         [name]: value
+    //     };
+    // };
 
-    @action("add card")
-    addCard = () => {
-        this.template = {
-            ...this.template,
-            id: createGuid(),
-            phoneValues: this.template.phoneValues.filter(value => !!value)
-        };
-        console.log(this.template);
-        // this.props.contentStore.addCard(this.template);
-        this.props.modalStore.isOpen = false;
-    };
+    // @action("create card")
+    // createCard = () => {
+    //     this.template = {
+    //         ...this.template,
+    //         id: createGuid(),
+    //         phoneValues: this.template.phoneValues.filter(value => !!value)
+    //     };
+    // };
 
+    @action('create and add card ')
     handleClick = () => {
-        this.addCard();
-        this.props.action(this.template);
+        this.props.creatorStore.createCard();        
+        this.props.action(this.props.creatorStore.template);
     };
 
     render() {
@@ -83,40 +80,39 @@ class Creator extends React.Component {
                 fillString,
                 fillPhones,
                 addInput,
-                removeInput,
-                addCard
+                removeInput
             } = this.props.creatorStore,
             { phoneValues } = this.props.creatorStore.template;
+
+        // console.log(this.props.creatorStore.template);
 
         return (
             <form>
                 <Inputbox>
                     <Input
-                        onChange={this.fillString}
+                        onChange={fillString}
                         name="name"
                         placeholder="name"
                     />
                     <Input
-                        onChange={this.fillString}
+                        onChange={fillString}
                         name="surname"
                         placeholder="surname"
                     />
-                    {this.template.phoneValues.map((value, i) => (
+                    {phoneValues.map((value, i) => (
                         <Row key={i}>
                             <Input
-                                onChange={this.fillPhones(i)}
+                                onChange={fillPhones(i)}
                                 name="phoneValues"
                                 placeholder="phone"
                                 defaultValue={value}
                             />
                             {i === 0 ? (
-                                <Option action={this.addInput}>
-                                    add phone
-                                </Option>
+                                <Option action={addInput(this.template)}>add phone</Option>
                             ) : (
                                 <Option
-                                    action={this.removeInput(i)}
-                                    name={"phoneValues"}
+                                    action={removeInput(i)}
+                                    name={'phoneValues'}
                                 >
                                     remove phone
                                 </Option>
@@ -124,7 +120,7 @@ class Creator extends React.Component {
                         </Row>
                     ))}
                     <Input
-                        onChange={this.fillString}
+                        onChange={fillString}
                         name="address"
                         placeholder="address"
                     />
