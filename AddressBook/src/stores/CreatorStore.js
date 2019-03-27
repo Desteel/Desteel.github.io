@@ -1,28 +1,18 @@
-import { observable, action } from 'mobx';
-import { createGuid } from '../utils';
+import { observable, action } from "mobx";
+import { createGuid } from "../utils";
 
 class CreatorStore {
-    @observable
-    template = {
-        id: '',
-        photoUrl: '',
-        name: '',
-        surname: '',
-        phoneValues: [''],
-        address: ''
-    };
+    @observable template = {};
 
-    @action('add phones input')
-    addInput = template => () => {
+    @action("add phones input")
+    addInput = () => {
         this.template = {
             ...this.template,
-            phoneValues: [...this.template.phoneValues, '']
+            phoneValues: [...this.template.phoneValues, ""]
         };
-
-        console.log(template);
     };
 
-    @action('remove phones input')
+    @action("remove phones input")
     removeInput = key => () => {
         this.template = {
             ...this.template,
@@ -30,19 +20,19 @@ class CreatorStore {
         };
     };
 
-    @action('fill card phones')
+    @action("fill card phones")
     fillPhones = key => e => {
         const { value: newValue } = e.target;
 
         this.template = {
             ...this.template,
-            phoneValues: this.template.phoneValues.map((value, i) =>
-                i === key ? newValue : value
+            phoneValues: this.template.phoneValues.map(
+                (value, i) => (i === key ? newValue : value)
             )
         };
     };
 
-    @action('fill card string')
+    @action("fill card string")
     fillString = e => {
         const { value, name } = e.target;
 
@@ -52,7 +42,7 @@ class CreatorStore {
         };
     };
 
-    @action('create card')
+    @action("create card")
     createCard = () => {
         this.template = {
             ...this.template,

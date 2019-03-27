@@ -13,14 +13,14 @@ import { createGuid } from '../../utils';
 @inject('contentStore', 'modalStore', 'creatorStore')
 @observer
 class Creator extends React.Component {
-    @observable template = {
-        id: "",
-        photoUrl: "",
-        name: "",
-        surname: "",
-        phoneValues: [""],
-        address: ""
-    };
+    // @observable template = {
+    //     id: "",
+    //     photoUrl: "",
+    //     name: "",
+    //     surname: "",
+    //     phoneValues: [""],
+    //     address: ""
+    // };
 
     // @action("add phones input")
     // addInput = () => {
@@ -75,6 +75,17 @@ class Creator extends React.Component {
         this.props.action(this.props.creatorStore.template);
     };
 
+    componentWillMount () {
+        this.props.creatorStore.template = {
+            id: "",
+            photoUrl: "",
+            name: "",
+            surname: "",
+            phoneValues: [""],
+            address: ""
+        };
+    }
+
     render() {
         const {
                 fillString,
@@ -108,7 +119,7 @@ class Creator extends React.Component {
                                 defaultValue={value}
                             />
                             {i === 0 ? (
-                                <Option action={addInput(this.template)}>add phone</Option>
+                                <Option action={addInput}>add phone</Option>
                             ) : (
                                 <Option
                                     action={removeInput(i)}
