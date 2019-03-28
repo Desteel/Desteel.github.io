@@ -5,17 +5,12 @@ import {
     Input,
     Row
 } from "./StyledCreator";
-import { action } from "mobx";
-import { observer, inject } from "mobx-react";
 import { Form } from "react-final-form";
 import arrayMutators from "final-form-arrays";
 import { FieldArray } from "react-final-form-arrays";
 import IconCheck from "../../icons/tick.svg";
 
-@inject("contentStore", "modalStore", "creatorStore")
-@observer
 class Creator extends React.Component {
-    @action("creator submit")
     onSubmit = values => {
         console.log(JSON.stringify(values, 0, 2));
     };
