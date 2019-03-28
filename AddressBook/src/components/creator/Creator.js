@@ -20,16 +20,6 @@ class Creator extends React.Component {
         console.log(JSON.stringify(values, 0, 2));
     };
 
-    @action("remove input")
-    addInput = () => () => {
-        push("numbers", undefined);
-    };
-
-    @action("remove input")
-    removeInput = (fields, i) => () => {
-        fields.remove(i);
-    };
-
     render() {
         return (
             <Form
