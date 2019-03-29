@@ -5,7 +5,6 @@ import { observer } from "mobx-react";
 import searchStore from "./stores/SearchStore";
 import contentStore from "./stores/ContentStore";
 import modalStore from "./stores/ModalStore";
-import creatorStore from "./stores/CreatorStore";
 
 import Header from "./components/main/header/Header";
 import Main from "./components/main/main/Main";
@@ -16,7 +15,7 @@ import { theme, GlobalStyle } from "./styles/StyledGlobal";
 
 import DevTools from "mobx-react-devtools";
 
-const stores = { searchStore, contentStore, modalStore, creatorStore };
+const stores = { searchStore, contentStore, modalStore };
 
 @observer
 class App extends React.Component {
