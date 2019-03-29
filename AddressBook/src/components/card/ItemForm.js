@@ -23,7 +23,7 @@ class ItemForm extends React.Component {
     };
 
     render() {   
-        const { photoUrl, name, surname, phoneValues, address } = this.props.item;
+        const { photoUrl, name, lastname, phoneValues, address } = this.props.item;
 
         return (
             <Card as="form">
@@ -39,9 +39,9 @@ class ItemForm extends React.Component {
                     />
                     <Input
                         onChange={this.fillString}
-                        defaultValue={surname}
-                        name="surname"
-                        placeholder="surname"
+                        defaultValue={lastname}
+                        name="lastname"
+                        placeholder="lastname"
                     />
                     {phoneValues.map((value, i) => (
                         <Input

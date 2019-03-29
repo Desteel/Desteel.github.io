@@ -12,7 +12,7 @@ class Card extends React.Component {
         id: "",
         photoUrl: "",
         name: "",
-        surname: "",
+        lastname: "",
         phoneValues: [],
         address: ""
     };

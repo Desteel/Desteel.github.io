@@ -4,7 +4,7 @@
         "id": 0,
         "photoUrl": "https://avatars3.githubusercontent.com/u/30462928?s=460&v=4",
         "name": "Alexander",
-        "surname": "Kerensky",
+        "lastname": "Kerensky",
         "phoneValues": [
           "84626358367",
           "84626358367"
@@ -14,7 +14,7 @@
       {
         "id": 1,
         "name": "Victor",
-        "surname": "Kerensky",
+        "lastname": "Kerensky",
         "phoneValues": [
           "84626358367",
           "84626358367"
@@ -24,7 +24,7 @@
       {
         "id": 2,
         "name": "Oleg",
-        "surname": "Prophetic",
+        "lastname": "Prophetic",
         "phoneValues": [
           "84626358367",
           "84626358367"
@@ -34,7 +34,7 @@
       {
         "id": 3,
         "name": "Alexander676",
-        "surname": "Good",
+        "lastname": "Good",
         "phoneValues": [
           "84626358367",
           "84626358367"
@@ -44,7 +44,7 @@
       {
         "id": 4,
         "name": "Dmitriy",
-        "surname": "Kerensky",
+        "lastname": "Kerensky",
         "phoneValues": [
           "84626358367",
           "84626358367"
@@ -54,7 +54,7 @@
       {
         "id": 5,
         "name": "Alexander",
-        "surname": "Kerensky",
+        "lastname": "Kerensky",
         "phoneValues": [
           "84626358367",
           "84626358367"
@@ -64,7 +64,7 @@
       {
         "id": 6,
         "name": "Vitaliy",
-        "surname": "Nicev",
+        "lastname": "Nicev",
         "phoneValues": [
           "84626358367",
           "84626358367"

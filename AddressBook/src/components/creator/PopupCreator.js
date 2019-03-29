@@ -14,7 +14,7 @@ class Creator extends React.Component {
             <form>
                 <StyledInputbox>
                     <StyledInput name="name" placeholder="name" />
-                    <StyledInput name="surname" placeholder="surname" />
+                    <StyledInput name="lastname" placeholder="lastname" />
                     <StyledInput name="phone" placeholder="phone" />
                     <StyledInput name="address" placeholder="address" />
                 </StyledInputbox>

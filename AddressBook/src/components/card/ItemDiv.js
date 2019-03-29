@@ -2,7 +2,7 @@ import { Card, Imagebox, Info } from "./Styles";
 let photoIcon = require("../../images/photo.png");
 
 function ItemDiv({ children, ...rest }) {
-    const { photoUrl, name, surname, phoneValues, address } = rest.item;
+    const { photoUrl, name, lastname, phoneValues, address } = rest.item;
 
     return (
         <Card>
@@ -10,7 +10,7 @@ function ItemDiv({ children, ...rest }) {
                 <img src={photoUrl ? photoUrl : photoIcon} />
             </Imagebox>
             <Info>
-                <div>{`${name} ${surname}`}</div>
+                <div>{`${name} ${lastname}`}</div>
                 {phoneValues.map((value, i) => (
                     <div key={i}>{value}</div>
                 ))}
