@@ -6,9 +6,9 @@ import Creator from "../../components/creator/Creator";
 @observer
 class CreatorHoc extends React.Component {
     @action("add card")
-    addCard = template => {
-        this.props.contentStore.addCard(template);
-        this.props.modalStore.isOpen = false;
+    addCard = data => {
+        this.props.contentStore.addCard(data);
+        // this.props.modalStore.isOpen = false;
     };
 
     render() {
