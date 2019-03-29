@@ -18,6 +18,7 @@ class Creator extends React.Component {
     render() {
         return (
             <Form
+                initialValues={{ numbers: [""] }}
                 onSubmit={this.onSubmit}
                 mutators={{
                     ...arrayMutators
