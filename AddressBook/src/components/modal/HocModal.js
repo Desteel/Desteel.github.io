@@ -1,6 +1,6 @@
 import { action } from "mobx";
 import { observer, inject } from "mobx-react";
-import Button from "../elements/";
+import { Button } from "../elements/";
 
 @inject("modalStore")
 @observer
@@ -10,9 +10,11 @@ class HocModal extends React.Component {
         this.props.modalStore.init(this.props.content);
     };
 
-    render() {        
+    render() {
         return (
-            <Button action={this.initModal} className={this.props.className}>{this.props.text}</Button>
+            <Button action={this.initModal} className={this.props.className}>
+                {this.props.text}
+            </Button>
         );
     }
 }

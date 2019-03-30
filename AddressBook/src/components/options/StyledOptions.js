@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../elements/";
+import { Button } from "../elements/";
 
 export const OptionsBox = styled.div`
     margin-right: -10px;
@@ -13,7 +13,7 @@ export const Btn = styled(Button)`
     padding: 5px;
     border: ${props => props.theme.border} ${props => props.theme.main};
     border-right: none;
-    color: inherit;    
+    color: inherit;
 
     &:first-child {
         border-top-left-radius: 5px;

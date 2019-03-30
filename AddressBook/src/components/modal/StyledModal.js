@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../elements/";
+import { Button } from "../elements/";
 
 export const ModalWrap = styled.div`
     position: fixed;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../elements/";
+import { Button } from "../elements/";
 
 export const StyledSearch = styled.form`
     display: flex;
