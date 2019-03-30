@@ -1,17 +1,9 @@
 import styled from "styled-components";
-import Button from "../elements/";
-import { Field } from "react-final-form";
+import { Button } from "../elements/";
 
 export const Inputbox = styled.div`
     display: flex;
     flex-direction: column;
-`;
-
-export const Input = styled(Field)`
-    border: ${({theme}) => `${theme.border} ${theme.main}`};
-    border-radius: 4px;
-    padding: 4px;
-    margin-bottom: 10px;
 `;
 
 export const Row = styled.div`
@@ -40,4 +32,3 @@ export const OptionBtn = styled(Button)`
     background-color: transparent;
     color: inherit;
 `;
-
