@@ -1,10 +1,3 @@
-import {
-    Btn as Button,
-    OptionBtn as Option,
-    Inputbox,
-    Row
-} from "./StyledCreator";
-import { Input } from "../elements/Styles";
 import { observer } from "mobx-react";
 import { observable, action } from "mobx";
 import { Form, Field } from "react-final-form";
@@ -18,6 +11,13 @@ import {
     composeValidators
 } from "../../utils/Validate";
 import IconCheck from "../../icons/tick.svg";
+import {
+    Btn as Button,
+    OptionBtn as Option,
+    Inputbox,
+    Row
+} from "./StyledCreator";
+import { Input } from "../elements/Styles";
 
 @observer
 class Creator extends React.Component {
