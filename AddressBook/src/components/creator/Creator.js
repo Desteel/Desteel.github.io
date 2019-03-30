@@ -2,20 +2,36 @@ import {
     Btn as Button,
     OptionBtn as Option,
     Inputbox,
-    Input,
     Row
 } from "./StyledCreator";
+import { Input } from "../elements/Styles";
 import { observer } from "mobx-react";
 import { observable, action } from "mobx";
-import { Form } from "react-final-form";
+import { Form, Field } from "react-final-form";
 import arrayMutators from "final-form-arrays";
 import { FieldArray } from "react-final-form-arrays";
+import { FieldValidating } from "../elements/";
 import { createGuid } from "../../utils";
 import IconCheck from "../../icons/tick.svg";
 
 @observer
 class Creator extends React.Component {
     @observable id = createGuid();
+
+    required = value => (value ? undefined : "Required");
+
+    mustBeNumber = value => (isNaN(value) ? "Must be a number" : undefined);
+
+    // minValue = min => value =>
+    //     isNaN(value) || value <= min
+    //         ? undefined
+    //         : `Should be greater than ${min}`;
+
+    composeValidators = (...validators) => value =>
+        validators.reduce(
+            (error, validator) => error || validator(value),
+            undefined
+        );
 
     @action("submit")
     onSubmit = values => {
@@ -40,32 +56,34 @@ class Creator extends React.Component {
                 }) => (
                     <form onSubmit={handleSubmit}>
                         <Inputbox>
-                            <Input
-                                component='input'
-                                name='name'
-                                placeholder='name'
-                                type='text'
+                            <FieldValidating
+                                name={"name"}
+                                validate={this.required}
+                                type={"text"}
+                                placeholder={"name"}
                             />
-                            <Input
-                                component='input'
-                                name='lastname'
-                                placeholder='lastname'
-                                type='text'
+                            <FieldValidating
+                                name={"lastname"}
+                                validate={this.required}
+                                type={"text"}
+                                placeholder={"lastname"}
                             />
-                            <Option
-                                action={() => push("phoneValues", undefined)}
-                            >
+                            <Option action={() => push("phoneValues", "")}>
                                 Add phone
                             </Option>
                             <FieldArray name='phoneValues'>
                                 {({ fields }) =>
                                     fields.map((name, i) => (
                                         <Row key={name}>
-                                            <Input
-                                                component='input'
+                                            <FieldValidating
                                                 name={name}
-                                                placeholder='phone'
-                                                type='phone'
+                                                validate={this.composeValidators(
+                                                    this.required,
+                                                    this.mustBeNumber,
+                                                    // this.minValue(5)
+                                                )}
+                                                type={"phone"}
+                                                placeholder={"phone"}
                                             />
                                             <Option
                                                 action={() => fields.remove(i)}
@@ -77,6 +95,7 @@ class Creator extends React.Component {
                                 }
                             </FieldArray>
                             <Input
+                                as={Field}
                                 component='input'
                                 name='address'
                                 placeholder='address'
