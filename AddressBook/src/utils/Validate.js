@@ -1,10 +1,12 @@
+import { isNumeric } from "./";
+
 export const required = value => (value ? undefined : "Required");
 
 export const mustBeNumber = value =>
-    isNaN(value) ? "Must be a number" : undefined;
+    isNumeric(value) ? undefined : "Must be a number";
 
-export const minValue = min => value =>
-    isNaN(value) || value <= min ? undefined : `Should be greater than ${min}`;
+export const minLength = min => value =>
+    isNumeric(value) && value.length >= min ? undefined : `Min length ${min}`;
 
 export const composeValidators = (...validators) => value =>
     validators.reduce(
