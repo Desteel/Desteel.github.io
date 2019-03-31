@@ -8,6 +8,7 @@ import { createGuid } from "../../utils";
 import {
     required,
     mustBeNumber,
+    minLength,
     composeValidators
 } from "../../utils/Validate";
 import IconCheck from "../../icons/tick.svg";
@@ -22,6 +23,10 @@ import { Input } from "../elements/Styles";
 @observer
 class Creator extends React.Component {
     @observable id = createGuid();
+
+    arrayRequired = value => {
+        console.log(value);
+    };
 
     @action("submit")
     onSubmit = values => {
@@ -61,7 +66,10 @@ class Creator extends React.Component {
                             <Option action={() => push("phoneValues", "")}>
                                 Add phone
                             </Option>
-                            <FieldArray name='phoneValues'>
+                            <FieldArray
+                                name='phoneValues'
+                                validate={this.arrayRequired}
+                            >
                                 {({ fields }) =>
                                     fields.map((name, i) => (
                                         <Row key={name}>
@@ -69,8 +77,8 @@ class Creator extends React.Component {
                                                 name={name}
                                                 validate={composeValidators(
                                                     required,
-                                                    mustBeNumber
-                                                    // minValue(5)
+                                                    mustBeNumber,
+                                                    minLength(3)
                                                 )}
                                                 type={"phone"}
                                                 placeholder={"phone"}
