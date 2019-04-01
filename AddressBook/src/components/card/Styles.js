@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Card = styled.div`
     display: flex;
     border: ${({theme}) => `${theme.border} ${theme.main}`};
-    border-radius: ${({theme}) => `${theme.border} ${theme.main}`};
+    border-radius: 8px;
     padding: 10px;
 `;
 

@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react';
 import { Form, Field } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import { FieldArray } from 'react-final-form-arrays';
@@ -9,26 +8,22 @@ import {
     minLength,
     composeValidators
 } from '../../utils/Validate';
-import IconCheck from '../../icons/tick.svg';
-import {
-    Btn as Button,
-    OptionBtn as Option,
-    Inputbox,
-    Row
-} from './StyledCreator';
-import { Input } from '../elements/Styles';
+import { Card, Imagebox, Inputbox, Row, StyledButton, OptionBtn, Input } from './Styles';
+import { Button } from '../elements';
+let photoIcon = require('../../images/photo.png');
 
-@observer
-class Creator extends React.Component {
+class CardForm extends React.Component {
     onSubmit = values => {
-        this.props.action(values);
+        this.props.onSubmit(values);
         console.log(JSON.stringify(values, 0, 2));
     };
 
     render() {
+        const photoUrl = this.props.photo;
+
         return (
             <Form
-                initialValues={{ phoneValues: [''] }}
+                initialValues={this.props.initialValues}
                 onSubmit={this.onSubmit}
                 mutators={{
                     ...arrayMutators
@@ -39,7 +34,10 @@ class Creator extends React.Component {
                         mutators: { push }
                     }
                 }) => (
-                    <form onSubmit={handleSubmit}>
+                    <Card as="form" onSubmit={handleSubmit}>
+                        <Imagebox>
+                            <img src={photoUrl ? photoUrl : photoIcon} />
+                        </Imagebox>
                         <Inputbox>
                             <Input
                                 as={Field}
@@ -57,9 +55,12 @@ class Creator extends React.Component {
                                 type="text"
                                 validate={required}
                             />
-                            <Option action={() => push('phoneValues', '')}>
+                            <OptionBtn
+                                as={Button}
+                                action={() => push('phoneValues', '')}
+                            >
                                 Add phone
-                            </Option>
+                            </OptionBtn>
                             <FieldArray name="phoneValues">
                                 {({ fields }) =>
                                     fields.map((name, i) => (
@@ -76,11 +77,12 @@ class Creator extends React.Component {
                                                     minLength(3)
                                                 )}
                                             />
-                                            <Option
+                                            <StyledButton
+                                                as={Button}
                                                 action={() => fields.remove(i)}
                                             >
                                                 ❌
-                                            </Option>
+                                            </StyledButton>
                                         </Row>
                                     ))
                                 }
@@ -93,14 +95,12 @@ class Creator extends React.Component {
                                 type="text"
                             />
                         </Inputbox>
-                        <Button type={'submit'}>
-                            <IconCheck />
-                        </Button>
-                    </form>
+                        {this.props.children}
+                    </Card>
                 )}
             />
         );
     }
 }
 
-export default Creator;
+export default CardForm;
