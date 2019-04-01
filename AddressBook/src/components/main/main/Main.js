@@ -1,4 +1,4 @@
-import StyledGrid from "./StyledMain";
+import StyledGrid from "./Styles";
 import CardCollection from "../../../containers/card-hoc/Index";
 
 class Main extends React.Component {

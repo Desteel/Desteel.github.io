@@ -1,4 +1,4 @@
-import { OptionsBox, Btn } from './StyledOptions';
+import { OptionsBox, Btn } from './Styles';
 import IconCross from '../../icons/cross.svg';
 import IconPen from '../../icons/pen.svg';
 import IconCheck from '../../icons/tick.svg';

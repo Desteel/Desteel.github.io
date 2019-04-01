@@ -1,4 +1,4 @@
-import { StyledInput } from "./StyledSearch";
+import { StyledInput } from "./Styles";
 import { observer, inject } from "mobx-react";
 
 @inject("searchStore")

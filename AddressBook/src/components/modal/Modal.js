@@ -1,4 +1,4 @@
-import { ModalWrap, Overlay, Body, Close } from "./StyledModal";
+import { ModalWrap, Overlay, Body, Close } from "./Styles";
 import { observer, inject } from "mobx-react";
 import IconCross from "../../icons/cross.svg";
 

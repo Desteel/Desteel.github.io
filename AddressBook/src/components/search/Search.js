@@ -1,4 +1,4 @@
-import { StyledSearch, SearchButton, ClearButton } from "./StyledSearch";
+import { StyledSearch, SearchButton, ClearButton } from "./Styles";
 import { observer, inject } from "mobx-react";
 import Input from "./Input";
 import IconSearch from "../../icons/search.svg";
