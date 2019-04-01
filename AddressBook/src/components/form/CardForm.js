@@ -19,7 +19,7 @@ class CardForm extends React.Component {
     };
 
     render() {
-        const photoUrl = this.props.photo;
+        const photoUrl = this.props.initialValues.photoUrl;
 
         return (
             <Form
