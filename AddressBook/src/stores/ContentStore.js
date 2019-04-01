@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 const axios = require('axios');
+import { createGuid } from '../utils';
 
 const $url = 'http://localhost:3000/items/';
 
@@ -40,8 +41,9 @@ class ContentStore {
 
     @action('add card')
     addCard = newItem => {
-        axios.post($url, newItem).then(result => {
-            this.items = [...this.items, newItem];
+        const itemWithId = { ...newItem, id: createGuid() };
+        axios.post($url, itemWithId).then(result => {
+            this.items = [...this.items, itemWithId];
         });
     };
 }

@@ -1,10 +1,8 @@
 import { observer } from 'mobx-react';
-import { observable, action } from 'mobx';
 import { Form, Field } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import { FieldArray } from 'react-final-form-arrays';
 import { InputValidating } from '../elements/';
-import { createGuid } from '../../utils';
 import {
     required,
     mustBeNumber,
@@ -22,15 +20,7 @@ import { Input } from '../elements/Styles';
 
 @observer
 class Creator extends React.Component {
-    @observable id = createGuid();
-
-    arrayRequired = value => {
-        console.log(value);
-    };
-
-    @action('submit')
     onSubmit = values => {
-        this.id = createGuid();
         this.props.action(values);
         console.log(JSON.stringify(values, 0, 2));
     };
@@ -38,7 +28,7 @@ class Creator extends React.Component {
     render() {
         return (
             <Form
-                initialValues={{ id: this.id, phoneValues: [''] }}
+                initialValues={{ phoneValues: [''] }}
                 onSubmit={this.onSubmit}
                 mutators={{
                     ...arrayMutators
@@ -63,17 +53,14 @@ class Creator extends React.Component {
                                 as={Field}
                                 component={InputValidating}
                                 name="lastname"
-                                placeholder="name"
+                                placeholder="lastname"
                                 type="text"
                                 validate={required}
                             />
                             <Option action={() => push('phoneValues', '')}>
                                 Add phone
                             </Option>
-                            <FieldArray
-                                name="phoneValues"
-                                validate={this.arrayRequired}
-                            >
+                            <FieldArray name="phoneValues">
                                 {({ fields }) =>
                                     fields.map((name, i) => (
                                         <Row key={name}>
