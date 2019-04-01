@@ -1,13 +1,15 @@
-import { OptionsBox, Btn } from "./StyledOptions";
-import IconCross from "../../icons/cross.svg";
-import IconPen from "../../icons/pen.svg";
-import IconCheck from "../../icons/tick.svg";
+import { OptionsBox, Btn } from './StyledOptions';
+import IconCross from '../../icons/cross.svg';
+import IconPen from '../../icons/pen.svg';
+import IconCheck from '../../icons/tick.svg';
 
 class Options extends React.Component {
     editRender = () => (
         <OptionsBox>
-            <Btn action={this.props.saveCard}>{<IconCheck />}</Btn>
-            <Btn action={this.props.editClose}>{"exit"}</Btn>
+            <Btn type={'submit'}>
+                {<IconCheck />}
+            </Btn>
+            <Btn action={this.props.editClose}>{'exit'}</Btn>
         </OptionsBox>
     );
 

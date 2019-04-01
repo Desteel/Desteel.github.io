@@ -1,66 +1,22 @@
-import { observer } from 'mobx-react';
-import { observable, action } from 'mobx';
-import { Card, Imagebox, Info, Input } from './Styles';
-let photoIcon = require('../../images/photo.png');
+import { observer, inject } from 'mobx-react';
+import { action } from 'mobx';
+import CardForm from '../../components/form/CardForm';
 
+@inject('contentStore', 'modalStore')
 @observer
 class ItemForm extends React.Component {
-    @observable phoneValues = this.props.item.phoneValues ? [...this.props.item.phoneValues] : [];
-
-    @action('fill card phones')
-    fillPhones = key => e => {
-        const { value: newValue, name } = e.target;
-
-        this.phoneValues = this.phoneValues.map((value, i) => i === key ? newValue : value );
-        this.props.template[name] = this.phoneValues.filter(value => !!value);
+    @action('save card')
+    saveCard = data => {
+        this.props.contentStore.saveCard(this.props.item.id, data);
+        this.props.editClose();
+        // this.props.modalStore.isOpen = false;
     };
 
-    @action('fill card string')
-    fillString = e => {
-        const { value, name } = e.target;
-
-        this.props.template[name] = value
-    };
-
-    render() {   
-        const { photoUrl, name, lastname, phoneValues, address } = this.props.item;
-
+    render() {
         return (
-            <Card as="form">
-                <Imagebox>
-                    <img src={photoUrl ? photoUrl : photoIcon} />
-                </Imagebox>
-                <Info>
-                    <Input
-                        onChange={this.fillString}
-                        defaultValue={name}
-                        name="name"
-                        placeholder="name"
-                    />
-                    <Input
-                        onChange={this.fillString}
-                        defaultValue={lastname}
-                        name="lastname"
-                        placeholder="lastname"
-                    />
-                    {phoneValues.map((value, i) => (
-                        <Input
-                            onChange={this.fillPhones(i)}
-                            key={i}
-                            defaultValue={value}
-                            name="phoneValues"
-                            placeholder="phone"
-                        />
-                    ))}
-                    <Input
-                        onChange={this.fillString}
-                        defaultValue={address}
-                        name="address"
-                        placeholder="address"
-                    />
-                </Info>
+            <CardForm onSubmit={this.saveCard} initialValues={this.props.item}>
                 {this.props.children}
-            </Card>
+            </CardForm>
         );
     }
 }
