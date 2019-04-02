@@ -9,14 +9,10 @@ import Options from '../options/Options';
 class Card extends React.Component {
     @observable editable = false;
 
-    @action('edit card open')
-    editOpen = () => {
-        this.editable = true;
-    };
-
-    @action('edit card close')
-    editClose = () => {
-        this.editable = false;
+    @action('toggle card editable')
+    toggleEditable = () => {
+        this.editable = !this.editable;
+        console.log(this.editable);
     };
 
     @action('save card')
@@ -31,7 +27,7 @@ class Card extends React.Component {
 
     editRender = () => (
         <CardForm onSubmit={this.saveCard} initialValues={this.props.item}>
-            <Options editable={this.editable} editClose={this.editClose} />
+            <Options editable={this.editable} editClose={this.toggleEditable} />
         </CardForm>
     );
 
@@ -39,7 +35,7 @@ class Card extends React.Component {
         <ItemDiv item={this.props.item}>
             <Options
                 editable={this.editable}
-                editStart={this.editOpen}
+                editStart={this.toggleEditable}
                 deleteCard={this.deleteCard}
             />
         </ItemDiv>
