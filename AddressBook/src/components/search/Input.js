@@ -1,7 +1,7 @@
-import { StyledInput } from "./Styles";
-import { observer, inject } from "mobx-react";
+import { SearchInput } from './Styles';
+import { observer, inject } from 'mobx-react';
 
-@inject("searchStore")
+@inject('searchStore')
 @observer
 class Input extends React.Component {
     returnValue = e => {
@@ -10,7 +10,9 @@ class Input extends React.Component {
 
     render() {
         return (
-            <StyledInput
+            <SearchInput
+                type="text"
+                placeholder="Search"
                 onChange={this.returnValue}
                 value={this.props.searchStore.value}
             />

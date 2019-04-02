@@ -1,10 +1,11 @@
-import { StyledSearch, SearchButton, ClearButton } from "./Styles";
-import { observer, inject } from "mobx-react";
-import Input from "./Input";
-import IconSearch from "../../icons/search.svg";
-import IconCross from "../../icons/cross.svg";
+import { StyledSearch, SearchButton, ClearButton } from './Styles';
+import { observer, inject } from 'mobx-react';
+import { Button } from '../elements/';
+import Input from './Input';
+import IconSearch from '../../icons/search.svg';
+import IconCross from '../../icons/cross.svg';
 
-@inject("searchStore")
+@inject('searchStore')
 @observer
 class Search extends React.Component {
     render() {
@@ -12,9 +13,13 @@ class Search extends React.Component {
 
         return (
             <StyledSearch>
-                <SearchButton>{<IconSearch />}</SearchButton>
+                <SearchButton as={Button}>{<IconSearch />}</SearchButton>
                 <Input />
-                <ClearButton action={clearInput} isActive={isActive}>
+                <ClearButton
+                    as={Button}
+                    action={clearInput}
+                    isActive={isActive}
+                >
                     {<IconCross />}
                 </ClearButton>
             </StyledSearch>

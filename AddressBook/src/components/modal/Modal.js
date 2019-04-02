@@ -1,8 +1,9 @@
-import { ModalWrap, Overlay, Body, Close } from "./Styles";
-import { observer, inject } from "mobx-react";
-import IconCross from "../../icons/cross.svg";
+import { ModalWrap, Overlay, Body, Close } from './Styles';
+import { observer, inject } from 'mobx-react';
+import { Button } from '../elements/';
+import IconCross from '../../icons/cross.svg';
 
-@inject("modalStore")
+@inject('modalStore')
 @observer
 class Modal extends React.Component {
     render() {
@@ -14,7 +15,9 @@ class Modal extends React.Component {
                     <Overlay onClick={close} />
                     <Body>
                         <div>{content}</div>
-                        <Close action={close}>{<IconCross />}</Close>
+                        <Close as={Button} action={close}>
+                            {<IconCross />}
+                        </Close>
                     </Body>
                 </ModalWrap>
             );

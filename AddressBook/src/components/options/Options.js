@@ -1,23 +1,30 @@
-import { OptionsBox, Btn } from './Styles';
+import { OptionBox, OptionBtn } from './Styles';
+import { Button } from '../elements/';
 import IconCross from '../../icons/cross.svg';
 import IconPen from '../../icons/pen.svg';
 import IconCheck from '../../icons/tick.svg';
 
 class Options extends React.Component {
     editRender = () => (
-        <OptionsBox>
-            <Btn type={'submit'}>
+        <OptionBox>
+            <OptionBtn as={Button} type={'submit'}>
                 {<IconCheck />}
-            </Btn>
-            <Btn action={this.props.editClose}>{'exit'}</Btn>
-        </OptionsBox>
+            </OptionBtn>
+            <OptionBtn as={Button} action={this.props.editClose}>
+                {'exit'}
+            </OptionBtn>
+        </OptionBox>
     );
 
     viewRender = () => (
-        <OptionsBox>
-            <Btn action={this.props.editStart}>{<IconPen />}</Btn>
-            <Btn action={this.props.deleteCard}>{<IconCross />}</Btn>
-        </OptionsBox>
+        <OptionBox>
+            <OptionBtn as={Button} action={this.props.editStart}>
+                {<IconPen />}
+            </OptionBtn>
+            <OptionBtn as={Button} action={this.props.deleteCard}>
+                {<IconCross />}
+            </OptionBtn>
+        </OptionBox>
     );
 
     render() {

@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { Button } from "../elements/";
+import styled from 'styled-components';
 
 export const ModalWrap = styled.div`
     position: fixed;
@@ -28,7 +27,7 @@ export const Body = styled.div`
     border-radius: ${props => props.theme.borderRadius};
 `;
 
-export const Close = styled(Button)`
+export const Close = styled.button`
     position: absolute;
     top: 0;
     right: 0;

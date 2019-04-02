@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { Button } from "../elements/";
+import styled from 'styled-components';
 
 export const StyledSearch = styled.form`
     display: flex;
@@ -11,7 +10,7 @@ export const StyledSearch = styled.form`
     border-radius: ${props => props.theme.borderRadius};
 `;
 
-export const SearchButton = styled(Button)`
+export const SearchButton = styled.button`
     outline: 0;
     display: flex;
     align-items: center;
@@ -26,14 +25,11 @@ export const SearchButton = styled(Button)`
 
 export const ClearButton = styled(SearchButton)`
     transition: opacity 0.2s, visibility 0.2s;
-    opacity: ${props => (props.isActive ? "1" : "0")};
-    visibility: ${props => (props.isActive ? "visible" : "hidden")};
+    opacity: ${props => (props.isActive ? '1' : '0')};
+    visibility: ${props => (props.isActive ? 'visible' : 'hidden')};
 `;
 
-export const StyledInput = styled.input.attrs({
-    type: "text",
-    placeholder: "Search"
-})`
+export const SearchInput = styled.input`
     outline: 0;
     border: none;
     flex: 1;
