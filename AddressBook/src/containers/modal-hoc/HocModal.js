@@ -7,7 +7,9 @@ import { Button } from '../../components/elements/';
 @observer
 class HocModal extends React.Component {
     ModalWithContent = close => (
-        <Modal action={close}>{this.props.content}</Modal>
+        <Modal action={close} overlay={this.props.overlay}>
+            {this.props.content}
+        </Modal>
     );
 
     @action('add modal with content')

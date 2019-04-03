@@ -16,6 +16,7 @@ class Header extends React.Component {
                     <BtnAddCard
                         as={HocModal}
                         content={<CreatorHoc />}
+                        overlay={true}
                         text={'Add card'}
                     />
                     <Time />

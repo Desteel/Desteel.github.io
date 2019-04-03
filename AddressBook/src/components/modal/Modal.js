@@ -3,7 +3,7 @@ import { ModalWrap, Overlay, Body, Close } from './Styles';
 
 const Modal = props => (
     <ModalWrap>
-        <Overlay onClick={props.action} />
+        {props.overlay ? <Overlay onClick={props.action} /> : null}
         <Body>
             {props.children}
             <Close as={Button} action={props.action}>
