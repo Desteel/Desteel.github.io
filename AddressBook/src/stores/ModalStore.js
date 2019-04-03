@@ -3,6 +3,7 @@ import { createGuid } from '../utils';
 
 class ModalStore {
     @observable modals = observable.map();
+    @observable overlayIsActive = false;
 
     @action('add modal')
     addModal = component => {
