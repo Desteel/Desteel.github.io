@@ -1,19 +1,18 @@
-import { observable, action } from "mobx";
+import { observable, action, asMap } from 'mobx';
+import { createGuid } from '../utils';
 
 class ModalStore {
-    @observable isOpen = false;
-    @observable content = null;
-    @observable contentBox = [];
+    @observable modals = observable.map();
 
-    @action("close modal")
-    close = () => {
-        this.isOpen = false;
+    @action('add modal')
+    addModal = component => {
+        const id = createGuid();
+        this.modals.set(id, component);
     };
 
-    @action("init modal")
-    init = content => {
-        this.isOpen = true;
-        this.content = content;
+    @action('delete modal')
+    deleteModal = id => {
+        this.modals.delete(id);
     };
 }
 

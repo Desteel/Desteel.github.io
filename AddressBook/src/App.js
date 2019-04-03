@@ -9,7 +9,7 @@ import modalStore from "./stores/ModalStore";
 import Header from "./components/main/header/Header";
 import Main from "./components/main/main/Main";
 import Footer from "./components/main/footer/Footer";
-import Modal from "./components/modal/Modal";
+import ModalRender from "./components/modal/ModalRender";
 import Normalize from "./styles/Normalize";
 import { theme, GlobalStyle } from "./styles/StyledGlobal";
 
@@ -30,7 +30,7 @@ class App extends React.Component {
                         <Header />
                         <Main />
                         <Footer />
-                        <Modal />
+                        <ModalRender />
                     </React.Fragment>
                 </ThemeProvider>
             </Provider>
