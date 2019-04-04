@@ -62,6 +62,10 @@ const _common = merge([
 				template: `${PATHS.source}/index.pug`,
 			}),	
 			
+			new webpack.DefinePlugin({
+				PRODUCTION: JSON.stringify(true)
+			}),
+			
 			new webpack.ProvidePlugin({
 				$: 'jquery',	 
 				jQuery: 'jquery',
