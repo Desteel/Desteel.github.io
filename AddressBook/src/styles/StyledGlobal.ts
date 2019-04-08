@@ -7,10 +7,14 @@ export const theme: DefaultTheme = {
     borderRadius: '8px'
 };
 
+interface Props {
+    modalState?: boolean;
+}
+
 export const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=cyrillic');
     html {
-        overflow: ${props => (props.modalState ? 'hidden' : null)};
+        overflow: ${(props: Props) => (props.modalState ? 'hidden' : null)};
     }
     body {
         font-family: 'Roboto', sans-serif;

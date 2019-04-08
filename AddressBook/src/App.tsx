@@ -1,6 +1,6 @@
+import * as React from "react";
 import { ThemeProvider } from "styled-components";
-import { Provider } from "mobx-react";
-import { observer } from "mobx-react";
+import { Provider, observer } from "mobx-react";
 // stores
 import searchStore from "./stores/SearchStore";
 import contentStore from "./stores/ContentStore";
