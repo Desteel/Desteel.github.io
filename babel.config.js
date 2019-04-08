@@ -1,19 +1,20 @@
-module.exports = function (api) {
+module.exports = function(api) {
     api.cache(true);
     const presets = [
         [
-            "@babel/preset-env",
+            '@babel/preset-env',
             {
                 modules: false,
-                useBuiltIns: "usage",
+                useBuiltIns: 'usage',
                 forceAllTransforms: true
             }
         ],
-        ["@babel/preset-react"]
+        ['@babel/preset-typescript'],
+        ['@babel/preset-react']
     ];
     const plugins = [
         [
-            "@babel/plugin-transform-runtime",
+            '@babel/plugin-transform-runtime',
             {
                 corejs: 2,
                 helpers: true,
@@ -22,15 +23,15 @@ module.exports = function (api) {
             }
         ],
         [
-            "@babel/plugin-proposal-decorators",
+            '@babel/plugin-proposal-decorators',
             {
-                "legacy": true
+                legacy: true
             }
         ],
         [
-            "@babel/plugin-proposal-class-properties",
+            '@babel/plugin-proposal-class-properties',
             {
-                "loose": true
+                loose: true
             }
         ]
         //,["react-hot-loader/babel"]

@@ -1,32 +1,38 @@
-module.exports = function () {
+module.exports = function() {
     return {
+        resolve: {
+            extensions: ['.js', '.jsx', '.ts', '.tsx']
+        },
         module: {
             rules: [
                 {
-                    test: /\.js$/,
+                    test: [/\.js$/, /\.jsx?$/, /\.ts$/, /\.tsx?$/],
                     exclude: /(node_modules|bower_components)/,
                     use: {
-                        loader: "babel-loader",
+                        loader: 'babel-loader',
                         options: {
-                            rootMode: "upward"
+                            rootMode: 'upward'
                         }
                     }
                 },
-				{
-					test: /.svg$/,
-					use: [{
-							loader: 'babel-loader',
-							options: {
-								rootMode: "upward"
-							}
-						}, {
-							loader: '@svgr/webpack',
-							options: { 
-								babel: false
-							},
-						}]
-				}
+                {
+                    test: /.svg$/,
+                    use: [
+                        {
+                            loader: 'babel-loader',
+                            options: {
+                                rootMode: 'upward'
+                            }
+                        },
+                        {
+                            loader: '@svgr/webpack',
+                            options: {
+                                babel: false
+                            }
+                        }
+                    ]
+                }
             ]
         }
-    };    
+    };
 };
