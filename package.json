@@ -6,8 +6,8 @@
     "author": "Dest",
     "license": "MIT",
     "scripts": {
-        "dev": "webpack-dev-server --mode development",
-        "build": "webpack --mode production"
+        "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development",
+        "build": "cross-env NODE_ENV=production webpack --mode production"
     },
     "devDependencies": {
         "@babel/cli": "^7.2.3",
@@ -23,6 +23,7 @@
         "breakpoint-sass": "^2.7.1",
         "compass-mixins": "^0.12.10",
         "copy-webpack-plugin": "^5.0.0",
+        "cross-env": "^5.2.0",
         "css-loader": "^2.1.0",
         "cssnano": "^4.1.8",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",

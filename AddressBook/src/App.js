@@ -24,9 +24,9 @@ class App extends React.Component {
             <Provider {...stores}>
                 <ThemeProvider theme={theme}>
                     <React.Fragment>
+                        {!PRODUCTION && <DevTools />}
                         <Normalize />
                         <GlobalStyle modalState={modalStore.isOpen} />
-                        <DevTools />
                         <Header />
                         <Main />
                         <Footer />

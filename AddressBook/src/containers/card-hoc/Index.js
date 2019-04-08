@@ -5,7 +5,7 @@ import Card from "../../components/card/";
 @observer
 class CardCollection extends React.Component {
     componentDidMount() {
-        this.props.contentStore.fetchData();
+        this.props.contentStore.getData();
     }
 
     render() {

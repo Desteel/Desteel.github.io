@@ -12,6 +12,8 @@ const babel = require('./webpack_config/babel');
 const files = require('./webpack_config/files');
 const fonts = require('./webpack_config/fonts');
 
+const PRODUCTION = process.env.NODE_ENV === "production";
+
 const PATHS = {
 	source: path.join(__dirname, 'AddressBook/src'),
     build: path.join(__dirname, 'AddressBook/dist')
@@ -62,6 +64,10 @@ const _common = merge([
 				template: `${PATHS.source}/index.pug`,
 			}),	
 			
+			new webpack.DefinePlugin({
+				'PRODUCTION': PRODUCTION
+			}),
+			
 			new webpack.ProvidePlugin({
 				$: 'jquery',	 
 				jQuery: 'jquery',
@@ -91,6 +97,6 @@ module.exports = (env, argv) => {
             devserver(),
 			css()
         ]);
-    }
+	}
 };
 
