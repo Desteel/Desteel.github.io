@@ -1,9 +1,9 @@
-import { observable, action, asMap } from 'mobx';
+import { observable, action } from 'mobx';
 import { createGuid } from '../utils';
 
 class ModalStore {
     @observable modals = observable.map();
-    @observable overlayIsActive = false;
+    @observable isOpen = false;
 
     @action('add modal')
     addModal = component => {
