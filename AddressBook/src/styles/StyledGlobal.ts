@@ -1,15 +1,16 @@
-import { createGlobalStyle } from "styled-components";
+import { DefaultTheme } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-export const theme = {
-    main: "#dadce0",
-    border: "1px solid",
-    borderRadius: "8px"
+export const theme: DefaultTheme = {
+    main: '#dadce0',
+    border: '1px solid',
+    borderRadius: '8px'
 };
 
 export const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=cyrillic');
     html {
-        overflow: ${props => props.modalState ? "hidden" : null};
+        overflow: ${props => (props.modalState ? 'hidden' : null)};
     }
     body {
         font-family: 'Roboto', sans-serif;
