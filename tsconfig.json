@@ -4,8 +4,13 @@
         "outDir": "./zcc/",
         "noImplicitAny": true,
         "module": "es6",
+        "moduleResolution": "node",
         "target": "es5",
         "allowJs": true,
-        "jsx": "react"
+        "jsx": "react",
+        "declaration": false,
+        "emitDecoratorMetadata": true,
+        "noImplicitReturns": false,
+        "noUnusedLocals": true
     }
 }
