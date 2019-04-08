@@ -1,17 +1,8 @@
 import styled from "styled-components";
 
-interface Props {
-    theme?: Theme;
-}
-
-interface Theme {
-    border?: string;
-    main?: string;
-}
-
 export const Card = styled.div`
     display: flex;
-    border: ${({theme}: Props) => `${theme.border} ${theme.main}`};
+    border: ${({theme}) => `${theme.border} ${theme.main}`};
     border-radius: 8px;
     padding: 10px;
 `;
@@ -37,7 +28,7 @@ export const Info = styled.div`
 `;
 
 export const Input = styled.input`
-    border: ${({theme}: Props) => `${theme.border} ${theme.main}`};
+    border: ${({theme}) => `${theme.border} ${theme.main}`};
     border-radius: 4px;
     padding: 4px;
 `;
