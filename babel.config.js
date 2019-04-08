@@ -33,7 +33,8 @@ module.exports = function(api) {
             {
                 loose: true
             }
-        ]
+        ],
+        ['babel-plugin-styled-components']
         //,["react-hot-loader/babel"]
     ];
     return {
