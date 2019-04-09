@@ -6,17 +6,21 @@ import { createGuid } from '../utils';
 const $dbServer = !PRODUCTION && 'http://localhost:3000/items/';
 const $dbLocal = PRODUCTION && require('../data/items.json');
 
+interface Data {
+    [key: string]: any;
+}
+
 class ContentStore {
     @observable error: string = null;
     @observable isLoaded: boolean = false;
     @observable items: Array<TCardItem> = [];
 
-    axiosInit = ($url: string, $data: string = null) => {
+    axiosInit = ($url: string, $key: string = null) => {
         axios
             .get($url)
-            .then((result: { data: object }) => {                
+            .then((result: { data: Data }) => {
                 this.isLoaded = true;
-                this.items = $data ? result.data[$data] : result.data;
+                this.items = $key ? result.data[$key] : result.data;
             })
             .catch((error: string) => {
                 this.error = error;
@@ -27,12 +31,12 @@ class ContentStore {
     deleteItem = (id: string) => {
         this.items = this.items.filter(item => item.id !== id);
     };
-    saveItem = (id: string, modifiedItem: object) => {     
+    saveItem = (modifiedItem: TCardItem) => {
         this.items = this.items.map(item =>
-            item.id === id ? modifiedItem : item
+            item.id === modifiedItem.id ? modifiedItem : item
         );
     };
-    addItem = (idItem: object) => {
+    addItem = (idItem: TCardItem) => {
         this.items = [...this.items, idItem];
     };
 
@@ -55,18 +59,18 @@ class ContentStore {
     };
 
     @action('save editable card')
-    saveCard = (id: string, modifiedItem: object) => {
+    saveCard = (modifiedItem: TCardItem) => {
         !PRODUCTION
             ? axios
-                  .put(`${$dbServer}${id}`, modifiedItem)
+                  .put(`${$dbServer}${modifiedItem.id}`, modifiedItem)
                   .then((result: { data: object }) => {
-                      this.saveItem(id, modifiedItem);
+                      this.saveItem(modifiedItem);
                   })
-            : this.saveItem(id, modifiedItem);
+            : this.saveItem(modifiedItem);
     };
 
     @action('add card')
-    addCard = (newItem: object) => {
+    addCard = (newItem: TCardItem) => {
         const itemWithId = { ...newItem, id: createGuid() };
         !PRODUCTION
             ? axios
