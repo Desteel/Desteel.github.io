@@ -8,7 +8,7 @@ const $dbServer = !PRODUCTION && 'http://localhost:3000/items/';
 const $dbLocal = PRODUCTION && require('../data/items.json');
 
 class ContentStore {
-    @observable error: string = null;
+    @observable error?: string;
     @observable isLoaded: boolean = false;
     @observable items: Array<TCardItem> = [];
 
