@@ -12,7 +12,7 @@ class ContentStore {
     @observable isLoaded: boolean = false;
     @observable items: Array<TCardItem> = [];
 
-    axiosInit = ($url: string, $key: string = null) => {
+    axiosInit = ($url: string, $key?: string) => {
         axios
             .get($url)
             .then((result: { data: TCardItem }) => {
