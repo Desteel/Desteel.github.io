@@ -1,18 +1,18 @@
-import { observable, action } from 'mobx';
+import { ObservableMap, observable, action } from 'mobx';
 import { createGuid } from '../utils';
 
 class ModalStore {
-    @observable modals = observable.map();
-    @observable isOpen = false;
+    @observable modals: ObservableMap<string> = observable.map();
+    @observable isOpen: boolean = false;
 
     @action('add modal')
-    addModal = component => {
+    addModal = (component: Function) => {
         const id = createGuid();
         this.modals.set(id, component);
     };
 
     @action('delete modal')
-    deleteModal = id => {
+    deleteModal = (id: string) => {
         this.modals.delete(id);
     };
 }
