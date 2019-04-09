@@ -26,12 +26,21 @@ class CardForm extends React.Component {
         console.log(JSON.stringify(values, 0, 2));
     };
 
+    addInput = push => () => {
+        push("phoneValues", "");
+    };
+
+    removeInput = (fields, index) => () => {
+        fields.remove(index);
+    };
+
     render() {
-        const photoUrl = this.props.initialValues.photoUrl;
+        const data = { ...this.props.initialValues };
+        const photoUrl = data.photoUrl;
 
         return (
             <Form
-                initialValues={this.props.initialValues}
+                initialValues={data}
                 onSubmit={this.onSubmit}
                 mutators={{
                     ...arrayMutators
@@ -63,10 +72,7 @@ class CardForm extends React.Component {
                                 type='text'
                                 validate={required}
                             />
-                            <OptionBtn
-                                as={Button}
-                                action={() => push("phoneValues", "")}
-                            >
+                            <OptionBtn as={Button} action={this.addInput(push)}>
                                 Add phone
                             </OptionBtn>
                             <FieldArray name='phoneValues'>
@@ -87,7 +93,10 @@ class CardForm extends React.Component {
                                             />
                                             <StyledButton
                                                 as={Button}
-                                                action={() => fields.remove(i)}
+                                                action={this.removeInput(
+                                                    fields,
+                                                    i
+                                                )}
                                             >
                                                 ❌
                                             </StyledButton>
