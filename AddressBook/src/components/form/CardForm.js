@@ -1,16 +1,24 @@
-import { Form, Field } from 'react-final-form';
-import arrayMutators from 'final-form-arrays';
-import { FieldArray } from 'react-final-form-arrays';
-import { InputValidating } from '../elements/';
+import { Form, Field } from "react-final-form";
+import arrayMutators from "final-form-arrays";
+import { FieldArray } from "react-final-form-arrays";
+import { InputValidating } from "../elements/";
 import {
     required,
     mustBeNumber,
     minLength,
     composeValidators
-} from '../../utils/Validate';
-import { Card, Imagebox, Inputbox, Row, StyledButton, OptionBtn, Input } from './Styles';
-import { Button } from '../elements';
-let photoIcon = require('../../images/photo.png');
+} from "../../utils/Validate";
+import {
+    Card,
+    Imagebox,
+    Inputbox,
+    Row,
+    StyledButton,
+    OptionBtn,
+    Input
+} from "./Styles";
+import { Button } from "../elements";
+let photoIcon = require("../../images/photo.png");
 
 class CardForm extends React.Component {
     onSubmit = values => {
@@ -34,7 +42,7 @@ class CardForm extends React.Component {
                         mutators: { push }
                     }
                 }) => (
-                    <Card as="form" onSubmit={handleSubmit}>
+                    <Card as='form' onSubmit={handleSubmit}>
                         <Imagebox>
                             <img src={photoUrl ? photoUrl : photoIcon} />
                         </Imagebox>
@@ -42,26 +50,26 @@ class CardForm extends React.Component {
                             <Input
                                 as={Field}
                                 component={InputValidating}
-                                name="name"
-                                placeholder="name"
-                                type="text"
+                                name='name'
+                                placeholder='name'
+                                type='text'
                                 validate={required}
                             />
                             <Input
                                 as={Field}
                                 component={InputValidating}
-                                name="lastname"
-                                placeholder="lastname"
-                                type="text"
+                                name='lastname'
+                                placeholder='lastname'
+                                type='text'
                                 validate={required}
                             />
                             <OptionBtn
                                 as={Button}
-                                action={() => push('phoneValues', '')}
+                                action={() => push("phoneValues", "")}
                             >
                                 Add phone
                             </OptionBtn>
-                            <FieldArray name="phoneValues">
+                            <FieldArray name='phoneValues'>
                                 {({ fields }) =>
                                     fields.map((name, i) => (
                                         <Row key={name}>
@@ -69,8 +77,8 @@ class CardForm extends React.Component {
                                                 as={Field}
                                                 component={InputValidating}
                                                 name={name}
-                                                placeholder="phone"
-                                                type="phone"
+                                                placeholder='phone'
+                                                type='phone'
                                                 validate={composeValidators(
                                                     required,
                                                     mustBeNumber,
@@ -89,10 +97,10 @@ class CardForm extends React.Component {
                             </FieldArray>
                             <Input
                                 as={Field}
-                                component="input"
-                                name="address"
-                                placeholder="address"
-                                type="text"
+                                component='input'
+                                name='address'
+                                placeholder='address'
+                                type='text'
                             />
                         </Inputbox>
                         {this.props.children}
