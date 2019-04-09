@@ -17,7 +17,7 @@ class Card extends React.Component {
 
     @action('save card')
     saveCard = data => {
-        this.props.contentStore.saveCard(this.props.item.id, data);
+        this.props.contentStore.saveCard(data);
         this.editable = false;
         // this.props.modalStore.isOpen = false;
     };
