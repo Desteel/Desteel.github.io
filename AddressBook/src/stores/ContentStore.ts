@@ -1,3 +1,4 @@
+/// <reference path="../globals.d.ts" />
 import { observable, action } from 'mobx';
 const axios = require('axios');
 import { TCardItem } from '../containers/card/types';
@@ -5,10 +6,6 @@ import { createGuid } from '../utils';
 
 const $dbServer = !PRODUCTION && 'http://localhost:3000/items/';
 const $dbLocal = PRODUCTION && require('../data/items.json');
-
-interface Data {
-    [key: string]: any;
-}
 
 class ContentStore {
     @observable error: string = null;
@@ -18,7 +15,7 @@ class ContentStore {
     axiosInit = ($url: string, $key: string = null) => {
         axios
             .get($url)
-            .then((result: { data: Data }) => {
+            .then((result: { data: TCardItem }) => {
                 this.isLoaded = true;
                 this.items = $key ? result.data[$key] : result.data;
             })
