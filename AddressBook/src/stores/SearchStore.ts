@@ -1,7 +1,7 @@
 import { observable, computed, action } from 'mobx';
 
 class SearchStore {
-    @observable value = "";
+    @observable value: string = "";
 
     @computed get isActive() {
         return this.value.length > 0
