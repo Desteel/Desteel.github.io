@@ -7,6 +7,13 @@ import { createGuid } from '../utils';
 const $dbServer = !PRODUCTION && 'http://localhost:3000/items/';
 const $dbLocal = PRODUCTION && require('../data/items.json');
 
+type TData = {
+    [key: string] : any;
+}
+type TResult = {
+    data: TCardItem;
+}
+
 class ContentStore {
     @observable error?: string;
     @observable isLoaded: boolean = false;
@@ -15,7 +22,7 @@ class ContentStore {
     axiosInit = ($url: string, $key?: string) => {
         axios
             .get($url)
-            .then((result: { data: TCardItem }) => {
+            .then((result: TData | TResult) => {
                 this.isLoaded = true;
                 this.items = $key ? result.data[$key] : result.data;
             })
