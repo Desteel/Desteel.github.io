@@ -1,7 +1,8 @@
-import { observer, inject } from "mobx-react";
-import Card from "../../components/card/";
+import { observer, inject } from 'mobx-react';
+import Card from '../../components/card/';
+import { log } from 'util';
 
-@inject("contentStore")
+@inject('contentStore')
 @observer
 class CardCollection extends React.Component {
     componentDidMount() {
@@ -16,9 +17,20 @@ class CardCollection extends React.Component {
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
-            return <>{items.map(item => (
-                <Card key={item.id} id={item.id} item={item} />
-            ))}</>;
+            return (
+                <>
+                    {items.map(item => (
+                        <Card
+                            key={item.id}
+                            id={item.id}
+                            item={{
+                                ...item,
+                                phoneValues: item.phoneValues.slice()
+                            }}
+                        />
+                    ))}
+                </>
+            );
         }
     }
 }
