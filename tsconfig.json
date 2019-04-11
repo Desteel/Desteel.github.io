@@ -11,6 +11,7 @@
         "declaration": false,
         "emitDecoratorMetadata": true,
         "noImplicitReturns": false,
-        "noUnusedLocals": true
+        "noUnusedLocals": true,
+		"strict": true
     }
 }
