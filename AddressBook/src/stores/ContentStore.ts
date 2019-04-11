@@ -4,8 +4,8 @@ const axios = require('axios');
 import { TCardItem } from '../containers/card/types';
 import { createGuid } from '../utils';
 
-const $dbServer = !PRODUCTION && 'http://localhost:3000/items/';
-const $dbLocal = PRODUCTION && require('../data/items.json');
+const $dbServer: boolean | string  = !PRODUCTION && 'http://localhost:3000/items/';
+const $dbLocal: boolean | string = PRODUCTION && require('../data/items.json');
 
 type TData = {
     [key: string] : any;
@@ -19,7 +19,7 @@ class ContentStore {
     @observable isLoaded: boolean = false;
     @observable items: Array<TCardItem> = [];
 
-    axiosInit = ($url: string, $key?: string) => {
+    axiosInit = ($url: string | boolean, $key?: string) => {
         axios
             .get($url)
             .then((result: TData | TResult) => {
