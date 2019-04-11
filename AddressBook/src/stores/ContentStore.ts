@@ -11,7 +11,7 @@ type TData = {
     [key: string] : any;
 }
 type TResult = {
-    data: TCardItem;
+    data: Array<TCardItem>;
 }
 
 class ContentStore {
