@@ -4,28 +4,34 @@ const axios = require('axios');
 import { TCardItem } from '../containers/card/types';
 import { createGuid } from '../utils';
 
-const $dbServer: boolean | string =
-    !PRODUCTION && 'http://localhost:3000/items/';
-const $dbLocal: boolean | string = PRODUCTION && require('../data/items.json');
+const $dbServer: string = 'http://localhost:3000/items/';
+const $dbLocal: string = require('../data/items.json');
 
-// type TData = {
-//     [key: string]: any;
-// };
-type TResult = {
+interface TResultA {
     data: Array<TCardItem>;
-};
+}
+interface TResultB {
+    data: {
+        items: Array<TCardItem>;
+    };
+}
+
+const isResultA = (result: TResultA | TResultB): result is TResultB =>
+    (<TResultB>result).data.items !== undefined;
 
 class ContentStore {
     @observable error?: string;
     @observable isLoaded: boolean = false;
     @observable items: Array<TCardItem> = [];
 
-    axiosInit = ($url: string | boolean, $key?: string) => {
+    axiosInit = ($url: string) => {
         axios
             .get($url)
-            .then((result: TResult) => {
+            .then((result: TResultA | TResultB) => {
                 this.isLoaded = true;
-                this.items = $key ? result.data[$key] : result.data;
+                this.items = !isResultA(result)
+                    ? result.data
+                    : result.data.items;
             })
             .catch((error: string) => {
                 this.error = error;
@@ -49,17 +55,15 @@ class ContentStore {
     getData = () => {
         !PRODUCTION
             ? this.axiosInit($dbServer)
-            : this.axiosInit($dbLocal, 'items');
+            : this.axiosInit($dbLocal);
     };
 
     @action('delete card')
     deleteCard = (id: string) => {
         !PRODUCTION
-            ? axios
-                  .delete(`${$dbServer}${id}`)
-                  .then((result: { data: object }) => {
-                      this.deleteItem(id);
-                  })
+            ? axios.delete(`${$dbServer}${id}`).then((result: TResultA) => {
+                  this.deleteItem(id);
+              })
             : this.deleteItem(id);
     };
 
@@ -68,7 +72,7 @@ class ContentStore {
         !PRODUCTION
             ? axios
                   .put(`${$dbServer}${modifiedItem.id}`, modifiedItem)
-                  .then((result: { data: object }) => {
+                  .then((result: TResultA) => {
                       this.saveItem(modifiedItem);
                   })
             : this.saveItem(modifiedItem);
@@ -78,11 +82,9 @@ class ContentStore {
     addCard = (newItem: TCardItem) => {
         const itemWithId = { ...newItem, id: createGuid() };
         !PRODUCTION
-            ? axios
-                  .post($dbServer, itemWithId)
-                  .then((result: { data: object }) => {
-                      this.addItem(itemWithId);
-                  })
+            ? axios.post($dbServer, itemWithId).then((result: TResultA) => {
+                  this.addItem(itemWithId);
+              })
             : this.addItem(itemWithId);
     };
 }
