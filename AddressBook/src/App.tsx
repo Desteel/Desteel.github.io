@@ -1,20 +1,20 @@
 /// <reference path="globals.d.ts" />
-import * as React from "react";
-import { ThemeProvider } from "styled-components";
-import { Provider, observer } from "mobx-react";
+import * as React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { Provider, observer } from 'mobx-react';
 // stores
-import SearchStore from "./stores/SearchStore";
-import contentStore from "./stores/ContentStore";
-import modalStore from "./stores/ModalStore";
+import { SearchStore } from './stores/SearchStore';
+import contentStore from './stores/ContentStore';
+import modalStore from './stores/ModalStore';
 
-import Header from "./components/main/header/Header";
-import Main from "./components/main/main/Main";
-import Footer from "./components/main/footer/Footer";
-import ModalRender from "./components/modal/ModalRender";
-import Normalize from "./styles/Normalize";
-import { theme, GlobalStyle } from "./styles/StyledGlobal";
+import Header from './components/main/header/Header';
+import Main from './components/main/main/Main';
+import Footer from './components/main/footer/Footer';
+import ModalRender from './components/modal/ModalRender';
+import Normalize from './styles/Normalize';
+import { theme, GlobalStyle } from './styles/StyledGlobal';
 
-import DevTools from "mobx-react-devtools";
+import DevTools from 'mobx-react-devtools';
 
 const searchStore = SearchStore.create({
     value: ''
