@@ -1,6 +1,6 @@
-import { types } from 'mobx-state-tree';
+import { types, Instance  } from 'mobx-state-tree';
 
-const SearchStore = types
+export const SearchStore = types
     .model('SearchStore', {
         value: types.string
     })
@@ -18,4 +18,4 @@ const SearchStore = types
         }
     }));
 
-export default SearchStore;
+export type SearchStore = Instance<typeof SearchStore>;
