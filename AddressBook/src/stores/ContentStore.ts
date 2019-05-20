@@ -1,6 +1,6 @@
 /// <reference path="../globals.d.ts" />
 import { observable, action } from 'mobx';
-const axios = require('axios');
+import axios from 'axios';
 import { TCardItem } from '../containers/card/types';
 import { createGuid } from '../utils';
 
@@ -16,7 +16,7 @@ interface TResultLocal {
     };
 }
 
-const isResultB = (
+const ResultType = (
     result: TResultServer | TResultLocal
 ): result is TResultLocal => (<TResultLocal>result).data.items !== undefined;
 
@@ -30,7 +30,7 @@ class ContentStore {
             .get($url)
             .then((result: TResultServer | TResultLocal) => {
                 this.isLoaded = true;
-                this.items = isResultB(result)
+                this.items = ResultType(result)
                     ? result.data.items
                     : result.data;
             })
