@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react';
 @inject('searchStore')
 @observer
 class Input extends React.Component {
-    returnValue = e => {
+    handleChange = e => {
         this.props.searchStore.value = e.target.value;
     };
 
@@ -13,7 +13,7 @@ class Input extends React.Component {
             <SearchInput
                 type="text"
                 placeholder="Search"
-                onChange={this.returnValue}
+                onChange={this.handleChange}
                 value={this.props.searchStore.value}
             />
         );
