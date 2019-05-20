@@ -12,14 +12,12 @@ class Card extends React.Component {
     @action('toggle card editable')
     toggleEditable = () => {
         this.editable = !this.editable;
-        console.log(this.editable);
     };
 
     @action('save card')
     saveCard = data => {
         this.props.contentStore.saveCard(data);
         this.editable = false;
-        // this.props.modalStore.isOpen = false;
     };
 
     @action('delete card')
