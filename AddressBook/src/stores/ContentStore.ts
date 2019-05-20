@@ -5,7 +5,7 @@ import { TCardItem } from '../containers/card/types';
 import { createGuid } from '../utils';
 
 const $dbServer: string = 'http://localhost:3000/items/';
-const $dbLocal: string = require('../data/items.json');
+const $dbLocal: boolean | string = PRODUCTION && require('../data/items.json');
 
 interface TResultServer {
     data: Array<TCardItem>;
