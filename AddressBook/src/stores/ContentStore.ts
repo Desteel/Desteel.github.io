@@ -16,9 +16,12 @@ interface TResultLocal {
     };
 }
 
-const ResultType = (
+const isLocalResult = (
     result: TResultServer | TResultLocal
 ): result is TResultLocal => (<TResultLocal>result).data.items !== undefined;
+
+const isLocalDb = (db: boolean | string): db is string =>
+    typeof (<string>db) !== 'boolean';
 
 class ContentStore {
     @observable error?: string;
@@ -30,7 +33,7 @@ class ContentStore {
             .get($url)
             .then((result: TResultServer | TResultLocal) => {
                 this.isLoaded = true;
-                this.items = ResultType(result)
+                this.items = isLocalResult(result)
                     ? result.data.items
                     : result.data;
             })
@@ -54,7 +57,9 @@ class ContentStore {
 
     @action('fetch data')
     getData = () => {
-        !PRODUCTION ? this.axiosInit($dbServer) : this.axiosInit($dbLocal);
+        isLocalDb($dbLocal)
+            ? this.axiosInit($dbLocal)
+            : this.axiosInit($dbServer);
     };
 
     @action('delete card')
