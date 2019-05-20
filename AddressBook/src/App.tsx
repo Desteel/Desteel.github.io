@@ -3,7 +3,7 @@ import * as React from "react";
 import { ThemeProvider } from "styled-components";
 import { Provider, observer } from "mobx-react";
 // stores
-import searchStore from "./stores/SearchStore";
+import SearchStore from "./stores/SearchStore";
 import contentStore from "./stores/ContentStore";
 import modalStore from "./stores/ModalStore";
 
@@ -16,6 +16,9 @@ import { theme, GlobalStyle } from "./styles/StyledGlobal";
 
 import DevTools from "mobx-react-devtools";
 
+const searchStore = SearchStore.create({
+    value: ''
+});
 const stores = { searchStore, contentStore, modalStore };
 
 @observer

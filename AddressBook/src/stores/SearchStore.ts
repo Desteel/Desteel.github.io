@@ -1,21 +1,21 @@
-import { observable, computed, action } from 'mobx';
+import { types } from 'mobx-state-tree';
 
-class SearchStore {
-    @observable value: string = "";
+const SearchStore = types
+    .model('SearchStore', {
+        value: types.string
+    })
+    .views(self => ({
+        get isActive() {
+            return self.value.length > 0;
+        }
+    }))
+    .actions(self => ({
+        handleChange(e) {
+            self.value = e.target.value;
+        },
+        clearInput() {
+            self.value = '';
+        }
+    }));
 
-    @computed get isActive() {
-        return this.value.length > 0
-            ? true
-            : false
-    }
-
-    @action('clear input')
-    clearInput = () => {        
-        this.value = "";
-    }
-}
-
-const searchStore = new SearchStore();
-
-export default searchStore;
-export { SearchStore };
+export default SearchStore;

@@ -1,6 +1,6 @@
-import { StyledSearch, SearchButton, ClearButton } from './Styles';
+import { StyledSearch, SearchInput, SearchButton, ClearButton } from './Styles';
 import { observer, inject } from 'mobx-react';
-import { Button } from '../elements/';
+import { Button } from '../elements';
 import Input from './Input';
 import IconSearch from '../../icons/search.svg';
 import IconCross from '../../icons/cross.svg';
@@ -9,12 +9,22 @@ import IconCross from '../../icons/cross.svg';
 @observer
 class Search extends React.Component {
     render() {
-        const { isActive, clearInput } = this.props.searchStore;
+        const {
+            value,
+            isActive,
+            handleChange,
+            clearInput
+        } = this.props.searchStore;
 
         return (
             <StyledSearch>
                 <SearchButton as={Button}>{<IconSearch />}</SearchButton>
-                <Input />
+                <SearchInput
+                    type="text"
+                    placeholder="Search"
+                    onChange={handleChange}
+                    value={value}
+                />
                 <ClearButton
                     as={Button}
                     action={clearInput}
