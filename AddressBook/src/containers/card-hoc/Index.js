@@ -1,6 +1,5 @@
 import { observer, inject } from 'mobx-react';
 import Card from '../../components/card/';
-import { log } from 'util';
 
 @inject('contentStore')
 @observer
