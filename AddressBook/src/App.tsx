@@ -6,6 +6,7 @@ import { Provider, observer } from 'mobx-react';
 import { SearchStore } from './stores/SearchStore';
 import contentStore from './stores/ContentStore';
 import modalStore from './stores/ModalStore';
+import { ContentStore } from './models/ContentStore';
 
 import Header from './components/main/header/Header';
 import Main from './components/main/main/Main';
