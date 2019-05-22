@@ -29,15 +29,12 @@ class CardCollection extends React.Component {
                             }}
                         />
                     ))}
-                    {this.props.contentStoreMST.cards.map(item => (
-                        <Card
-                            key={item.id}
-                            id={item.id}
-                            item={{
-                                ...item,
-                                phoneValues: item.phoneValues.slice()
-                            }}
-                        />
+                    {this.props.contentStoreMST.cards.map(card => (
+                        <div key={card.id} id={card.id}>
+                            {card.name}
+                            <br />
+                            <button onClick={card.remove}>delete this</button>
+                        </div>
                     ))}
                 </>
             );
