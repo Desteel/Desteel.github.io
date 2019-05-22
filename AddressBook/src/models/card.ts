@@ -2,7 +2,7 @@ import { types, Instance } from 'mobx-state-tree';
 
 export const Card = types.model('Card', {
     id: types.identifier,
-    photoUrl: types.string,
+    photoUrl: types.maybe(types.string),
     name: types.string,
     lastname: types.string,
     phoneValues: types.array(types.string),
