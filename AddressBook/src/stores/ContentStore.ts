@@ -3,7 +3,6 @@ import { observable, action } from 'mobx';
 import axios from 'axios';
 import { TCardItem } from '../containers/card/types';
 import { createGuid } from '../utils';
-import { Card } from '../models/card';
 
 const $dbServer: string = 'http://localhost:3000/items/';
 const $dbLocal: boolean | string = PRODUCTION && require('../data/items.json');
