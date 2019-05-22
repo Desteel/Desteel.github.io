@@ -10,4 +10,4 @@ export const Card = types.model('Card', {
     address: types.string
 });
 
-export type Card = Instance<typeof Card>;
+export type TypeCard = Instance<typeof Card>;
