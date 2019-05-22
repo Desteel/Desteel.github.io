@@ -1,20 +1,23 @@
 import { StyledSearch, SearchInput, SearchButton, ClearButton } from './Styles';
 import { observer, inject } from 'mobx-react';
 import { Button } from '../elements';
-import Input from './Input';
 import IconSearch from '../../icons/search.svg';
 import IconCross from '../../icons/cross.svg';
 
-@inject('searchStore')
+@inject('SearchStore')
 @observer
 class Search extends React.Component {
+    searchStore = this.props.SearchStore.create({
+        value: ''
+    });
+
     render() {
         const {
             value,
             isActive,
             handleChange,
             clearInput
-        } = this.props.searchStore;
+        } = this.searchStore;
 
         return (
             <StyledSearch>
