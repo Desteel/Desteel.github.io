@@ -4,20 +4,19 @@ import { Button } from '../elements';
 import IconSearch from '../../icons/search.svg';
 import IconCross from '../../icons/cross.svg';
 
-@inject('SearchStore')
+@inject('searchStore')
 @observer
 class Search extends React.Component {
-    searchStore = this.props.SearchStore.create({
-        value: ''
-    });
+    handleChange = e => {
+        this.props.searchStore.changeValue(e.target.value);
+    };
 
     render() {
         const {
             value,
             isActive,
-            handleChange,
             clearInput
-        } = this.searchStore;
+        } = this.props.searchStore;
 
         return (
             <StyledSearch>
@@ -25,7 +24,7 @@ class Search extends React.Component {
                 <SearchInput
                     type="text"
                     placeholder="Search"
-                    onChange={handleChange}
+                    onChange={this.handleChange}
                     value={value}
                 />
                 <ClearButton

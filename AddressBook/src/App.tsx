@@ -17,7 +17,10 @@ import { theme, GlobalStyle } from './styles/StyledGlobal';
 
 import DevTools from 'mobx-react-devtools';
 
-const stores = { SearchStore, ContentStore, contentStore, modalStore };
+const searchStore = SearchStore.create({
+    value: ''
+});
+const stores = { searchStore, ContentStore, contentStore, modalStore };
 
 @observer
 class App extends React.Component {
