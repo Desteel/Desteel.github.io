@@ -10,8 +10,8 @@ export const SearchStore = types
         }
     }))
     .actions(self => ({
-        handleChange(e) {
-            self.value = e.target.value;
+        changeValue(newValue) {
+            self.value = newValue;
         },
         clearInput() {
             self.value = '';
