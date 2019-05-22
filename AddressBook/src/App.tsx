@@ -23,6 +23,7 @@ const searchStore = SearchStore.create({
 const contentStoreMST = ContentStore.create({
     cards: [
         {
+            id: 'a',
             photoUrl:
                 'https://avatars3.githubusercontent.com/u/30462928?s=460&v=4',
             name: 'test1',
@@ -31,6 +32,7 @@ const contentStoreMST = ContentStore.create({
             address: 'Detroit'
         },
         {
+            id: 'b',
             photoUrl:
                 'https://avatars3.githubusercontent.com/u/30462928?s=460&v=4',
             name: 'test2',
