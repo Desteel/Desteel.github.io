@@ -1,4 +1,5 @@
 import { types, getParent, Instance } from 'mobx-state-tree';
+import { TContentStore } from './ContentStore';
 
 export const Card = types
     .model('Card', {
@@ -11,8 +12,8 @@ export const Card = types
     })
     .actions(self => ({
         remove() {
-            getParent(self, 2).remove(self);
+            getParent<TContentStore>(self, 2).remove(self);
         }
     }));
 
-export type TypeCard = Instance<typeof Card>;
+export type TCard = Instance<typeof Card>;
