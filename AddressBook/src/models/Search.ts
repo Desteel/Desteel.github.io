@@ -18,4 +18,4 @@ export const SearchStore = types
         }
     }));
 
-export type SearchStore = Instance<typeof SearchStore>;
+export type TSearchStore = Instance<typeof SearchStore>;
