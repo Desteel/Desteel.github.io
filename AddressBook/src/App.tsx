@@ -2,8 +2,9 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Provider, observer } from 'mobx-react';
+import { Observer } from 'mobx-react'
 // stores
-import { SearchStore } from './stores/SearchStore';
+import searchStore from './stores/SearchStore';
 import contentStore from './stores/ContentStore';
 import modalStore from './stores/ModalStore';
 import { ContentStore } from './models/ContentStore';
@@ -17,9 +18,20 @@ import { theme, GlobalStyle } from './styles/StyledGlobal';
 
 import DevTools from 'mobx-react-devtools';
 
-const searchStore = SearchStore.create({
-    value: ''
-});
+// store
+// const StoreContext = React.createContext(store);
+
+// interface Props {
+//     children(store: Store): JSX.Element | null;
+// }
+
+// export const WithStore: React.FunctionComponent<Props> = ({ children }) => (
+//     <StoreContext.Consumer>
+//         {store => <Observer>{() => children(store)}</Observer>}
+//     </StoreContext.Consumer>
+// );
+// store
+
 const contentStoreMST = ContentStore.create({
     cards: [
         {
@@ -42,7 +54,13 @@ const contentStoreMST = ContentStore.create({
         }
     ]
 });
-const stores = { searchStore, ContentStore, contentStoreMST, contentStore, modalStore };
+const stores = {
+    searchStore,
+    ContentStore,
+    contentStoreMST,
+    contentStore,
+    modalStore
+};
 
 @observer
 class App extends React.Component {
