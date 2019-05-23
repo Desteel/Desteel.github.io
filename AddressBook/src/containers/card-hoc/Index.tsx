@@ -1,10 +1,12 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import Card from '../../components/card';
+import { TCard } from '../../models/Card';
+import { TContentStore } from '../../models/ContentStore';
 
-@inject('contentStore', 'contentStoreMST', 'ContentStore')
+@inject('contentStore', 'contentStoreMST')
 @observer
-class CardCollection extends React.Component {
+class CardCollection extends React.Component<{}, {}> {
     componentDidMount() {
         this.props.contentStore.getData();
     }
@@ -19,7 +21,7 @@ class CardCollection extends React.Component {
         } else {
             return (
                 <>
-                    {items.map(item => (
+                    {items.map((item: TCard) => (
                         <Card
                             key={item.id}
                             id={item.id}
@@ -29,7 +31,7 @@ class CardCollection extends React.Component {
                             }}
                         />
                     ))}
-                    {this.props.contentStoreMST.cards.map(card => (
+                    {this.props.contentStoreMST.cards.map((card: TCard) => (
                         <div key={card.id} id={card.id}>
                             {card.name}
                             <br />
