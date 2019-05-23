@@ -11,4 +11,4 @@ export const ContentStore = types
         }
     }));
 
-export type TypeContentStore = Instance<typeof ContentStore>;
+export type TContentStore = Instance<typeof ContentStore>;
