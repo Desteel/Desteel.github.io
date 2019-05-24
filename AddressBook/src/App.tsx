@@ -1,5 +1,5 @@
 /// <reference path="globals.d.ts" />
-import * as React from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Provider, observer } from 'mobx-react';
 
@@ -18,7 +18,7 @@ class App extends React.Component {
         return (
             <Provider {...stores}>
                 <ThemeProvider theme={theme}>
-                    <React.Fragment>
+                    <>
                         {!PRODUCTION && <DevTools />}
                         <style.Normalize />
                         <style.StyledGlobal
@@ -28,7 +28,7 @@ class App extends React.Component {
                         <conformation.Main />
                         <conformation.Footer />
                         <ModalRender />
-                    </React.Fragment>
+                    </>
                 </ThemeProvider>
             </Provider>
         );
