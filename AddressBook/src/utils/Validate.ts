@@ -1,21 +1,19 @@
 import { isNumeric } from '.';
 
-export const required: (value: string) => string | undefined = value =>
-    value ? undefined : 'Required';
+export const required = (value: string) => (value ? undefined : 'Required');
 
-export const mustBeNumber: (value: string) => string | undefined = value =>
+export const mustBeNumber = (value: string) =>
     isNumeric(value) ? undefined : 'Must be a number';
 
 export const minLength = (min: number) => (value: string) =>
     isNumeric(value) && value.length >= min ? undefined : `Min length ${min}`;
 
-export const composeValidators = (
-    ...validators: {
-        (value: string): string | undefined;
-        (value: string): string | undefined;
-        (value: string): string | undefined;
-    }[]
-) => (value: string) =>
+interface IValidators {
+    (value: string): string | undefined;
+}
+export const composeValidators = (...validators: Array<IValidators>) => (
+    value: string
+) =>
     validators.reduce(
         (error, validator) => error || validator(value),
         undefined
