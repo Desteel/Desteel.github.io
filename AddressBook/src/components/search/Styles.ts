@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface IClearButton {
-    action: any;
+    action: () => void;
     isActive: boolean;
 }
 
