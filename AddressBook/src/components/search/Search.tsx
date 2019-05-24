@@ -7,24 +7,19 @@ import { Button } from '../elements';
 import IconSearch from '../../icons/search.svg';
 import IconCross from '../../icons/cross.svg';
 
-interface ISearchProps {}
-interface IInjectedProps extends ISearchProps {
+interface IInjectedProps {
     searchStore: TSearchStore;
 }
 
 @inject('searchStore')
 @observer
-class Search extends React.Component<ISearchProps, {}> {
-    get injected() {
-        return this.props as IInjectedProps;
-    }
-
+class Search extends React.Component<IInjectedProps, {}> {
     handleChange = e => {
-        this.injected.searchStore.changeValue(e.target.value);
+        this.props.searchStore.changeValue(e.target.value);
     };
 
     render() {
-        const { value, isActive, clearInput } = this.injected.searchStore;
+        const { value, isActive, clearInput } = this.props.searchStore;
 
         return (
             <StyledSearch>
