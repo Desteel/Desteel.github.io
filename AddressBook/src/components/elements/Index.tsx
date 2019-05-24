@@ -1,35 +1,39 @@
 import * as React from 'react';
-import { StyledButton as Btn } from './Styles';
+import { StyledButton } from './Styles';
 
-interface BtnProps {
+interface IButtonProps {
     action: any;
     className: string;
     type: 'button' | 'submit' | 'reset';
     name: string;
 }
 
-export const Button: React.FunctionComponent<BtnProps> = ({
+interface IInputProps {
+    input: any;
+    meta: any;
+}
+
+export const Button: React.FunctionComponent<IButtonProps> = ({
     action,
     children,
     className,
     ...rest
 }) => (
-    <Btn
+    <StyledButton
         type={rest.type ? rest.type : 'button'}
         onClick={action}
         className={className}
         name={rest.name}
     >
         {children}
-    </Btn>
+    </StyledButton>
 );
 
-interface InputProps {
-    input: any;
-    meta: any;
-}
-
-export const InputValidating: React.FunctionComponent<InputProps> =  ({ input, meta, ...rest }) => (
+export const InputValidating: React.FunctionComponent<IInputProps> = ({
+    input,
+    meta,
+    ...rest
+}) => (
     <>
         {meta.error && meta.touched && <span>{meta.error}</span>}
         <input {...input} {...rest} />
