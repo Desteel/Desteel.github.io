@@ -30,10 +30,10 @@ export const WithStore: React.FunctionComponent<IProps> = ({ children }) => (
 // use
 // import { WithStore } from '../../stores/StoreContext';
 
-// export const AddBook: React.FunctionComponent = () => (
+// export const Elem: React.FunctionComponent = () => (
 //     <WithStore>{store => <div>{store.searchStoreTEST.value}</div>}</WithStore>
 // );
 
 // return (
-//     <AddBook />
+//     <Elem />
 // )
