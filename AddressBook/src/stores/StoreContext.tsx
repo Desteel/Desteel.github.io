@@ -26,3 +26,14 @@ export const WithStore: React.FunctionComponent<IProps> = ({ children }) => (
         {store => <Observer>{() => children(store)}</Observer>}
     </StoreContext.Consumer>
 );
+
+// use
+// import { WithStore } from '../../stores/StoreContext';
+
+// export const AddBook: React.FunctionComponent = () => (
+//     <WithStore>{store => <div>{store.searchStoreTEST.value}</div>}</WithStore>
+// );
+
+// return (
+//     <AddBook />
+// )
