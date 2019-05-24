@@ -5,7 +5,6 @@ import { TSearchStore } from '../models/Search';
 
 interface IStores {
     searchStore: TSearchStore;
-    searchStoreTEST: TSearchStore;
 }
 
 interface IProps {
@@ -13,8 +12,7 @@ interface IProps {
 }
 
 const stores = {
-    searchStore,
-    searchStoreTEST
+    searchStore
 };
 
 const StoreContext = React.createContext(stores);
