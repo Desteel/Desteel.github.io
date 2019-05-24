@@ -7,18 +7,18 @@ import { createGuid } from '../utils';
 const $dbServer: string = 'http://localhost:3000/items/';
 const $dbLocal: boolean | string = PRODUCTION && require('../data/items.json');
 
-interface TResultServer {
+interface IResultServer {
     data: Array<TCardItem>;
 }
-interface TResultLocal {
+interface IResultLocal {
     data: {
         items: Array<TCardItem>;
     };
 }
 
 const isLocalResult = (
-    result: TResultServer | TResultLocal
-): result is TResultLocal => (<TResultLocal>result).data.items !== undefined;
+    result: IResultServer | IResultLocal
+): result is IResultLocal => (<IResultLocal>result).data.items !== undefined;
 
 const isLocalDb = (db: boolean | string): db is string =>
     typeof (<string>db) !== 'boolean';
@@ -31,7 +31,7 @@ class ContentStore {
     axiosInit = ($url: string) => {
         axios
             .get($url)
-            .then((result: TResultServer | TResultLocal) => {
+            .then((result: IResultServer | IResultLocal) => {
                 this.isLoaded = true;
                 this.items = isLocalResult(result)
                     ? result.data.items
@@ -67,7 +67,7 @@ class ContentStore {
         !PRODUCTION
             ? axios
                   .delete(`${$dbServer}${id}`)
-                  .then((result: TResultServer) => {
+                  .then((result: IResultServer) => {
                       this.deleteItem(id);
                   })
             : this.deleteItem(id);
@@ -78,7 +78,7 @@ class ContentStore {
         !PRODUCTION
             ? axios
                   .put(`${$dbServer}${modifiedItem.id}`, modifiedItem)
-                  .then((result: TResultServer) => {
+                  .then((result: IResultServer) => {
                       this.saveItem(modifiedItem);
                   })
             : this.saveItem(modifiedItem);
@@ -90,7 +90,7 @@ class ContentStore {
         !PRODUCTION
             ? axios
                   .post($dbServer, itemWithId)
-                  .then((result: TResultServer) => {
+                  .then((result: IResultServer) => {
                       this.addItem(itemWithId);
                   })
             : this.addItem(itemWithId);
