@@ -4,9 +4,13 @@ import Card from '../../components/card';
 import { TCard } from '../../models/Card';
 import { TContentStore } from '../../models/ContentStore';
 
+interface ITemp {
+    [key: string]: any;
+}
+
 @inject('contentStore', 'contentStoreMST')
 @observer
-class CardCollection extends React.Component<{}, {}> {
+class CardCollection extends React.Component<ITemp, {}> {
     componentDidMount() {
         this.props.contentStore.getData();
     }
