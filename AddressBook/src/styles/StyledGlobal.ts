@@ -1,20 +1,14 @@
-import { DefaultTheme } from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 
-export const theme: DefaultTheme = {
-    main: '#dadce0',
-    border: '1px solid',
-    borderRadius: '8px'
-};
-
-interface Props {
+interface TModalProps {
     modalState?: boolean;
 }
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=cyrillic');
     html {
-        overflow: ${(props: Props) => (props.modalState ? 'hidden' : null)};
+        overflow: ${(props: TModalProps) =>
+            props.modalState ? 'hidden' : null};
     }
     body {
         font-family: 'Roboto', sans-serif;
@@ -34,3 +28,5 @@ export const GlobalStyle = createGlobalStyle`
         max-width: 1300px;
     }
 `;
+
+export default GlobalStyle;
