@@ -12,8 +12,8 @@ import modalStore from './stores/ModalStore';
 
 import * as conformation from './components/main/';
 import ModalRender from './components/modal/ModalRender';
-import Normalize from './styles/Normalize';
-import { theme, GlobalStyle } from './styles/StyledGlobal';
+import * as style from './styles/';
+import { theme } from './styles/Themes';
 
 import DevTools from 'mobx-react-devtools';
 
@@ -32,8 +32,8 @@ class App extends React.Component {
                 <ThemeProvider theme={theme}>
                     <React.Fragment>
                         {!PRODUCTION && <DevTools />}
-                        <Normalize />
-                        <GlobalStyle modalState={modalStore.isOpen} />
+                        <style.Normalize />
+                        <style.StyledGlobal modalState={modalStore.isOpen} />
                         <conformation.Header />
                         <conformation.Main />
                         <conformation.Footer />
