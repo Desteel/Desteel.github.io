@@ -16,5 +16,5 @@ export const createGuid = () =>
         S4()
     ).toLowerCase();
 
-export const isNumeric: (n: string) => boolean = n =>
+export const isNumeric = (n: string): boolean =>
     !isNaN(parseFloat(n)) && Number.isFinite(+n);
