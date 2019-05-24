@@ -3,8 +3,6 @@ import { Observer } from 'mobx-react';
 import searchStore from '../stores/SearchStore';
 import { TSearchStore } from '../models/Search';
 
-import searchStoreTEST from '../stores/SearchStoreTEST';
-
 interface IStores {
     searchStore: TSearchStore;
     searchStoreTEST: TSearchStore;
