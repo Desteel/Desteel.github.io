@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const Normalize = createGlobalStyle`
 * {
@@ -8,7 +8,6 @@ const Normalize = createGlobalStyle`
 *:after, *:before {
     box-sizing: border-box;
 }
-
 
 html {
   line-height: 1.15; 
@@ -26,7 +25,7 @@ footer,
 header,
 nav,
 section,
-time, {
+time {
   display: block;
 }
 
