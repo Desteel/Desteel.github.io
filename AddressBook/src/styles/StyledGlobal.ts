@@ -4,7 +4,7 @@ interface TModalProps {
     modalState?: boolean;
 }
 
-const GlobalStyle = createGlobalStyle`
+const StyledGlobal = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=cyrillic');
     html {
         overflow: ${(props: TModalProps) =>
@@ -29,4 +29,4 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export default GlobalStyle;
+export default StyledGlobal;
