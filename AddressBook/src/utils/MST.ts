@@ -1,8 +1,12 @@
-import { observer } from "mobx-react"
+import { observer } from 'mobx-react';
 
-export default function components(fns) {
+interface Ifns {
+    [key: string]: any;
+}
+
+export default function components(fns: Ifns) {
     Object.keys(fns).forEach(key => {
-        fns[key] = observer(fns[key])
-    })
-    return fns
+        fns[key] = observer(fns[key]);
+    });
+    return fns;
 }
