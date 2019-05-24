@@ -10,9 +10,7 @@ import contentStoreMST from './stores/ContentStoreMST';
 import contentStore from './stores/ContentStore';
 import modalStore from './stores/ModalStore';
 
-import Header from './components/main/header/Header';
-import Main from './components/main/main/Main';
-import Footer from './components/main/footer/Footer';
+import * as conformation from './components/main/';
 import ModalRender from './components/modal/ModalRender';
 import Normalize from './styles/Normalize';
 import { theme, GlobalStyle } from './styles/StyledGlobal';
@@ -36,9 +34,9 @@ class App extends React.Component {
                         {!PRODUCTION && <DevTools />}
                         <Normalize />
                         <GlobalStyle modalState={modalStore.isOpen} />
-                        <Header />
-                        <Main />
-                        <Footer />
+                        <conformation.Header />
+                        <conformation.Main />
+                        <conformation.Footer />
                         <ModalRender />
                     </React.Fragment>
                 </ThemeProvider>
