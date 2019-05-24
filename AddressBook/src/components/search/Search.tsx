@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
+import { IEventValue } from '../../types';
 import { TSearchStore } from '../../models/Search';
 // elem
 import { StyledSearch, SearchInput, SearchButton, ClearButton } from './Styles';
@@ -14,7 +15,7 @@ interface IInjectedProps {
 @inject('searchStore')
 @observer
 class Search extends React.Component<IInjectedProps, {}> {
-    handleChange = e => {
+    handleChange = (e: IEventValue) => {
         this.props.searchStore.changeValue(e.target.value);
     };
 
