@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+interface IClearButton {
+    action: any;
+    isActive: boolean;
+}
 
 export const StyledSearch = styled.form`
     display: flex;
@@ -23,10 +28,10 @@ export const SearchButton = styled.button`
     color: inherit;
 `;
 
-export const ClearButton = styled(SearchButton)<{ isActive: boolean }>`
+export const ClearButton = styled(SearchButton)<IClearButton>`
     transition: opacity 0.2s, visibility 0.2s;
-    opacity: ${props => (props.isActive ? "1" : "0")};
-    visibility: ${props => (props.isActive ? "visible" : "hidden")};
+    opacity: ${props => (props.isActive ? '1' : '0')};
+    visibility: ${props => (props.isActive ? 'visible' : 'hidden')};
 `;
 
 export const SearchInput = styled.input`
