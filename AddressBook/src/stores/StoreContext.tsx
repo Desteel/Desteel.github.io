@@ -5,21 +5,21 @@ import { TSearchStore } from '../models/Search';
 
 import searchStoreTEST from '../stores/SearchStoreTEST';
 
-const stores = {
-    searchStore,
-    searchStoreTEST
-};
-
 interface IStores {
     searchStore: TSearchStore;
     searchStoreTEST: TSearchStore;
 }
 
-const StoreContext = React.createContext(stores);
-
 interface IProps {
     children(store: IStores): JSX.Element | null;
 }
+
+const stores = {
+    searchStore,
+    searchStoreTEST
+};
+
+const StoreContext = React.createContext(stores);
 
 export const WithStore: React.FunctionComponent<IProps> = ({ children }) => (
     <StoreContext.Consumer>
