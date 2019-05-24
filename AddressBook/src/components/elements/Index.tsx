@@ -2,15 +2,17 @@ import * as React from 'react';
 import { StyledButton } from './Styles';
 
 interface IButtonProps {
-    action: any;
+    action: () => void;
     className: string;
     type: 'button' | 'submit' | 'reset';
     name: string;
 }
 
 interface IInputProps {
-    input: any;
-    meta: any;
+    input: JSX.Element;
+    meta: {
+        [key: string]: any;
+    };
 }
 
 export const Button: React.FunctionComponent<IButtonProps> = ({
