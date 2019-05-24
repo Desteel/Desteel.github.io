@@ -7,11 +7,11 @@ import IconSearch from '../../icons/search.svg';
 import IconCross from '../../icons/cross.svg';
 
 // test
-import WithStore from '../../utils/StoreContext';
+import { WithStore } from '../../stores/StoreContext';
 // test
 
 export const AddBook: React.FunctionComponent = () => (
-    <WithStore>{store => <div>{store.value}</div>}</WithStore>
+    <WithStore>{store => <div>{store.searchStoreTEST.value}</div>}</WithStore>
 );
 
 @inject('searchStore')
@@ -25,7 +25,7 @@ class Search extends React.Component<{}, {}> {
         const { value, isActive, clearInput } = this.props.searchStore;
 
         return (
-            <StyledSearch>                
+            <StyledSearch>
                 <SearchButton as={Button}>{<IconSearch />}</SearchButton>
                 <SearchInput
                     type="text"
