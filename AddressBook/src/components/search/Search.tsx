@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyledSearch, SearchInput, SearchButton, ClearButton } from './Styles';
 import { observer, inject } from 'mobx-react';
 import { TSearchStore } from '../../models/Search';
 // elem
+import { StyledSearch, SearchInput, SearchButton, ClearButton } from './Styles';
 import { Button } from '../elements';
 import IconSearch from '../../icons/search.svg';
 import IconCross from '../../icons/cross.svg';
