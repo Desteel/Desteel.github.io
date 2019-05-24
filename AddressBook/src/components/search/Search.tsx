@@ -1,28 +1,30 @@
 import React from 'react';
 import { StyledSearch, SearchInput, SearchButton, ClearButton } from './Styles';
 import { observer, inject } from 'mobx-react';
-
+import { TSearchStore } from '../../models/Search';
+// elem
 import { Button } from '../elements';
 import IconSearch from '../../icons/search.svg';
 import IconCross from '../../icons/cross.svg';
 
-// test
-import { WithStore } from '../../stores/StoreContext';
-// test
-
-export const AddBook: React.FunctionComponent = () => (
-    <WithStore>{store => <div>{store.searchStoreTEST.value}</div>}</WithStore>
-);
+interface ISearchProps {}
+interface IInjectedProps extends ISearchProps {
+    searchStore: TSearchStore;
+}
 
 @inject('searchStore')
 @observer
-class Search extends React.Component<{}, {}> {
+class Search extends React.Component<ISearchProps, {}> {
+    get injected() {
+        return this.props as IInjectedProps;
+    }
+
     handleChange = e => {
-        this.props.searchStore.changeValue(e.target.value);
+        this.injected.searchStore.changeValue(e.target.value);
     };
 
     render() {
-        const { value, isActive, clearInput } = this.props.searchStore;
+        const { value, isActive, clearInput } = this.injected.searchStore;
 
         return (
             <StyledSearch>
@@ -40,7 +42,6 @@ class Search extends React.Component<{}, {}> {
                 >
                     {<IconCross />}
                 </ClearButton>
-                <AddBook />
             </StyledSearch>
         );
     }
