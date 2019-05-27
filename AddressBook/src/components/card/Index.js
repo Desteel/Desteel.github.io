@@ -4,7 +4,7 @@ import CardForm from '../../components/form/CardForm';
 import ItemDiv from './ItemDiv';
 import Options from '../options/Options';
 
-@inject('contentStore', 'modalStore')
+@inject('contentStore')
 @observer
 class Card extends React.Component {
     @observable editable = false;
