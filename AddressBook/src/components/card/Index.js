@@ -23,13 +23,13 @@ class Card extends React.Component {
     @action('delete card')
     deleteCard = () => this.props.contentStore.deleteCard(this.props.id);
 
-    editRender = () => (
+    viewEdit = () => (
         <CardForm onSubmit={this.saveCard} initialValues={this.props.item}>
             <Options editable={this.editable} editClose={this.toggleEditable} />
         </CardForm>
     );
 
-    viewRender = () => (
+    viewStatic = () => (
         <ItemDiv item={this.props.item}>
             <Options
                 editable={this.editable}
@@ -40,7 +40,7 @@ class Card extends React.Component {
     );
 
     render() {
-        return this.editable ? this.editRender() : this.viewRender();
+        return this.editable ? this.viewEdit() : this.viewStatic();
     }
 }
 
