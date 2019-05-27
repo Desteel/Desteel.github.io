@@ -15,16 +15,16 @@ class Card extends React.Component {
     };
 
     @action('save card')
-    saveCard = data => {
+    handleSave = data => {
         this.props.contentStore.saveCard(data);
         this.editable = false;
     };
 
     @action('delete card')
-    deleteCard = () => this.props.contentStore.deleteCard(this.props.id);
+    handleDelete = () => this.props.contentStore.deleteCard(this.props.id);
 
     viewEdit = () => (
-        <CardForm onSubmit={this.saveCard} initialValues={this.props.item}>
+        <CardForm onSubmit={this.handleSave} initialValues={this.props.item}>
             <Options editable={this.editable} editClose={this.toggleEditable} />
         </CardForm>
     );
@@ -34,7 +34,7 @@ class Card extends React.Component {
             <Options
                 editable={this.editable}
                 editStart={this.toggleEditable}
-                deleteCard={this.deleteCard}
+                deleteCard={this.handleDelete}
             />
         </ItemDiv>
     );
