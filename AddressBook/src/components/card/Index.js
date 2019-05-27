@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import CardForm from '../../components/form/CardForm';
-import ItemDiv from './ItemDiv';
+import ViewStatic from './ViewStatic';
 import Options from '../options/Options';
 
 @inject('contentStore')
@@ -30,13 +30,13 @@ class Card extends React.Component {
     );
 
     viewStatic = () => (
-        <ItemDiv item={this.props.item}>
+        <ViewStatic item={this.props.item}>
             <Options
                 editable={this.editable}
                 editStart={this.toggleEditable}
                 deleteCard={this.handleDelete}
             />
-        </ItemDiv>
+        </ViewStatic>
     );
 
     render() {
