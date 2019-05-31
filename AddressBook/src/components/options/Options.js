@@ -1,8 +1,8 @@
 import { OptionBox, OptionBtn } from './Styles';
 import { Button } from '../elements/';
-import IconCross from '../../icons/cross.svg';
-import IconPen from '../../icons/pen.svg';
-import IconCheck from '../../icons/tick.svg';
+import IconCross from '../../assets/icons/cross.svg';
+import IconPen from '../../assets/icons/pen.svg';
+import IconCheck from '../../assets/icons/tick.svg';
 
 class Options extends React.Component {
     editRender = () => (

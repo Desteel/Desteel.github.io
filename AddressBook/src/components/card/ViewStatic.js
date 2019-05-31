@@ -1,5 +1,5 @@
 import { Card, Imagebox, Info } from "./Styles";
-let photoIcon = require("../../images/photo.png");
+let photoIcon = require("../../assets/images/photo.png");
 
 function ViewStatic({ children, ...rest }) {
     const { photoUrl, name, lastname, phoneValues, address } = rest.item;

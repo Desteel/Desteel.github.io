@@ -18,7 +18,7 @@ import {
     Input
 } from "./Styles";
 import { Button } from "../elements";
-let photoIcon = require("../../images/photo.png");
+let photoIcon = require("../../assets/images/photo.png");
 
 class CardForm extends React.Component {
     onSubmit = values => {
