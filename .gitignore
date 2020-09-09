@@ -1,5 +1,6 @@
-# Ignore everything
-/*
+
+# dependencies
+/node_modules
 
 # OS or Editor folders
 ._*
@@ -9,18 +10,10 @@
 .project
 .settings
 .tmproj
-yarn.lock
 nbproject
 Thumbs.db
 
-# But not these files...
-!README.md
-!AddressBook
-
-!package.json
-!.gitignore
-!webpack_config
-!babel.config.js
-!postcss.config.js
-!tsconfig.json
-!webpack.config.js
+# misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,17 +1,25 @@
 {
-    "compilerOptions": {
-        "experimentalDecorators": true,
-        "outDir": "./zcc/",
-        "noImplicitAny": true,
-        "module": "es6",
-        "moduleResolution": "node",
-        "target": "es5",
-        "allowJs": true,
-        "jsx": "react",
-        "declaration": false,
-        "emitDecoratorMetadata": true,
-        "noImplicitReturns": false,
-        "noUnusedLocals": true,
-		"strict": true
-    }
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "emitDecoratorMetadata": true,
+    "noUnusedLocals": true,
+    "isolatedModules": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "noUnusedParameters": true,
+    "outDir": "./dist/",
+    "baseUrl": "./AddressBook/src",
+    "project": "./"
+  },
+  "include": ["./AddressBook/src"],
+  "exclude": ["node_modules", "./AddressBook/src/@types"]
 }

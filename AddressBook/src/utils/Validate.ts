@@ -1,4 +1,4 @@
-import { isNumeric } from '.';
+import { isNumeric } from './utils';
 
 export const required = (value: string) => (value ? undefined : 'Required');
 

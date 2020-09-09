@@ -1,5 +1,5 @@
 import { ObservableMap, observable, action } from 'mobx';
-import { createGuid } from '../utils';
+import { createGuid } from '../utils/utils';
 
 class ModalStore {
     @observable modals: ObservableMap<string> = observable.map();
