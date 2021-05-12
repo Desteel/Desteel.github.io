@@ -44,7 +44,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "mobx-react-devtools": "^6.0.3",
     "node-static": "^0.7.10",
-    "postcss": "^7.0.14",
+    "postcss": "^8.2.10",
     "postcss-cli": "^6.1.1",
     "postcss-cssnext": "^3.1.0",
     "postcss-discard-comments": "^2.0.4",
